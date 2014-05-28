@@ -1,0 +1,23 @@
+class CreateUploadedFiles < ActiveRecord::Migration
+  def self.up
+    create_table :uploaded_files do |t|
+      t.column :file_name, :string, :limit => 255, :null => false, :default => ""
+      t.column :file_path, :string, :limit => 1024, :null => false, :default => ""
+      t.column :file_size, :string, :limit => 100, :null => false, :default => ""
+      t.column :storage, :integer, :null => false, :default => 0
+      t.column :file_type, :integer, :null => false, :default => 0
+      t.column :file_cat, :integer, :null => false, :default => 0
+      t.column :user_id, :integer, :null => false, :default => 0
+      t.column :access, :integer, :null => false, :default => 0
+      t.column :is_dir, :integer, :null => false, :default => 0
+      t.column :thumb_image, :string, :limit => 1024, :null => false, :default => ""
+      t.column :deleted, :integer, :null => false, :default => 0
+      t.column :created_at, :datetime
+      t.column :updated_at, :datetime
+    end
+  end
+
+  def self.down
+    drop_table :uploaded_files
+  end
+end

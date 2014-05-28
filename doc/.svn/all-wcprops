@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 19
+/svn/!svn/ver/2/doc
+END
+_form_remote_tag.erb
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/2/doc/_form_remote_tag.erb
+END
+my_implementaion_for_ajax_form.txt
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/2/doc/my_implementaion_for_ajax_form.txt
+END
+README_FOR_APP
+K 25
+svn:wc:ra_dav:version-url
+V 34
+/svn/!svn/ver/2/doc/README_FOR_APP
+END
+new_form_remote_tag_usage.txt
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/2/doc/new_form_remote_tag_usage.txt
+END
+_end_form_remote_tag.erb
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/2/doc/_end_form_remote_tag.erb
+END

@@ -1,0 +1,5 @@
+<div id="<%= this_section%>_title_bar" style="width:203px; height:15px;margin:-5px -5px 5px -5px;padding:2px 3px 0px 3px;">
+  <%= this_section %>
+  <span id="<%= this_section %>_view_control_area" style="float:right;"><a href="javascript:void(0)" onclick="Element.hide('<%= this_section %>_base_div');Element.show('<%= homepage_id %>');"><img src="/images/closebutton1.jpg" style="border:none;width:12px;height:12px;margin:0 0 0 0;"/></a></span>
+<hr style="margin:0 0 0 0;color:#800F45;">
+</div>

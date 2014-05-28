@@ -1,0 +1,23 @@
+development:
+  adapter: mysql
+  encoding: utf8
+  database: omc_development
+  username: root
+  password:
+  host: localhost
+
+test:
+  adapter: mysql
+  encoding: utf8
+  database: omc_test
+  username: root
+  password:
+  host: localhost
+
+production:
+  adapter: mysql
+  encoding: utf8
+  database: killermobi_production
+  username: rishabh1923
+  password: XVXC2gb?
+  host: db1923.killermobi.com

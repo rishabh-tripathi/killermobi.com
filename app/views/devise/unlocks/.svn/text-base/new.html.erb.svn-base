@@ -1,0 +1,18 @@
+<center><h1>Reset Unlock Instructions</h1></center>
+<table style="width:100%">
+  <tr>
+    <td>&nbsp;</td>
+    <td style="padding-right:20px;width:300px;">
+      <%= form_for(resource, :as => resource_name, :url => unlock_path(resource_name), :html => { :method => :post }) do |f| %>
+      <%= devise_error_messages! %>
+      <div><%= f.label :email %>
+      <%= f.email_field :email %></div>
+      <div><%= f.submit "Resend unlock instructions", :class => "btn btn-danger"%></div>
+      <% end %>
+      <%= render :partial => "devise/shared/links" %>
+    </td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<div class="sp100"></div>
+<div class="sp20"></div>

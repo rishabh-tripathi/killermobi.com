@@ -1,0 +1,59 @@
+<div id="share_apps_form_view1" style="display:none">
+<% form_remote_tag  :url => user_share_app1_url(),
+                    :loading => "Element.show('share_app_loading_step_1');",
+                    :complete => "Element.hide('share_apps_form_view1');document.getElementById('upload_share_app_title').innerHTML='Upload executables';",
+                    :update => {:success => "share_apps_form_view2"},
+                    :html => {:id => "form_share_app_step_one"} do %>
+<table>
+      <tr>
+        <td>Title:</td>
+        <td><input type="text" name="share_title" id="share_title" size="40">
+        </td>
+      </tr>
+
+      <tr>
+        <td>Category:</td>
+        <td>
+        <select name="share_category" id="share_category_id">
+          <% categories = DownloadCategory.find(:all)
+             for category in categories %>
+          <option value="<%= category.id %>">
+            <%= category.category%>
+          </option>
+          <% end %>
+        </select>
+        </td>
+      </tr>
+
+      <tr>
+        <td>Version:</td>
+        <td><input type="text" name="share_version" id="share_version" size="40" value="1.0"></td>
+      </tr>
+
+      <tr>
+        <td>Caption:</td>
+        <td><input type="text" name="share_caption" id="share_caption" size="40"></td>
+      </tr>
+
+      <tr>
+        <td>Description:</td>
+        <td> <textarea name="share_desc" id="share_desc" rows="8" cols="31"></textarea></td>
+      </tr>
+      <tr>
+        <td>Powered by:</td>
+        <td><input type="text" name="share_pwrd_by" id="share_pwrd_by" size="40"></td>
+      </tr>
+      <tr>
+        <td>Host Url:</td>
+        <td><input type="text" name="share_host_url" id="share_host_url" size="40"></td>
+      </tr>
+</table>
+<input type="submit" value="Next" style="float:right;">
+<% end %>
+<br>
+<div id="share_app_loading_step_1" style="position:relative;top:-30px;display:none">
+  <img src="/images/spinner.gif" style="width:30px;height:30px;border:none;margin:0px;"></img>
+  loading...
+</div>
+</div>
+<div id="share_apps_form_view2"></div>

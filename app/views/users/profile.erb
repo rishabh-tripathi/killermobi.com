@@ -1,0 +1,72 @@
+
+<div class="download_section">
+<div id="download_section_top">Free Mobile Softwares @ KillerMobi</div>
+<div class="pwrd_by"><%= link_to 'Back to Free Mobile Software Home', root_path %></div>
+<div class="show_articles">
+<br>
+
+<div id="link_ads_on_top">
+<script type="text/javascript"><!--
+google_ad_client = "pub-3833946424381349";
+/* 468x15, created 12/3/10 */
+google_ad_slot = "8885314131";
+google_ad_width = 468;
+google_ad_height = 15;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+<br>
+<br>
+<Br>
+
+<% if(!@is_friend) %>
+<% form_remote_tag  :url => add_friend_url(), :loading => "Element.show('add_friend_loading');", :complete => "Element.hide('add_friend_loading');", :update => {:success => "friend_request_status"}, :html => {:id => "form_add_friend"} do %>
+ <input type="hidden" name="friend" value="<%= @profile_user.username %>">
+ <select name="friend_category">
+   <% Friendship::FRIEND_CAT.sort.each do |key, value| %>
+     <option value="<%= key %>"><%= value %></option>
+   <% end %>
+ </select>
+ <a href="javascript:void(0)" onclick="document.getElementById('form_add_friend').onsubmit();">add friend</a>
+<% end %>
+<div id="add_friend_loading" style="display:none">
+Sending request
+</div>
+<div id="friend_request_status">
+</div>
+<% end %>
+
+
+<div style="height:1500px; background: url(/images/user_bk700.gif) no-repeat;">
+
+<div style="margin-left:150ps; height:1100px;">
+
+<div style="position:relative; height:970px; width:588px; left:58px; top:105px; border:1px solid #aea68c">
+
+<table border="0" width="100%">
+  <tr>
+    <td width="20%" height="120px">
+      <img src="/images/noimage3.jpg"></img>
+    </td>
+    <td width="80%" height="120px">
+      <div style="height:120px; padding:0px; border:1px solid #800F45">
+        <h3><%= @profile_user.firstname %> <%= @profile_user.lastname%></h3>
+      </div>
+    </td>
+  </tr>
+</table>
+
+<hr>
+
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+</div>

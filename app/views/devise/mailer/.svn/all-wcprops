@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/2/app/views/devise/mailer
+END
+WS_FTP.LOG
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/2/app/views/devise/mailer/WS_FTP.LOG
+END
+reset_password_instructions.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/2/app/views/devise/mailer/reset_password_instructions.html.erb
+END
+confirmation_instructions.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/2/app/views/devise/mailer/confirmation_instructions.html.erb
+END
+unlock_instructions.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/2/app/views/devise/mailer/unlock_instructions.html.erb
+END

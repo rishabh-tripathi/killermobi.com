@@ -1,0 +1,150 @@
+<div id="home_body">
+        	<div id="left_section">                     
+
+       	  <div class="left_section_box">
+               	 <div class="left_section_box_body">
+                    <div class="left_section_box_top">Free Mobile Applications @ KillerMobi</div>
+                    <div class="left_section_box_top_inner">
+<p>
+Keeping in mind the current market trends and user requirements,
+<a href="http://www,killermobi.com"><b>KillerMobi</b></a> has launched a vivacious web portal for <b>free
+mobile software and applications</b>. Our portal is endowed with the
+latest and most dazzling applications of your own
+ congenial  ,which can turn your phone to a SMART DEVICE by just a
+mere single click.
+We provide services and  free mobile applications for all platforms
+including <a href="/platform/Symbian"><b>Symbian</b></a>, <a href="/platform/Blackberry"><b>Blackberry</b></a>,
+<a href="/platform/Windows_Mobile"><b>Windows Mobile</b></a>
+and <a href="/platform/JavaME"><b>Java</b></a>.
+Some of the Key Features,
+<ul>
+<li>No registration required.</li>
+<li>Download absolutely <a href=<%= downloads_url %>><b>Free Mobile Software</b></a>.</li>
+<li>Harness Free mobile solutions through extremely useful <a href=<%= forums_url %>><b>forums</b></a>.</li>
+<li>Play Live Demo before download.</li>
+<!-- <li>Download exclusive <a href=<%= downloads_url %>><b>Killer Mobile Software and mobile tools</b></a> for
+your
+phone regardless of platform.</li>
+<li>Be a part of <a href="http://killermobi.com"><b>KillerMobi</b></a> and execute your 100$ <a href=<%= ideas_url
+%>><b>ideas</b></a>.</li>
+-->
+</ul>
+</p>
+</div>
+                    </div>
+              </div>
+
+                
+               
+            </div><!-- End Of middle Section -->
+            
+            
+
+            <div id="right_section">
+              <div id="left_section_box_title">KillerMobi Products</div>
+            <div id="right_section_box1">
+            <div class="gallery">
+			<% for download in @killermobi_download %>
+			      <a href= <%= download_show_url(download.title.tr(" ","_")) %> rel="lightbox-gallery" title="<%= download.title.tr(" ","_")%>">
+			      <% if(!download.ss1url.nil?) %>
+				        <img src="<%= download.ss1url.to_s %>" alt="<%= download.title %>" />
+			      <% else %>
+					<img src="images/noimage4.png" />
+			      <% end %></a>
+			 <% end %>
+                   </div>
+              </div>
+
+            </div>
+
+
+<!-- ```````````````````````````````````````````````````````````````````````````````````````````````````````````   -->
+
+        	<div id="left_section">
+
+       <div id="left_section_box_title">Best J2ME Application</div>
+       <div id="right_section_box1">
+                    <div class="gallery">
+
+
+			<% for download in @j2me_download %>
+			      <a href= <%= download_show_url(download.title.tr(" ","_")) %> rel="lightbox-gallery" title="<%= download.title.tr(" ","_")%>">
+			      <% if(!download.ss1url.nil?) %>
+				        <img src="<%= download.ss1url.to_s %>" alt="<%= download.title %>" />
+			      <% else %>
+					<img src="images/noimage4.png" />
+			      <% end %></a>
+			 <% end %>
+                   </div>
+              </div>
+
+
+
+            </div><!-- End Of middle Section -->
+
+
+
+            <div id="right_section">
+              <div id="left_section_box_title">Best Symbian Application</div>
+            <div id="right_section_box1">
+                    <div class="gallery">
+
+
+			<% for download in @symbian_download %>
+			      <a href= <%= download_show_url(download.title.tr(" ","_")) %> rel="lightbox-gallery" title="<%= download.title.tr(" ","_")%>">
+			      <% if(!download.ss1url.nil?) %>
+				        <img src="<%= download.ss1url.to_s %>" alt="<%= download.title %>" />
+			      <% else %>
+					<img src="images/noimage4.png" />
+			      <% end %></a>
+			 <% end %>
+                   </div>
+              </div>
+
+            </div>
+
+
+<!-- ```````````````````````````````````````````````````````````````````````````````````````````````````````````   -->
+
+        	<div id="left_section">
+
+       <div id="left_section_box_title">Best Blackberry Application</div>
+       <div id="right_section_box1">
+                    <div class="gallery">
+
+
+			<% for download in @blackberry_download %>
+			      <a href= <%= download_show_url(download.title.tr(" ","_")) %> rel="lightbox-gallery" title="<%= download.title.tr(" ","_")%>">
+			      <% if(!download.ss1url.nil?) %>
+				        <img src="<%= download.ss1url.to_s %>" alt="<%= download.title %>" />
+			      <% else %>
+					<img src="images/noimage4.png" />
+			      <% end %></a>
+			 <% end %>
+                   </div>
+              </div>
+
+            </div><!-- End Of middle Section -->
+
+
+
+            <div id="right_section">
+              <div id="left_section_box_title">Best Windows Mobile Application</div>
+            <div id="right_section_box1">
+                    <div class="gallery">
+
+
+			<% for download in @windowsmobile_download %>
+			      <a href= <%= download_show_url(download.title.tr(" ","_")) %> rel="lightbox-gallery" title="<%= download.title.tr(" ","_")%>">
+			      <% if(!download.ss1url.nil?) %>
+				        <img src="<%= download.ss1url.to_s %>" alt="<%= download.title %>" />
+			      <% else %>
+					<img src="images/noimage4.png" />
+			      <% end %></a>
+			 <% end %>
+                   </div>
+              </div>
+
+            </div>
+
+</div>

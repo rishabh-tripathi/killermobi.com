@@ -1,0 +1,20 @@
+xml.instruct!
+
+xml.rss "version" => "2.0", "xmlns:dc" => "http://purl.org/dc/elements/1.1/" do
+ xml.channel do
+
+   xml.title       "World Cup Live Commentry by Users"
+   xml.link        "http://killermobi.com"
+   xml.description "KillerMobi presents live commentry by users"
+
+   @comment.each do |comment|
+     xml.item do
+       xml.title       comment.on
+       xml.link        "http://killermobi.com"
+       xml.description comment.name+" Says: "+comment.comment
+       xml.guid        "http://killermobi.com"
+     end
+   end
+
+ end
+end

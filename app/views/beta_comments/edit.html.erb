@@ -1,0 +1,27 @@
+<h1>Editing beta_comment</h1>
+
+<%= error_messages_for :beta_comment %>
+
+<% form_for(@beta_comment) do |f| %>
+  <p>
+    <b>Name</b><br />
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <b>Email</b><br />
+    <%= f.text_field :email %>
+  </p>
+
+  <p>
+    <b>Review</b><br />
+    <%= f.text_field :review %>
+  </p>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @beta_comment %> |
+<%= link_to 'Back', beta_comments_path %>

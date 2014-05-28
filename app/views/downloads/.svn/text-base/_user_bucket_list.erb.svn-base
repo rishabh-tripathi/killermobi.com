@@ -1,0 +1,27 @@
+<% form_remote_tag  :url => set_bucket_url,
+                    :loading => "Element.show('create_bucket_loading_section');",
+                    :complete => "Element.hide('create_bucket_loading_section');",
+                    :update => {:success => "dropable_container"},
+                    :html => {:id => "form_set_bucket"} do %>
+<input type="hidden" id="set_bucket" value="" name="bucket" />
+<% end %>
+
+<% if(!@user_buckets.nil? && !@user_buckets.empty?) %>
+<h4>Your buckets</h4>
+<ul>
+  <%   for bucket in @user_buckets  %>
+  <li><a href="<%= show_bucket_url(:name => bucket.name.gsub(' ','-')) %>"><%= bucket.name %></a>&nbsp;&nbsp;<span onclick="document.getElementById('set_bucket').value=<%= bucket.id %>;document.getElementById('form_set_bucket').onsubmit();" class="label label-important" style="cursor:pointer;font-size:10px;">Use this</span></li>
+  <%   end  %>
+</ul>
+<% end %>
+<% if user_signed_in? %>
+<hr>
+<%   form_remote_tag  :url => new_bucket_url,
+                    :loading => "Element.show('create_bucket_loading_section');",
+                    :complete => "Element.hide('create_bucket_loading_section');",
+                    :update => {:success => "dropable_container"},
+                    :html => {:id => "form_new_bucket"} do %>
+  <center><input type="submit" class="btn btn-success" value="New Bucket" /></center>
+<%   end
+   end %>
+

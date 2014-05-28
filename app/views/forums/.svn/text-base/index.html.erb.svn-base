@@ -1,0 +1,121 @@
+<table style="width:100%">
+  <tr>
+    <td style="padding:0px 10px;vertical-align:top;">
+      <a class="pull-right" href="<%= root_path %>">Back to <b>Free Mobile Downloads</b> Home</a>
+      <h1>Mobile Forum</h1>
+      <div class="sp5"></div>
+      <div class="b-top-right" style="padding:10px;">
+        <table style="width:100%;">
+            <% count = 2
+               @forums.each do |forum|
+            -%>
+              <% if(count % 2 == 0) %><tr><% end %>
+                <td class="<%= (count % 2 == 0)? 'b-right-bottom' : 'b-bottom' %>" style="padding:10px;vertical-align:top;">
+                  <center><h3 style="margin:0px;"><%= forum.name %>(<%= forum.topics_count %>)</h3></center>
+                  <div class="sp1-gr"></div>
+                  <%= forum.description %>
+                  <div class="sp2"></div>
+                  <% all_topics = forum.topics %>
+                  <% if(Util.none(all_topics)) %>
+                  <span class="tiny3">
+                    <b>Topics:</b>&nbsp;
+                    <% for a in all_topics %>
+                    <%= a.name %>&nbsp;
+                    <% end %>
+                  </span>
+                  <% end %>
+                  <div class="sp10"></div>
+                  <center><a class="btn btn-success" href="<%= topics_path(:forum_id => forum.id) %>">Explore</a></center>
+                </td>
+             <% count += 1
+                if(count % 2 == 0) %></tr><% end %>
+            <% end %>
+        </table>
+      </div>
+    </td>
+    <td style="width:300px;vertical-align:top;">
+      <%= render(:partial => "ads/ga_300x250") %>
+      <div class="sp10"></div>
+
+      <% if(false) %>
+      <div class="round-st-border-no" style="line-height:25px">
+        <center>
+          <h3 style="color:#ffffff;">Add New Category</h3>
+        </center>
+        <div class="round-border-content-2">
+        </div>
+      </div>
+      <% end %>
+
+    </td>
+  </tr>
+</table>
+
+
+
+
+
+
+<% if(false) %>
+<div class="download_section">
+<div id="download_section_top"></div>
+<div class="pwrd_by"><%= link_to 'Back to Home', root_path %></div>
+<h1>KillerMobi Forums</h1>
+<% if is_logged_in? and logged_in_user.has_role?('Administrator') %>
+<div class="button_01"><%= link_to 'Create New Forum', new_forum_url -%></div>
+<% end %>
+<br>
+<div id="link_ads_on_top">
+<script type="text/javascript"><!--
+google_ad_client = "pub-3833946424381349";
+/* 468x15, created 12/3/10 */
+google_ad_slot = "8885314131";
+google_ad_width = 468;
+google_ad_height = 15;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+<br>
+
+<% if !@tags.nil? and @tags.size!=0 %>
+<div class="show_download_comments_add">
+    <h4>Find useful posts by <b>Tags</b></h4>
+    <p>
+        <% tag_cloud @tags, %w(css1 css2 css3 css4) do |tag, css_class| %>
+            <%= link_to tag.name, post_tagged_url(tag.name), :class => css_class %>&nbsp;&nbsp;
+        <% end %>
+    </p>
+    </div>
+<% end %>
+<table id="forums">
+<tr>
+<th class="name">Forum name</th>
+<th class="topic">Threads</th>
+</tr>
+<% @forums.each do |forum| -%>
+<tr class="<%= cycle('odd', 'even') %>">
+<td class="name">
+<div class="forumname">
+<%= link_to forum.name, topics_path(:forum_id => forum.id) -%>
+</div>
+<div class="forumdescription">
+<%= forum.description -%>
+</div>
+<% if is_logged_in? and logged_in_user.has_role?('Administrator') -%>
+<br />
+<small>
+<%= link_to 'edit', edit_forum_path(forum) %>
+<%= link_to 'delete', forum_path(forum), :method => :delete,
+:confirm => 'Are you sure? This will delete this entire forum.' -%>
+</small>
+<% end -%>
+</td>
+<td class="topic"><%= forum.topics_count %></td>
+</tr>
+<% end -%>
+</table>
+</div>
+<% end %>

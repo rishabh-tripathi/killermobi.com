@@ -1,0 +1,25 @@
+<center><h1>Reset Your Password</h1></center>
+<table style="width:100%">
+  <tr>
+    <td>&nbsp;</td>
+    <td style="padding-right:20px;width:300px;">
+      <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
+      <%= devise_error_messages! %>
+      <%= f.hidden_field :reset_password_token %>
+
+      <div><%= f.label :password, "New password" %>
+        <%= f.password_field :password %></div>
+
+      <div><%= f.label :password_confirmation, "Confirm new password" %>
+        <%= f.password_field :password_confirmation %></div>
+
+      <div><%= f.submit "Change my password", :class => "btn btn-danger" %></div>
+      <% end %>
+      <%= render :partial => "devise/shared/links" %>
+    </td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<div class="sp50"></div>
+<div class="sp10"></div>
+

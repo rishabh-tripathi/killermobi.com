@@ -1,0 +1,2 @@
+module MnlOnlinesHelper
+end

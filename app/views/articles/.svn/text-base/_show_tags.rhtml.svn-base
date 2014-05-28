@@ -1,0 +1,20 @@
+<span id="tags">
+<% if !@tags.nil? and @tags.size!=0 %>
+<% tag_cloud @tags, %w(css1 css2 css3 css4) do |tag, css_class| %>
+    <%= link_to tag.name, article_tagged_url(tag.name), :class => css_class %>&nbsp;&nbsp;
+<% end %>
+<% else %>
+<h4>Oops! never tagged yet. Tag this application with appropriate content.</h4>
+<% end %>
+<% if !@home %>
+<% if is_logged_in? %>
+<% if !@article.nil? %>
+<div class="pwrd_by"><%= link_to_remote "Add more Tags!", :url => remote_tag_edit_article_url(@article.title.tr(" ","_")), :method => :get, :update => "tags" %></div>
+<% end %>
+<% else %>
+<% if !@article.nil? %>
+<p>Login required to tag this article</p>
+<% end %>
+<% end %>
+<% end %>
+</span>

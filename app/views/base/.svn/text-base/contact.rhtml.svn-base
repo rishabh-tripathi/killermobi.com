@@ -1,0 +1,23 @@
+<%
+   key = get_random_spam_id
+%>
+
+<table style="width:100%">
+  <tr>
+    <td>&nbsp;</td>
+    <td style="padding-right:20px;width:300px;">
+      <center><h1>Contact Us</h1></center>
+      <% form_for :mail, :url => contact_mail_url, :html => {:id => "contact_form"} do |f| -%>
+      <p>Name:<br /><%= f.text_field :name, :style=> "width:240px;" %></p>
+      <p>Email:<br /><%= f.text_field :email, :style=> "width:240px;" %></p>
+      <p>Subject:<br /><%= f.text_field :subject, :style=> "width:240px;" %></p>
+      <p>Message:<br /><%= f.text_area :message, :rows => 5, :style=> "width:350px;" %></p>
+      <input type="hidden" id="_user_auth_key" name="_user_auth_key" value=""></input>
+      <input type="button" class="btn btn-danger" value="Send" onclick="set_spam_id('_user_auth_key','<%= key %>');document.getElementById('contact_form').submit();" />
+      <% end %>
+    </td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<div class="sp100"></div>
+<div class="sp20"></div>

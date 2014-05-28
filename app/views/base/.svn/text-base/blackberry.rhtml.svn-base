@@ -1,0 +1,67 @@
+<div class="download_section">
+<div id="download_section_top">Blackberry Apps</div>
+<div class="pwrd_by"><%= link_to 'Back to Free Mobile Software Home', root_path %></div>
+
+<br>
+<div id="link_ads_on_top">
+<script type="text/javascript"><!--
+google_ad_client = "pub-3833946424381349";
+/* 468x15, created 12/3/10 */
+google_ad_slot = "8885314131";
+google_ad_width = 468;
+google_ad_height = 15;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+<br>
+<%= will_paginate @downloads %>
+
+
+<% count = 4 %>
+<table>
+  <tr>
+<% for download in @downloads %>
+  <% if(count%4==0) %>
+     <tr>
+   <% end %>
+   <td>
+      <a style="text-decoration:none;" href= <%= download_show_url(download.title.tr(" ","_")) %> onmouseover="document.getElementById('download_disc_<%= count %>').style.display='';" onmouseout="document.getElementById('download_disc_<%= count %>').style.display='none';">
+      <% if(!download.ss1url.nil?) %>
+        <img class="download_section_img" src="/<%= download.ss1url.to_s %>" alt="<%= download.title %>"/>
+      <% else %>
+        <img class="download_section_img" src="/images/noimage4.png" />
+      <% end %>
+      <div class="dwld_title_145x165"><center><%= download.title %></center></div>
+      <div class="dwld_disc_145x165" id="download_disc_<%= count %>" style="display:none;">
+        <p style="padding-left:5px;color:#e6e0ce;margin-top:0px;margin-bottom:0px;width:97%;background:#800F45;">
+          Download Count: <%= ((!download.download_count.nil?)? download.download_count : '0') %>
+        </p>
+        <small>
+        <% if(!download.powered_by.nil? && !download.powered_by.empty?) %>Powered By: <%= download.powered_by %><br><% end %>
+        Category: <%= DownloadCategory.find_by_id(download.category_id).category.tr("_"," ") %><br></small>
+        <%#= download.short_description %></div></a>
+   </td>
+   <%  count += 1
+      if(count%4==0) %>
+     </tr>
+   <% end %>
+  <% end %>
+</table>
+
+
+<%= will_paginate @downloads %>
+
+<% if(false) %>
+<div style="width:92%;margin:10px 10px 10px 10px;padding:10px 10px 10px 10px;padding-top:0px;border: 1px solid #800F45;">
+<h4>Tags for applications</h4>
+<p>
+<%= render :partial => "downloads/show_tags" %>
+</p>
+</div>
+<% end %>
+
+  <div class="cleaner"></div>
+    </div>

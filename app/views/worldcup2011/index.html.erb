@@ -1,0 +1,24 @@
+<h1>Listing worldcup2011s</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>On</th>
+    <th>Comment</th>
+  </tr>
+
+<% for worldcup2011 in @worldcup2011s %>
+  <tr>
+    <td><%=h worldcup2011.name %></td>
+    <td><%=h worldcup2011.on %></td>
+    <td><%=h worldcup2011.comment %></td>
+
+    <td><%= link_to 'Edit', wc_edit_comment_url(worldcup2011.id) %></td>
+    <td><%= link_to 'Destroy', wc_delete_comment_url(worldcup2011.id) %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Add Comment', wc_new_comment_url %>

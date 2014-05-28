@@ -1,0 +1,66 @@
+<table style="width:100%;background:#f7f7f7;padding:0px 20px;">
+  <tr>
+    <td style="width:50%;padding:10px 0px;">
+      <div style="float:right;padding:0px 35px 0px 0px;text-align:center;border-right:1px solid #e0e0e0;">
+        <h4>Average Rating</h4>
+        <% for x in 1..avg_rating %>
+        <img src="/images/v2/star_sm_y.png" class="rate-star" />
+        <% end %>
+        <% for x in 1..(5 - avg_rating) %>
+        <img src="/images/v2/star_sm_b.png" class="rate-star" />
+        <% end %>
+        <br/>
+        (Based on <%= review_size %> <%= ((review_size > 1)? 'reviews' : 'review')%>)
+      </div>
+    </td>
+    <td style="width:50;padding:10px 0px;%">
+      <div style="float:left;padding:0px 10px;text-align:center;">
+        <div style="padding-left:25px;">
+          <h4>Have you tried this app?</h4>
+          Rate this now
+        </div>
+        <% for x in 0..5 %>
+        <img id="m_rate_<%= x %>" class="rate-star" src="/images/v2/star_sm_b.png" style="<%= 'opacity:0;' if(x==0) %>" onmouseover="change_rating(<%= x %>, 'm_rate_')" onclick="openTransPopup('write_review_popup');change_rating(<%= x %>, 'w_rate_');document.getElementById('review_rating').value=<%= x %>;" />
+        <% end %>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" style="padding:10px 0px;%">
+      <center>
+        <button class="btn btn-large btn-danger" style="width:150px;" onclick="openTransPopup('write_review_popup');">Write&nbsp;Review</button>
+      </center>
+    </td>
+  </tr>
+</table>
+<div class="sp20"></div>
+
+<div id="write_review_popup" style="display:none;position:fixed;top:25%;left:15%;margin:auto;z-index:100;">
+  <div class="round-st-border" style="margin: 0px 10px;">
+    <div class="round-border-content" style="width:800px;">
+      <img src="/images/closebutton4.png" style="float:right;width:30px;height:30px;cursor:pointer;" onclick="closeTransPopup('write_review_popup');"/>
+      <%= render(:partial => "write_review", :locals => {
+        :obj_type => obj_type,
+        :obj_id => obj_id,
+        :after_save_action => "Element.hide('write_review_popup');",
+        :update_div => update_div,
+        :title => title
+      }) %>
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+  outer_rating = 0;
+  function change_rating(id, prefix) {
+    outer_rating = id;
+    no_rate = 5 - id
+    for(i=1;i<=id;i++)
+      document.getElementById(prefix+i).src = "/images/v2/star_sm_y.png";
+    if(no_rate > 0) {
+      for(i=id+1;i<=id+no_rate;i++)
+        document.getElementById(prefix+i).src = "/images/v2/star_sm_b.png";
+    }
+  }
+</script>

@@ -1,0 +1,45 @@
+<div id="upload_apps" class="popup" style="position:absolute;left:15%;top:150px;z-index:100;width:800px;height:460px;display:none;">
+
+<%= render(:partial => "update_section", :locals => {:update_section_id => UserDetail::MY_UPLOADS_SECTION, :this_section_id => "upload_apps"})%>
+
+<div class="close_button"><a href="javascript:void(0);" onclick="upload_share_close_onclick();closeAction('upload_apps','<%= UserDetail::MY_PROFILE_IDS[UserDetail::MY_UPLOADS_SECTION]%>','form_update_upload_apps');" ><img style="width:20px;height:20px;border:none;" src="/images/close_button1.png" alt="[X}"/></a></div>
+
+<a href="javascript:void(0)" onclick="upload_share_close_onclick();">Home</a>
+
+<h3 id="upload_share_app_title">Upload app</h3>
+<div style="position:relative;margin:10px;width:90%;height:250px;">
+  <div style="margin:10px;padding-left:40px;">
+    <table style="width:100%" id="upload_or_share_app">
+      <tr>
+        <td style="border: solid 1px #800F45;">
+          <a href="javascript:void(0)" onclick="Element.hide('upload_or_share_app');document.getElementById('upload_share_app_title').innerHTML='Basic Details';Element.show('upload_apps_form_view1');"><center><img src="/images/upload1.png" alt="Upload" title="Upload an app" style="border:none;width:128px;height:128px;"/>
+            <h2>Upload an app</h2>
+          </center></a>
+        </td>
+        <td style="width:30px;">
+        </td>
+        <td style="border: solid 1px #800F45;">
+          <a href="javascript:void(0)" onclick="Element.hide('upload_or_share_app');document.getElementById('upload_share_app_title').innerHTML='Basic Details';Element.show('share_apps_form_view1');">
+          <center><img src="/images/share1.png" alt="Share" title="Share an app" style="border:none;width:128px;height:128px;"/>
+            <h2>Share an app</h2>
+          </center></a>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="3">
+          <br>
+            <small>* We assume that the content submitted by you are not copyrighted and you will bear all the responsibility of that and you accept our terms and conditions.</small>
+        </td>
+      </tr>
+    </table>
+
+    <%= render(:partial => "upload_apps_form_view1") %>
+    <%= render(:partial => "upload_apps_form_view3") %>
+    <%= render(:partial => "upload_apps_form_view4") %>
+
+    <%= render(:partial => "share_apps_form_view1") %>
+  </div>
+</div>
+
+</div>
+

@@ -1,0 +1,2 @@
+module DownloadTypesHelper
+end

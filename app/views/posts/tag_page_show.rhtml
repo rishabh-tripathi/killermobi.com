@@ -1,0 +1,53 @@
+<% if(false) %>
+
+<div class="download_section">
+<div id="download_section_top">Tagged Posts</div>
+
+<br>
+<div id="link_ads_on_top">
+<script type="text/javascript"><!--
+google_ad_client = "pub-3833946424381349";
+/* 468x15, created 12/3/10 */
+google_ad_slot = "8885314131";
+google_ad_width = 468;
+google_ad_height = 15;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+
+<div style="margin-left:20px;">
+<%#= pluralize(@post.size,"is","are") -%>
+<%= @post.size %> post(s) found.
+<%#= pluralize(@post.size,"result","results") -%> .
+</div>
+
+<table id="posts">
+<% @post.each do |post| -%>
+<tr class="<%= cycle('odd', 'even') %>">
+<td class="author">
+<%= link_to post.user.firstname, show_user_url(post.user.username) -%><br />
+<small>
+
+<%= pluralize(post.user.posts_count, 'post') -%>
+</small>
+</td>
+<td class="post">
+<div id="post"><%= textilize(post.body) -%>
+<% if !post.tag_counts.nil? and post.tag_counts.size!=0 %>
+<b>Tags: </b>
+<% for tag in post.tag_counts %>
+    <%= link_to tag.name, post_tagged_url(tag.name) %>&nbsp;
+<% end %>
+<% end %>
+</div>
+</td>
+</tr>
+<% end -%>
+</table>
+
+</div>
+
+<% end %>

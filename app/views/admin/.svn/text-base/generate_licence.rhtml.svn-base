@@ -1,0 +1,4 @@
+Generating licence
+<br>
+<a href="<%= admin_licence_url %>">View all licence</a>
+<a href="<%= admin_url %>">Back to Admin</a>

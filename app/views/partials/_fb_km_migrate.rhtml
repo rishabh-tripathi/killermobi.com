@@ -1,0 +1,17 @@
+<div id="fb_km_migrate_popup" class="popup" style="position:absolute;left:30%;top:10px;z-index:100;display:none">
+<div class="close_button"><a style="color:#000000;" href="#" class="popup_closebox" ><img style="width:20px;height:20px;" src="/images/close_button1.png" alt="[X}"/></a></div>
+<div style="float:center;left:45%;"><h2 style="color:#800F45;">Connect with KillerMobi</h2></div>
+<hr>
+        <% form_for :user, :url => fb_km_migrate_url do |f| -%>
+                <label>User name</label><br>
+                        <%= f.text_field :username, :size => 30 %><br><br>
+                <label>Password</label><br>
+                        <%= f.password_field :password, :size => 30 %><br>
+                        <p><a style="color:#800F45;" href="<%= forget_password_url %>">Forgot Pasword</a></p>
+        <p><a style="color:#800F45;" href="<%= signup_url %>">New User? Click here to SignUp!</a></p><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <%= submit_tag 'Migrate', :class => 'popup_closebox' %>
+        <a style="color:#000000;" href="#" class="popup_closebox" >Close</a>
+    <%= hidden_field_tag :back, :value => request.path %>
+        <% end %>
+</div>

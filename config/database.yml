@@ -1,0 +1,16 @@
+development:
+  adapter: mysql
+  encoding: utf8
+  database: omc_development
+  username: root
+  password:
+  host: localhost
+
+test:
+  adapter: mysql
+  encoding: utf8
+  database: omc_test
+  username: root
+  password:
+  host: localhost
+

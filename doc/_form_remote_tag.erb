@@ -1,0 +1,1 @@
+<form action="<%= url %>" id="<%= html_id %>" method="post" onsubmit="new Ajax.Updater({success:'<%= update_success %>'}, '<%= url %>', {asynchronous:true, evalScripts:true, onComplete:function(request){<%= complete %>}, onLoading:function(request){<%= loading %>}, parameters:Form.serialize(this)}); return false;">

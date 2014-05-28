@@ -1,0 +1,93 @@
+<div class="download_section">
+  <div id="download_section_top">Free Mobile Softwares @ KillerMobi</div>
+  <div class="pwrd_by"><%= link_to 'Back to Free Mobile Software Home', root_path %></div>
+
+<%= will_paginate @gj %>
+
+  <table>
+<tr>
+<td>
+<% count = 1
+  for gj in @gj %>
+<% form_remote_tag  :url => admin_app_submit_url(), :update => {:success => "dw_status_#{count}"}, :html => {:id => "form_#{count}"} do %>
+<input type="hidden" id="gj_id" name="gj_id" value="<%= gj.gj_url %>"></input>
+<table border="2">
+<tr>
+    <td width="20%">
+      <img src="/killer_downloads/killermobi/ScreenShot1/App1/<%= gj.img_url %>" alt="<%= gj.name %>"></img>
+      <b><%= gj.name %></b>&nbsp;&nbsp;<a href="javascript:void(0)" onclick="document.getElementById('name_<%= count %>').style.display=''">Edit</a>
+      <input type="text" id="name_<%= count %>" name="dw_name" value="<%= gj.name %>" style="display:none"></input>
+      &nbsp;&nbsp;<a href="<%= gj.gj_url %>">(URL)</a>
+    </td>
+    <td width="80%">
+      <p><b>Short Discription: </b><br><%= gj.short_disc %></p>&nbsp;&nbsp;<a href="javascript:void(0)" onclick="document.getElementById('sd_<%= count %>').style.display=''">Edit</a>
+      <textarea cols="60" rows="5" id="sd_<%= count %>" name="dw_short_disc" style="display:none"><%= gj.short_disc %></textarea>
+      <hr>
+      <p><b>Full Discription: </b><br><%= gj.full_disc %></p>&nbsp;&nbsp;<a href="javascript:void(0)" onclick="document.getElementById('fd_<%= count %>').style.display=''">Edit</a>
+      <textarea cols="60" rows="8" wrap="hard" id="fd_<%= count %>" name="dw_full_disc" style="display:none;"><%= gj.full_disc %></textarea><br>
+      <input type="checkbox" name="fd_upload_original" value="original">Use original description(No Edit)</input>
+    </td>
+  </tr>
+    <td>
+      <b>File(s):</b><br>
+      <a href="/killer_downloads/killermobi/JARs/App1/<%= gj.file_name %>">File-1</a>
+      <% if(gj.file_name.end_with?(".jar")) %>
+      <a href="/killer_downloads/killermobi/JADs/App1/<%= gj.file_name.gsub(/.jar/,'') %>.jad">File-2</a>
+      <% end %>
+    </td>
+    <td>
+      <b><u>App information:</u></b><br>
+      <b>Category: <%= gj.app_cat %> </b>
+      <select name="download_category_id" id="download_category_id">
+         <% for category in @category%>
+         <option value="<%= category.id %>">
+         <%= category.category%>
+         </option>
+         <% end %>
+      </select>
+      </br>
+      <b>Type: (<%= gj.file_name %>)</b>&nbsp;&nbsp;<a href="javascript:void(0)" onclick="document.getElementById('filename_<%= count %>').style.display=''">Edit</a>
+      <input type="text" id="filename_<%= count %>" name="dw_filename" value="<%= gj.file_name %>" style="display:none"></input>
+      <select name="download_type_id" id="download_type_id">
+         <% for type in @type %>
+         <option value="<%= type.id %>">
+         <%= type.platform %>
+         </option>
+         <% end %>
+      </select>
+      <br>
+
+      <div>
+      <b><u>Status:</u></b>
+      <div id="dw_status_<%= count %>"></div>
+      <% if(gj.status=="1") %>
+      <b>Not Uploaded</b>
+      <% elsif(gj.status=="5") %>
+      <b>Uploaded</b>
+      <% else %>
+      <b>Error with code = <%= gj.status %></b>
+      <% end %>
+
+         <input type="submit" style="float:right;"  value="Upload"></input>
+       <% end %>
+      </div>
+      <div id="status"></div>
+    </td>
+  <tr>
+
+  </tr>
+  <tr>
+  <td><hr></td>
+  <td><hr></td>
+  </tr>
+</table>
+<% count = count+1 %>
+<% end %>
+</td>
+</tr>
+  </table>
+<br>
+<br>
+<%= will_paginate @gj %>
+</div>
+

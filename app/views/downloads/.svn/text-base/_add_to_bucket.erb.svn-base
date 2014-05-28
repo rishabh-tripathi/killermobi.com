@@ -1,0 +1,25 @@
+<% if(@not_in_bucket)
+     load_str = ""
+     if(!logged_in_user.nil? && (logged_in_user.current_bucket > 0))
+       load_str = "document.getElementById('add-to-bucket-loading').style.opacity=0.2;document.getElementById('add-to-bucket-loading').onclick='';"
+     end
+%>
+  <% form_remote_tag  :url => add_to_bucket_url,
+                      :loading => "#{load_str}",
+                      :complete => "Element.show('bottom-device');Element.hide('bottom-device-link');",
+                      :update => {:success => "dropable_container"},
+                      :html => {:id => "form_add_to_bucket"} do %>
+    <input type="hidden" name="item_type" value="<%= type %>" />
+    <input type="hidden" name="item_id" value="<%= id %>" />
+    <%
+       onclick_str = "document.getElementById('form_add_to_bucket').onsubmit();"
+    %>
+    <button id="add-to-bucket-loading" class="btn btn-primary pull-right" onclick="<%= onclick_str %>">
+      Add&nbsp;to&nbsp;bucket
+    </button>
+  <% end %>
+<% else %>
+    <div class="div-button-blue-sm" style="opacity:0.2;float:right;">
+      Add to bucket
+    </div>
+<% end %>

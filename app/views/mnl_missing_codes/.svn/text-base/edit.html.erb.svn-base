@@ -1,0 +1,22 @@
+<h1>Editing mnl_missing_code</h1>
+
+<%= error_messages_for :mnl_missing_code %>
+
+<% form_for(@mnl_missing_code) do |f| %>
+  <p>
+    <b>Code</b><br />
+    <%= f.text_field :code %>
+  </p>
+
+  <p>
+    <b>Detail</b><br />
+    <%= f.text_field :detail %>
+  </p>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @mnl_missing_code %> |
+<%= link_to 'Back', mnl_missing_codes_path %>

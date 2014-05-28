@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 27
+/svn/!svn/ver/2/app/mailers
+END
+WS_FTP.LOG
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/2/app/mailers/WS_FTP.LOG
+END
+user_mailer.rb
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/2/app/mailers/user_mailer.rb
+END

@@ -1,0 +1,17 @@
+<%
+   q = nil if(!(defined? q))
+   url = (!q.nil?)? download_show_url(q.title.tr(" ","_")) : h[:url]
+   img = (!q.nil?)? q.ss1_small : h[:img]
+   title = (!q.nil?)? q.title : h[:title]
+   s = "small"
+   s = size if(defined? size)
+%>
+<div class="thumbnail pull-left" style="width:80px;height:105px;margin:5px;">
+  <a href="<%= url -%>" target="_blank">
+    <img src="<%= img %>" style="width:80px;height:90px;" alt="<%= title %>" />
+    <div class="caption" style="font-size:10px;line-height:12px;padding:2px;text-align:center;">
+      <%= truncate(title, :length => 12, :omission => '..') %>
+    </div>
+  </a>
+</div>
+

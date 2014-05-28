@@ -1,0 +1,27 @@
+ <table style="width:240px;">
+    <tr>
+      <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+      <td>
+        <a href="/auth/facebook" style="padding:0px;">
+          <%= image_tag "facebook_64.png", :size => "64x64", :alt => "Facebook" %>
+        </a>
+      </td>
+      <td>
+        <a href="/auth/twitter" style="padding:0px;">
+          <%= image_tag "twitter_64.png", :size => "64x64", :alt => "Twitter" %>
+        </a>
+      </td>
+      <td>
+        <a href="/auth/google" style="padding:0px;">
+          <%= image_tag "google_64.png", :size => "64x64", :alt => "Google" %>
+        </a>
+      </td>
+<% if(false) %>
+      <td>
+        <a href="/auth/open_id">
+          <%= image_tag "openid_64.png", :size => "64x64", :alt => "OpenID" %>
+        </a>
+      </td>
+<% end %>
+    </tr>
+  </table>

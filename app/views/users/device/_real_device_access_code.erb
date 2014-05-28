@@ -1,0 +1,12 @@
+<div id="real_device_access_code" style="width:100%;height:100%;position:absolute;z-index:10;background:#E6E0CE;">
+  <%= render(:partial => "update_section", :locals => {:update_section_id => UserDetail::MY_DEVICE_SECTION, :this_section_id => "real_device_access_code"})%>
+  <div class="close_button"><a href="javascript:void(0);" onclick="closeAction('real_device_access_code','<%= UserDetail::MY_PROFILE_IDS[UserDetail::MY_DEVICE_SECTION]%>','form_update_real_device_access_code');" ><img style="width:20px;height:20px;border:none;" src="/images/close_button1.png" alt="[X}"/></a></div>
+  <div style="padding:5px;text-align:center;">
+    <h2>Your access code for this device,</h2>
+    <h2><%= access_token %></h2>
+    <p>You can download following client as per your device operating system</p>
+    J2me - Link 1
+    Android - Link 2
+    Blackberry - Link 3
+  </div>
+</div>

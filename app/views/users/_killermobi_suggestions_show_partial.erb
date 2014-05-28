@@ -1,0 +1,66 @@
+<%
+   loading_view = UserDetail::MY_PROFILE_LOADING_IDS[UserDetail::KILLERMOBI_SUGGESTIONS_SECTION]
+   if(!@apps_suggestions.nil? && !@apps_suggestions.empty?)
+     downloads_page_count = @apps_suggestions.size/15
+       if(@apps_suggestions.size%15>0)
+         downloads_page_count += 1
+       end
+   end
+%>
+<script text="text/javascript">
+currSuggestionPage = 1;
+maxSuggestionPage = <%= downloads_page_count %>
+</script>
+<%
+   if(!downloads_page_count.nil?)
+   for f_count in 1..downloads_page_count
+     j = f_count
+       curr_downloads = []
+       for dwl in @apps_suggestions
+         if(j > (15*(f_count-1)) && j <= (15*f_count))
+           curr_downloads << dwl
+         end
+         j += 1
+       end
+     f_view_style = ""
+     f_view_style = "display:none" if(f_count > 1)
+%>
+<table style="width:100%;height:155px;padding:10px 0px 10px 12px;<%= f_view_style %>" id="suggestions_view_<%= f_count %>">
+  <% k = 3
+     if(!curr_downloads.nil? && !curr_downloads.empty?)
+       for f in curr_downloads %>
+
+    <% if(k%3==0) %> <tr> <% end %>
+      <td onmouseover="Element.show('sugg_downloads_name_<%= f_count %>_<%= k %>');" onmouseout="Element.hide('sugg_downloads_name_<%= f_count %>_<%= k %>');">
+        <div style="position:relative;top:0px;left:0px;">
+
+          <!-- download's pic -->
+          <a href="<%= download_show_url(f.title.tr(' ','_')) %>"><img src="/<%= ((!f.ss1_thumb.nil? && !f.ss1_thumb.empty?) ? f.ss1_thumb : '/images/noimage4.png') %>" style="width:50px;height:60px;border: 1px solid #e6e0ce;"></a>
+
+            <!-- download's name -->
+            <div id="sugg_downloads_name_<%= f_count %>_<%= k %>" style="position:absolute;top:37px;left:0px;height:27px;z-index:20;width:52px;background:#e6e0ce;opacity:0.8;filter:alpha(opacity=40);display:none">
+              <small><center>
+                  <%
+                    temp = f.title.split()
+                    title = ""
+                    if(temp.size > 1)
+                      title = temp[0]
+                      title += "..."
+                    else
+                      title = f.title
+                    end
+                  %>
+                  <a href="<%= download_show_url(f.title.tr(' ','_')) %>"><%= title %></a></center></small>
+            </div>
+
+        </div>
+      </td>
+      <% k += 1
+      if(k%3==0) %> </tr> <% end
+        end
+      end %>
+</table>
+<%
+  end
+end
+%>

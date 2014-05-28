@@ -1,0 +1,25 @@
+<div id="upload_profile_pic" class="popup" style="position:absolute;left:35%;top:50px;z-index:100;display:none;">
+
+<%= render(:partial => "update_section", :locals => {:update_section_id => UserDetail::MY_PROFILE_SECTION, :this_section_id => "change_profile_pic"})%>
+
+<div class="close_button"><a href="javascript:void(0);" onclick="window.frames['msg'].document.body.innerHTML='';;closeAction('upload_profile_pic','<%= UserDetail::MY_PROFILE_IDS[UserDetail::MY_PROFILE_SECTION]%>','form_update_change_profile_pic');" ><img style="width:20px;height:20px;border:none;" src="/images/close_button1.png" alt="[X}"/></a></div>
+
+<h3>Change profile pic</h3>
+<div style="position:relative;margin:10px;width:400px;height:200px;">
+  <div style="margin:10px;padding-left:30px;">
+    <% form_tag(user_upload_pic_url(), {:id=> "user_pr", :multipart => true, :target => "msg"}) do %>
+      Please select file <br>
+      <input type="hidden" name="username" value="<%= @user.username %>">
+      <%= file_field_tag("picture", :id=>"user_profile_pic") %>
+      <input type="submit" value="Upload">
+    <% end %>
+    <br>
+    <img id="pic_loading" src="/images/spinner.gif" alt="Loading..." style="position:relative;left:40%;border:none;width:36px;height:39px;display:none"></img>
+  </div>
+  <iframe id="msg" name="msg" style="width:300px;height:130px;border:none">
+    <%= render(:partial => "changed_profile_pic") %>
+  </iframe>
+</div>
+
+</div>
+

@@ -1,0 +1,9 @@
+Hi <%= @user.firstname %>,<br/><br/>
+
+Thank you for your submission<br/>
+We will review your demand and let you know whether it is possible for us, if we got something related to your demand we will recommand you that application.
+Meanwhile you can directly reply to this email to get in touch with us.
+<br/><br/><br/>
+Regards<br/>
+Team KillerMobi<br/>
+www.killermobi.com<br/>

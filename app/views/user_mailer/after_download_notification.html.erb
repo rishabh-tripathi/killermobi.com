@@ -1,0 +1,14 @@
+Hi <%= @user.firstname %>,<br/><br/>
+Thank you for downloading KillerMobi App.<br/>
+
+You have successfully downloaded <%= @download.title %> by <%= @download.powered_by%><br/>
+<% @other = Download.find(:all, :conditions=>['powered_by=?',@download.powered_by]) %>
+Other products from <%= @download.powered_by %>,
+<% for other in @other %>
+<%= other.title %> - Check the link below to download<br/>
+http://killermobi.com/download/<%= other.title.tr(" ","_") %><br/><br/>
+<% end %>
+<br/><br/><br/>
+Regards<br/>
+Team KillerMobi<br/>
+www.killermobi.com

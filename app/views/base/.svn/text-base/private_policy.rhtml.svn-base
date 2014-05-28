@@ -1,0 +1,79 @@
+<div class="download_section">
+<div id="download_section_top"></div>
+<div class="pwrd_by"><%= link_to 'Back to Free Mobile Software Home', root_path %></div>
+
+<h1>Private Policy</h1>
+<div>
+<p>
+This KillerMobi privacy policy is intended to inform you of KillerMobi (we, us, or our) policies and practices regarding the
+collection, use, and disclosure of your Personal Information through the KillerMobi Site and Services. We define Personal Information as information that
+allows us to identify or contact you, including for example your name, mobile number, and email address.
+By registering with us or using our website, you expressly consent to the information handling practices in this privacy policy.
+<br><br>
+<b>Personal Information You Provide to us</b>
+<br>
+When you register to use KillerMobi Services, we collect your name, e-mail address, mobile number and password for your account. When you give us feedback,
+we may collect any information that is contained in your feedback. When you contact us by sending us an e-mail or letter, we collect your e-mail address and
+any information contained in the e-mail, fax, or letter you send us.
+<br><br>
+<b>Personal Information Collected via Technology</b>
+<br>
+As you use the KillerMobi Site or any KillerMobi Service, some information may also be collected passively, including your Internet protocol address, browser
+type, access time and mobile phone model. We may also store a small text file called a Cookie on your computer or phone to store certain information about
+your use of the KillerMobi Site or KillerMobi Services. We may use both session Cookies (which expire once you close your browser) and persistent Cookies
+(which stay on your computer or phone until you delete them).
+<br><br>
+<b>Use of Information</b>
+<br>
+We use your Personal Information to provide the KillerMobi Services to you, to respond to requests that you make, to personalize your online experience on
+the KillerMobi Site, to improve the KillerMobi Site and KillerMobi Services, and to better tailor the features, performance, and support of the KillerMobi
+Services.
+We track IP protocol addresses solely in conjunction with session Cookies to analyze our web page flow and to keep track of session information, and click
+stream data. We use persistent Cookies to keep track of your login name and password for KillerMobi Services and to personalize your online experience on the
+KillerMobi Site. Most web browsers accept Cookies by default, but allow users to reject Cookies by changing the browser preferences. If you have set up your
+browser to reject Cookies, some aspects of the KillerMobi Site and KillerMobi KillerMobi may not work properly.
+We may use your Personal Information to send you electronic newsletters or promotional e-mails, unless you have requested not to receive such promotional
+communications from us. We may also use your Personal Information to send you KillerMobi Services-related communications, and you may opt out of these
+communications if you terminate your account.
+We may create Anonymous Information records from Personal Information. We reserve the right to use and disclose Anonymous Information at our discretion.
+Anonymous Information means information that is not associated with or linked to your Personal Information.
+<br><br>
+<b>Disclosure of Personal Information</b>
+<br>
+Except as otherwise stated in this Privacy Policy, we do not trade, rent, or share your Personal Information with third parties, unless you ask or authorize
+us to do so.
+We may provide your Personal Information to third party service providers who work on behalf of or with us to provide the KillerMobi Site and KillerMobi
+Services.
+<br><br>
+<b>Your Choices Regarding Your Personal Information</b>
+<br>
+We offer you choices regarding the collection, use, and sharing of your Personal Information. When you receive promotional communications from us or the
+KillerMobi Site, you may indicate a preference to stop receiving further promotional communications from us and you will have the opportunity to opt-out by
+following the unsubscribe instructions provided in the promotional e-mail you receive.
+Despite your indicated e-mail preferences, we may send you administrative e-mails regarding the KillerMobi Service, including, for example, purchase
+confirmation, account creation confirmation, and notices of material changes to our Terms of Use or Privacy Policy.
+You may change your email address and password for the Service by editing it in your account page. You may request deletion of your Personal Information by
+us, but please note that we may be required (by law or otherwise) to keep this information and not delete it (or to keep this information for a certain time,
+in which case we will comply with your deletion request, only after we have fulfilled such requirements). When we delete Personal Information, it will be
+deleted from the active database, but may remain in our archives.
+<br><br>
+<b>Third Party Sites, Third Party Services, and Third Party Materials</b>
+<br>
+Please be aware that the terms of our Privacy Policy do not apply to Third Party Sites, Third Party Services or Third Party Materials that have links or are
+provided through the KillerMobi Site. Third party providers of such Third Party Sites, Third Party Services or Third Party Materials, may collect (via
+tracking technologies like Cookies or web beacons) and use Anonymous Information regarding your interaction with the Third Party Sites, Third Party Services
+or Third Party Materials that they deliver and with which you interact.
+<br><br>
+<b>Security</b>
+<br>
+We make reasonable efforts to protect your Personal information, but no company, including us, can fully eliminate security risks connected to handling
+information on the internet.
+<br><br>
+<b>Contacting KillerMobi</b>
+<br>
+If you have any questions about this Privacy Policy, you may contact KillerMobi in the following ways:
+Mail Us: <a href="mailto:contact@killermobi.com">contact@killermobi.com</a>
+</p>
+
+</div>
+</div>

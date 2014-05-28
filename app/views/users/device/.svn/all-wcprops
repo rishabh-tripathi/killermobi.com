@@ -1,0 +1,161 @@
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/2/app/views/users/device
+END
+_my_images.erb
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/2/app/views/users/device/_my_images.erb
+END
+_main_area.erb
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/2/app/views/users/device/_main_area.erb
+END
+WS_FTP.LOG
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/2/app/views/users/device/WS_FTP.LOG
+END
+_my_messages.erb
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/2/app/views/users/device/_my_messages.erb
+END
+_my_mobile.erb
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/2/app/views/users/device/_my_mobile.erb
+END
+_real_device_access_code.erb
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/2/app/views/users/device/_real_device_access_code.erb
+END
+_set_up_real_device.erb
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/2/app/views/users/device/_set_up_real_device.erb
+END
+_my_calender.erb
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/2/app/views/users/device/_my_calender.erb
+END
+_create_device.erb
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/2/app/views/users/device/_create_device.erb
+END
+_my_contacts.erb
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/2/app/views/users/device/_my_contacts.erb
+END
+_set_up_virtual_device.erb
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/2/app/views/users/device/_set_up_virtual_device.erb
+END
+_my_music.erb
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/2/app/views/users/device/_my_music.erb
+END
+_my_trash.erb
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/2/app/views/users/device/_my_trash.erb
+END
+_device_area.erb
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/2/app/views/users/device/_device_area.erb
+END
+_icon.erb
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/2/app/views/users/device/_icon.erb
+END
+_section_display_control.erb
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/2/app/views/users/device/_section_display_control.erb
+END
+_login_form.erb
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/2/app/views/users/device/_login_form.erb
+END
+_my_notes.erb
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/2/app/views/users/device/_my_notes.erb
+END
+_my_videos.erb
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/2/app/views/users/device/_my_videos.erb
+END
+_render_device.erb
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/2/app/views/users/device/_render_device.erb
+END
+_homepage_view_1.erb
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/2/app/views/users/device/_homepage_view_1.erb
+END
+_device_top_panel.erb
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/2/app/views/users/device/_device_top_panel.erb
+END
+_my_activity.erb
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/2/app/views/users/device/_my_activity.erb
+END
+_device_bottom_panel.erb
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/2/app/views/users/device/_device_bottom_panel.erb
+END
+_my_call_logs.erb
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/2/app/views/users/device/_my_call_logs.erb
+END
+_my_apps.erb
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/2/app/views/users/device/_my_apps.erb
+END

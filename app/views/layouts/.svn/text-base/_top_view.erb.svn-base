@@ -1,0 +1,378 @@
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner" style="padding:0px 20px;">
+    <div class="container" style="width:100%;">
+
+    <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </a>
+
+    <!-- Be sure to leave the brand out there if you want it shown -->
+    <a class="brand" href="<%= root_path %>"><img src="/images/v2/k2.png" style="width:130px;" alt="Free Mobile Software @ KillerMobi"/></a>
+
+    <!-- Everything you want hidden at 940px or less, place within here -->
+    <div class="nav-collapse">
+
+      <ul class="nav">
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            <h4>Downloads</h4>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="<%= download_url %>">All Downloads</a></li>
+            <li class="divider"></li>
+            <% Download::CAT_NAMES.sort.each do|key, value| %>
+              <li><a href="<%= category_url(:category => value) %>"><%= value -%></a></li>
+            <% end %>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#"><h4>Platform</h4></a>
+          <ul class="dropdown-menu">
+            <li><a href="<%= apps_url %>">All Platforms</a></li>
+            <li class="divider"></li>
+            <% Download::PLATFORM_NAMES.sort.each do|key, value| %>
+              <li><a href="<%= platform_url(:type => value.gsub(' ','_')) %>"><%= value -%></a></li>
+            <% end %>
+          </ul>
+        </li>
+        <li><a href="<%= list_bucket_url %>"><h4>Collections</h4></a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#"><h4>More</h4></a>
+          <ul class="dropdown-menu">
+            <li><a href="<%= forums_url %>">Ask</a></li>
+            <li><a href="<%= articles_url %>">Read</a></li>
+            <li><a href="<%= list_bucket_url %>">Collect</a></li>
+            <% if(false) %>
+              <li><a href="<%= new_idea_path %>">Demand</a></li>
+            <% end %>
+          </ul>
+        </li>
+
+
+      </ul>
+      <ul class="nav pull-right">
+        <%= render :partial => 'partials/user_cred' %>
+      </ul>
+
+      <form class="navbar-search form-search pull-right" action="http://killermobi.com/search_result" id="cse-search-box" style="margin-right:30px;">
+        <input type="hidden" name="cx" value="partner-pub-3833946424381349:rj47eh-4hfw" />
+        <input type="hidden" name="cof" value="FORID:10" />
+        <input type="hidden" name="ie" value="ISO-8859-1" />
+        <div class="input-append">
+          <input type="text" name="q" size="20" class="span2 search-query" placeholder="Search Mobile Downloads">
+          <button type="submit" class="btn" style="margin-top:0px;">Search</button>
+        </div>
+      </form>
+    </div>
+
+    </div>
+
+  </div>
+</div>
+<div class="sp50"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<% if(false) %>
+OLD HEADER CODE
+
+<div id="km_top_panel">
+  <div id="wrap">
+
+    <table style="width:100%">
+      <tr>
+
+        <td style="width:180px">
+          <div id="logo_section">
+            <a href="<%= root_path %>"><h1><img src="/images/KillerMobi_Free_Mobile_Software.png" alt="Free Mobile Software @ KillerMobi"/></h1></a>
+          </div>
+        </td>
+
+        <td style="width: 300px;">
+          <table id="menu_section">
+            <tr>
+              <% if(false)%><td><%= link_to 'Home', root_path %></td><% end %>
+              <td id="download_menu" onmouseover="document.getElementById('menu_download').show();" onmouseout="document.getElementById('menu_download').hide();" style="cursor: pointer;"><a>App</a></td>
+              <% if @home %>
+              <td id="forum_menu" onmouseover="document.getElementById('menu_forum').show();" onmouseout="document.getElementById('menu_forum').hide();" style="cursor: pointer;"><a>Ask</a></td>
+              <td id="article_menu" onmouseover="document.getElementById('menu_article').show();" onmouseout="document.getElementById('menu_article').hide();" style="cursor: pointer;"><a>Read</a></td>
+              <% else %>
+              <td style="cursor: pointer;"><%= link_to 'Ask', forums_url %></td>
+              <td style="cursor: pointer;"><%= link_to 'Read', articles_url %></td>
+              <% end %>
+              <td style="cursor: pointer;"><%= link_to 'Demand', new_idea_path %></td>
+              <!--<li><%= link_to 'Beta Apps', beta_path %></li>  -->
+            </tr>
+          </table>
+        </td>
+
+        <td>&nbsp;</td>
+
+        <td style="width:250px;vertical-align: middle;">
+          <div style="height:30px;text-align:center;display:inline;">
+            <form action="http://killermobi.com/search_result" id="cse-search-box">
+              <input type="hidden" name="cx" value="partner-pub-3833946424381349:rj47eh-4hfw" />
+              <input type="hidden" name="cof" value="FORID:10" />
+              <input type="hidden" name="ie" value="ISO-8859-1" />
+              <input type="text" name="q" size="20" style="width:180px;height:21px;font-size:20px;"/>
+              <input type="image" style="position:relative;top:6px;left:-3px;" src="/images/v2/search_button.png"/>
+            </form>
+          </div>
+          <% if(false) %>
+          <script type="text/javascript" src="http://www.google.co.in/cse/brand?form=cse-search-box&amp;lang=en"></script>
+          <% end %>
+        </td>
+
+        <td style="width: 150px;">
+          <table id="menu_section" style="float:right;">
+            <tr>
+              <td id="user_menu" onmouseover="document.getElementById('menu_user').show();" onmouseout="document.getElementById('menu_user').hide();" style="cursor: pointer;">
+                <%= render :partial => 'partials/user_cred' %>
+              </td>
+            </tr>
+          </table>
+        </td>
+
+      </tr>
+    </table>
+
+
+    <% if(false) %>
+    <div class="notification">
+      <% if notice -%>
+      <div id="notice">* <%= notice %></div>
+      <% end -%>
+      <% if alert -%>
+      <div id="error">* <%= alert %></div>
+      <% end -%>
+    </div>
+    <% end %>
+
+  </div>
+
+
+<% if(false) %>
+<!-- Social share buttons -->
+<div id="wrap">
+  <table style="width:100%">
+    <tr>
+      <td>&nbsp;</td>
+      <td style="width:60px">
+        <iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fkillermobi.com&amp;layout=button_count&amp;show_faces=false&amp;width=100&amp;action=like&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:21px;" allowTransparency="true"></iframe>
+      </td>
+      <td style="width:60px">
+        <g:plusone size="medium"></g:plusone>
+      </td>
+      <td style="width:60px">
+        <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://killermobi.com" data-text="Free Mobile Software @ KillerMobi, Check this out!" data-count="horizontal" data-via="killermobi">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+      </td>
+      <td style="width:60px">
+        <!-- AddThis Button BEGIN -->
+        <div class="addthis_toolbox addthis_default_style">
+          <a href="http://www.addthis.com/bookmark.php?v=250&amp;username=xa-4cbe00d250dd8d89" class="addthis_button_compact">Share</a>
+        </div>
+        <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#username=xa-4cbe00d250dd8d89"></script>
+        <!-- AddThis Button END -->
+      </td>
+    </tr>
+  </table>
+</div>
+<!-- Social share buttons end -->
+<% end %>
+
+<!-- Menu designing ---------->
+<div id="wrap">
+  <div style="position:relative">
+    <div id="menu_download" class="hp-menu" style="left:110px;width:500px;display:none;" onmouseover="menuMouseOver('download_menu');document.getElementById('menu_download').show();" onmouseout="menuMouseOut('download_menu');document.getElementById('menu_download').hide();">
+      <div style="font-size:16px;line-height:16px;margin:-10px 0px -2px 100px;">
+        <img src="/images/v2/up.png" style="width:16px;height:16px;" />
+      </div>
+      <div class="round-st-border">
+        <div class="round-border-content">
+          <h2 style="margin-left:10px;"><%= link_to 'All Downloads', download_url %></h2>
+          <hr>
+            <table style="vertical-align:top;width:100%;">
+              <tr>
+                <td style="width:45%;padding:10px;border-right:1px solid #e0e0e0;">
+                  <h2>Categories</h2>
+                  <ul>
+                    <% Download::CAT_NAMES.sort.each do|key, value| %>
+                    <li><a href="<%= category_url(:category => value) %>"><h3><%= value -%></h3></a></li>
+                    <% end %>
+                  </ul>
+                </td>
+                <td style="padding:10px;">
+                  <h2>Platforms</h2>
+                  <ul>
+                    <% Download::PLATFORM_NAMES.sort.each do|key, value| %>
+                    <li><a href="<%= platform_url(:type => value.gsub(' ','_')) %>"><h3><%= value %><h3></a></li>
+                    <% end %>
+                  </ul>
+                </td>
+              </tr>
+            </table>
+        </div>
+      </div>
+    </div>
+
+
+    <% if @home %>
+    <div id="menu_forum" class="hp-menu" style="left:220px;width:150px;display:none;" onmouseover="menuMouseOver('forum_menu');document.getElementById('menu_forum').show();" onmouseout="menuMouseOut('forum_menu');document.getElementById('menu_forum').hide();">
+      <div style="font-size:16px;line-height:16px;margin:-10px 0px -2px 75px;">
+        <img src="/images/v2/up.png" style="width:16px;height:16px;"/>
+      </div>
+      <div class="round-st-border">
+        <div class="round-border-content">
+          <h2><%= link_to 'All Forums', forums_url %></h2>
+          <hr>
+            <ul>
+              <% @forum.each do |forum| -%>
+              <li><h3><%= link_to forum.name, topics_path(:forum_id => forum.id) -%></h3></li>
+              <% end %>
+            </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="menu_article" class="hp-menu" style="left:330px;width:150px;display:none;" onmouseover="menuMouseOver('article_menu');document.getElementById('menu_article').show();" onmouseout="menuMouseOut('article_menu');document.getElementById('menu_article').hide();">
+      <div style="font-size:16px;line-height:16px;margin:-10px 0px -2px 60px;">
+        <img src="/images/v2/up.png" style="width:16px;height:16px;"/>
+      </div>
+      <div class="round-st-border">
+        <div class="round-border-content">
+          <h2><%= link_to 'All Articles', articles_url %></h2>
+          <hr/>
+          <ul>
+            <% @article_category.each do |category| -%>
+            <li><h3><%= link_to category.name, article_cat_url(category.name.tr(" ","_")) %></h3></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <% end %>
+
+    <% if user_signed_in?
+         width_str = "100px"
+         margin_str = "60px"
+       else
+         width_str = "300px"
+         margin_str = "260px"
+       end
+     %>
+
+    <div id="menu_user" class="hp-menu" style="right:10px;width:<%= width_str -%>;display:none;" onmouseover="menuMouseOver('user_menu');document.getElementById('menu_user').show();" onmouseout="menuMouseOut('user_menu');document.getElementById('menu_user').hide();">
+      <div style="font-size:16px;line-height:16px;margin:-8px 0px -2px <%= margin_str -%>;">
+        <img src="/images/v2/up.png" style="width:16px;height:16px;" />
+      </div>
+      <div class="round-st-border">
+        <div class="round-border-content">
+          <% if user_signed_in? %>
+          <%= link_to 'Edit Profile', edit_user_registration_url(current_user) %> <br/>
+          <%= link_to 'Logout', logout_url %>
+          <% else %>
+            <%= render :partial => 'partials/login' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- Menu designing ends here ---------->
+</div><!-- End Of Top Background -->
+
+
+<% end %>

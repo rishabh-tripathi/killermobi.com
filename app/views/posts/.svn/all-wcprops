@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 32
+/svn/!svn/ver/30/app/views/posts
+END
+edit.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/2/app/views/posts/edit.html.erb
+END
+index.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/55/app/views/posts/index.html.erb
+END
+WS_FTP.LOG
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/2/app/views/posts/WS_FTP.LOG
+END
+new.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/55/app/views/posts/new.html.erb
+END
+show.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/2/app/views/posts/show.html.erb
+END
+tag_page_show.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/2/app/views/posts/tag_page_show.rhtml
+END

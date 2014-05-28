@@ -1,0 +1,28 @@
+<div class="download_section">
+  <div id="download_section_top">Free Mobile Softwares @ KillerMobi</div>
+  <div class="pwrd_by"><%= link_to 'Back to Free Mobile Software Home', root_path %></div>
+  <div style="position:relative; left:100px;">
+  <br>
+  <table style="width:500px;" border="2">
+
+    <tr>
+      <td>Apps Management</td>
+      <td>
+        <a href="<%= admin_bulk_app_url %>">Add Bulk apps</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td> General Controls </td>
+      <td>
+        <a href="<%= admin_test_url %>">Experiment</a><br>
+        <a href="<%= admin_notification_mail_url %>">Send Notification Mail to all users</a><br>
+        <a href="<%= admin_gen_licence_url %>">Generate Licence</a><br>
+        <a href="<%= admin_gen_spam_id_url %>">Generate New Spam Ids</a><br>
+        <a href="<%= admin_licence_url %>">View all licence</a><br>
+      </td>
+    <tr>
+  </table>
+  </div>
+
+</div>

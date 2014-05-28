@@ -1,0 +1,273 @@
+<%= javascript_include_tag 'user.js' %>
+<%= render(:partial => "upload_profile_pic") %>
+<%= render(:partial => "edit_social_profile") %>
+<%= render(:partial => "upload_apps") %>
+
+<table style="width:100%;height:100%;">
+<tr style="height:210px;">
+
+
+<!-- My Profile -->
+  <td style="width:32%;">
+    <div class="round-st-border" style="margin:5px;" id="drag_my_profile">
+      <div class="round-border-content" style="position:relative;background:#F5F5F5;height:200px;">
+       <div id="<%= UserDetail::MY_PROFILE_IDS[UserDetail::MY_PROFILE_SECTION] %>">
+         <%= render(:partial => "my_profile_show_partial")%>
+       </div>
+         <%= render(:partial => "loading_section", :locals => {:element_id => "#{UserDetail::MY_PROFILE_LOADING_IDS[UserDetail::MY_PROFILE_SECTION]}"}) %>
+     </div>
+     <div style="cursor:move;">
+       &nbsp;&nbsp;&nbsp;My Profile
+     </div>
+    </div>
+  </td>
+  <script type="text/javascript">
+    new Draggable('drag_my_profile', { scroll: window });
+  </script>
+
+<!-- My Friends -->
+  <td style="width:36%;">
+    <div class="round-st-border" style="margin:5px;" id="drag_my_friends">
+      <div class="round-border-content" style="position:relative;background:#F5F5F5;height:200px;">
+        <div id="<%= UserDetail::MY_PROFILE_IDS[UserDetail::MY_FRIENDS_SECTION] %>">
+          <%= render(:partial => "my_friends_show_partial")%>
+        </div>
+        <%= render(:partial => "loading_section", :locals => {:element_id => "#{UserDetail::MY_PROFILE_LOADING_IDS[UserDetail::MY_FRIENDS_SECTION]}"}) %>
+      </div>
+      <div style="cursor:move;">
+        &nbsp;&nbsp;&nbsp;My Friends
+       <% if(!@friends.nil? && @friends.size > 0) %>
+         (<%= @friends.size %>)
+       <% end
+          if(!@friends.nil? && @friends.size > 6) %>
+       <span style="float:right">
+       <a id="friendsViewPrevLink" href="javascript:void(0)" style="display:none" onclick="showFriendsPrevPage();">
+         <img src="/images/prev1.png" style="border:none;width:16px;height:16px;margin-top:2px;">
+       </a>
+       <a id="friendsViewNextLink" href="javascript:void(0)" onclick="showFriendsNextPage();">
+         <img src="/images/next1.png" style="border:none;width:16px;height:16px;margin-top:1px;">
+       </a>
+       </span>
+       <% end %>
+     </div>
+   </div>
+  </td>
+  <script type="text/javascript">
+    new Draggable('drag_my_friends', { scroll: window });
+  </script>
+
+<!-- My Mobimates -->
+  <td style="width:32%;">
+    <div class="round-st-border" style="margin:5px;" id="drag_my_mobimates">
+      <div class="round-border-content" style="position:relative;background:#F5F5F5;height:200px;">
+        <div id="<%= UserDetail::MY_PROFILE_IDS[UserDetail::MY_MOBIMATES_SECTION] %>">
+         <%= render(:partial => "my_mobimates_show_partial")%>
+        </div>
+         <%= render(:partial => "loading_section", :locals => {:element_id => "#{UserDetail::MY_PROFILE_LOADING_IDS[UserDetail::MY_MOBIMATES_SECTION]}"}) %>
+     </div>
+     <div style="cursor:move;">
+       &nbsp;&nbsp;&nbsp;My Mobimates
+       <% if(!@mobimates.nil? && @mobimates.size > 0) %>
+         (<%= @mobimates.size %>)
+       <% end
+          if(!@mobimates.nil? && @mobimates.size > 6) %>
+       <span style="float:right">
+       <a id="mobimatesViewPrevLink" href="javascript:void(0)" style="display:none" onclick="showMobimatesPrevPage();">
+         <img src="/images/prev1.png" style="border:none;width:16px;height:16px;margin-top:2px;">
+       </a>
+       <a id="mobimatesViewNextLink" href="javascript:void(0)" onclick="showMobimatesNextPage();">
+         <img src="/images/next1.png" style="border:none;width:16px;height:16px;margin-top:1px;">
+       </a>
+       </span>
+       <% end %>
+     </div>
+    </div>
+  </td>
+  <script type="text/javascript">
+    new Draggable('drag_my_mobimates', { scroll: window });
+  </script>
+</tr>
+
+<!-- My Upload -->
+<tr style="height:700px;">
+  <td style="width:32%;height:700px;">
+    <div class="round-st-border" style="margin:5px;" id="drag_my_upload_download">
+      <div class="round-border-content" style="position:relative;background:#F5F5F5;height:300px;">
+        <div id="<%= UserDetail::MY_PROFILE_IDS[UserDetail::MY_UPLOADS_SECTION] %>">
+          <%= render(:partial => "my_uploads_show_partial")%>
+        </div>
+        <%= render(:partial => "loading_section", :locals => {:element_id => "#{UserDetail::MY_PROFILE_LOADING_IDS[UserDetail::MY_UPLOADS_SECTION]}"}) %>
+        <table style="width:100%;height:43px">
+          <tr>
+            <td>
+              <center><div class="button_01"><a href="javascript:void(0)" onclick="Effect.Appear('upload_apps')">Upload Now</a></div></center>
+            </td>
+          </tr>
+        </table>
+
+      </div>
+      <div style="height:18px;cursor:move;">
+        &nbsp;&nbsp;&nbsp;My Uploads&nbsp;
+       <% if(!@user_uploads.nil? && @user_uploads.size > 0) %>
+         (<%= @user_uploads.size %>)
+       <% end
+       if(!@user_uploads.nil? && @user_uploads.size > 6) %>
+       <span style="float:right">
+       <a id="uploadsViewPrevLink" href="javascript:void(0)" style="display:none" onclick="showUploadsPrevPage();">
+         <img src="/images/prev1.png" style="border:none;width:16px;height:16px;margin-top:2px;">
+       </a>
+       <a id="uploadsViewNextLink" href="javascript:void(0)" onclick="showUploadsNextPage();">
+         <img src="/images/next1.png" style="border:none;width:16px;height:16px;margin-top:1px;">
+       </a>
+       </span>
+       <% end %>
+      </div>
+<!-- My Download -->
+      <div class="round-border-content" style="position:relative;background:#F5F5F5;height:300px;">
+        <div id="<%= UserDetail::MY_PROFILE_IDS[UserDetail::MY_DOWNLOADS_SECTION] %>">
+          <%= render(:partial => "my_downloads_show_partial")%>
+        </div>
+        <%= render(:partial => "loading_section", :locals => {:element_id => "#{UserDetail::MY_PROFILE_LOADING_IDS[UserDetail::MY_DOWNLOADS_SECTION]}"}) %>
+      </div>
+      <div style="height:4%;cursor:move;">
+        &nbsp;&nbsp;&nbsp;My Downloads
+       <% if(!@user_downloads.nil? && @user_downloads.size > 0) %>
+         (<%= @user_downloads.size %>)
+       <% end
+          if(!@user_downloads.nil? && @user_downloads.size > 6) %>
+       <span style="float:right">
+       <a id="downloadsViewPrevLink" href="javascript:void(0)" style="display:none" onclick="showDownloadsPrevPage();">
+         <img src="/images/prev1.png" style="border:none;width:16px;height:16px;margin-top:2px;">
+       </a>
+       <a id="downloadsViewNextLink" href="javascript:void(0)" onclick="showDownloadsNextPage();">
+         <img src="/images/next1.png" style="border:none;width:16px;height:16px;margin-top:1px;">
+       </a>
+       </span>
+       <% end %>
+      </div>
+    </div>
+  </td>
+  <script type="text/javascript">
+    new Draggable('drag_my_upload_download', { scroll: window });
+  </script>
+
+<!-- Device area -->
+  <td style="width:36%;" onmouseover="Element.show('device_area_refresh_button');" onmouseout="Element.hide('device_area_refresh_button');">
+    <div id="device_area_refresh_button" style="z-index:10;float:right;display:none" onclick="document.getElementById('form_update_refresh_device').onsubmit();" title="Refresh"><img style="margin:0px;padding:0px;" src="/images/device/refresh_button.png" /></div>
+    <center>
+    <div style="width:350px;height:700px;background: url(/images/user_bk350.gif) no-repeat;background-position:center;">
+      <div class="sp50"></div>
+      <div class="sp15"></div>
+      <div style="margin-left:3px;height:486px;width:295px;background:#E6E0CE;position:relative;">
+        <div id="<%= UserDetail::MY_PROFILE_IDS[UserDetail::MY_DEVICE_SECTION] %>" style="width:100%;height:100%;">
+          <%= render(:partial => "users/device/render_device") %>
+        </div>
+        <%= render(:partial => "loading_section", :locals => {:element_id => "#{UserDetail::MY_PROFILE_LOADING_IDS[UserDetail::MY_DEVICE_SECTION]}"}) %>
+      </div>
+    </div>
+    </center>
+  </td>
+
+<!-- KillerMobi Suggestions -->
+  <td style="width:32%;height:700px;">
+    <div class="round-st-border" style="margin:5px;" id="drag_suggestions">
+      <div class="round-border-content" style="position:relative;background:#F5F5F5;height:640px;">
+        <div id="<%= UserDetail::MY_PROFILE_IDS[UserDetail::KILLERMOBI_SUGGESTIONS_SECTION] %>">
+          <%= render(:partial => "killermobi_suggestions_show_partial")%>
+        </div>
+        <%= render(:partial => "loading_section", :locals => {:element_id => "#{UserDetail::MY_PROFILE_LOADING_IDS[UserDetail::KILLERMOBI_SUGGESTIONS_SECTION]}"}) %>
+      </div>
+      <div style="cursor:move;">
+        &nbsp;&nbsp;&nbsp;KillerMobi Suggestions
+       <% if(!@apps_suggestions.nil? && @apps_suggestions.size > 15) %>
+       <span style="float:right">
+       <a id="suggestionsViewPrevLink" href="javascript:void(0)" style="display:none" onclick="showSuggestionsPrevPage();">
+         <img src="/images/prev1.png" style="border:none;width:16px;height:16px;margin-top:2px;">
+       </a>
+       <a id="suggestionsViewNextLink" href="javascript:void(0)" onclick="showSuggestionsNextPage();">
+         <img src="/images/next1.png" style="border:none;width:16px;height:16px;margin-top:1px;">
+       </a>
+       </span>
+       <% end %>
+      </div>
+    </div>
+  </td>
+  <script type="text/javascript">
+    new Draggable('drag_suggestions', { scroll: window });
+  </script>
+</tr>
+
+<tr style="height:210px;">
+  <td style="width:32%;">
+    <div class="round-st-border" style="margin:5px;" id="drag_my_comments">
+      <div class="round-border-content" style="position:relative;background:#F5F5F5;height:210px;">
+
+      </div>
+      <div style="cursor:move;">
+        &nbsp;&nbsp;&nbsp;My Comments
+      </div>
+    </div>
+  </td>
+  <script type="text/javascript">
+    new Draggable('drag_my_comments', { scroll: window });
+  </script>
+
+  <td style="width:36%;">
+    <div class="round-st-border" style="margin:5px;" id="drag_my_wall">
+      <div class="round-border-content" style="position:relative;background:#F5F5F5;height:210px;">
+
+
+      </div>
+      <div style="cursor:move;">
+        &nbsp;&nbsp;&nbsp;My Wall
+      </div>
+    </div>
+  </td>
+  <script type="text/javascript">
+    new Draggable('drag_my_wall', { scroll: window });
+  </script>
+
+  <td style="width:32%;">
+    <div class="round-st-border" style="margin:5px;" id="drag_my_wallpapers">
+      <div class="round-border-content" style="position:relative;background:#F5F5F5;height:210px;">
+
+      </div>
+      <div style="cursor:move;">
+        &nbsp;&nbsp;&nbsp;My Wallpapers
+      </div>
+    </div>
+  </td>
+  <script type="text/javascript">
+    new Draggable('drag_my_wallpapers', { scroll: window });
+  </script>
+</tr>
+</table>
+
+
+<!-- Loading section on page load -->
+<!-- Form for device refresh -->
+<%= render(:partial => "update_section", :locals => {:update_section_id => UserDetail::MY_DEVICE_SECTION, :this_section_id => "refresh_device", :device_id => "0"})%>
+<script type="text/javascript">
+  document.getElementById('form_update_refresh_device').onsubmit();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

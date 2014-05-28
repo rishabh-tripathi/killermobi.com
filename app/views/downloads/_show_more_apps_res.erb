@@ -1,0 +1,19 @@
+<% if(!@downloads.nil? && !@downloads.empty?) %>
+     <div id="temp_app">
+<%     for b in @downloads
+%>
+    <%= render(:partial => "download_drag_icon", :locals => {:app => b}) %>
+<%     end %>
+     </div>
+     <script type="text/javascript">
+       document.getElementById('download_area').innerHTML += document.getElementById('temp_app').innerHTML;
+       document.getElementById('temp_app').innerHTML = '';
+       var page_no = parseInt(document.getElementById('page_no').value);
+       page_no += 1;
+       document.getElementById('page_no').value = page_no;
+     </script>
+<% else %>
+<script type="text/javascript">
+  document.getElementById('show_more').innerHTML = '';
+</script>
+<% end %>

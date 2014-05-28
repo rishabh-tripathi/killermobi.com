@@ -1,0 +1,29 @@
+<%
+   item_type = BucketItem::OBJ_TYPE_APP
+   item_type = type if(defined? type)
+%>
+
+<div style="height:580px;background: url(/images/user_bk300.gif) no-repeat;background-position:center;">
+
+  <% if user_signed_in? %>
+    <div style="width: 252px; height: 415px; position: relative; top: 45px; left: 25px; background: url(/images/v2/killermobi-fade.png) no-repeat scroll center center transparent; right: 0px;">
+      <div id="dropable_container">
+        <%
+           bucket = nil
+           bucket_item = nil
+           (bucket, bucket_item) = Bucket.user_current_bucket(logged_in_user)
+           if(bucket.nil?)
+         %>
+        <%= render(:partial => "make_bucket") %>
+        <% else %>
+        <%= render(:partial => "dropables", :locals => {:bucket => bucket, :bucket_item => bucket_item, :type => item_type}) %>
+        <% end %>
+      </div>
+      <%= render(:partial => "users/loading_section", :locals => {:element_id => "create_bucket_loading_section"}) %>
+    </div>
+  <% else %>
+    <%= render(:partial => "device_login") %>
+  <% end %>
+
+</div>
+

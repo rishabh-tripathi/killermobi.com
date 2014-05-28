@@ -1,0 +1,20 @@
+<% form_remote_tag  :url => user_share_app2_url(),
+                    :loading => "Element.show('share_app_loading_step_2');",
+                    :complete => "Element.hide('share_apps_form_view2');document.getElementById('upload_share_app_title').innerHTML='Upload executables';",
+                    :update => {:success => "share_apps_form_view2"},
+                    :html => {:id => "form_share_app_step_one"} do %>
+<table>
+  <tr>
+    <td>Source Website</td>
+    <td><input type="text" name="share_source" id="share_source" size="40">
+    </td>
+  </tr>
+
+  <tr>
+    <td>URL of the app:</td>
+    <td> <textarea name="share_url" id="share_url" rows="8" cols="31"></textarea></td>
+  </tr>
+
+</table>
+<input type="submit" value="Share" style="float:right;">
+<% end %>

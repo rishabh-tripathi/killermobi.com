@@ -1,0 +1,22 @@
+<h1>Listing mnl_missing_codes</h1>
+
+<table>
+  <tr>
+    <th>Code</th>
+    <th>Detail</th>
+  </tr>
+
+<% for mnl_missing_code in @mnl_missing_codes %>
+  <tr>
+    <td><%=h mnl_missing_code.code %></td>
+    <td><%=h mnl_missing_code.detail %></td>
+    <td><%= link_to 'Show', mnl_missing_code %></td>
+    <td><%= link_to 'Edit', edit_mnl_missing_code_path(mnl_missing_code) %></td>
+    <td><%= link_to 'Destroy', mnl_missing_code, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New mnl_missing_code', new_mnl_missing_code_path %>

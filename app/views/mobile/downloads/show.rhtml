@@ -1,0 +1,21 @@
+
+<h1><%= @download.title %></h1>
+<% if(!@download.comurl.nil? && !@download.comurl.empty?) %>
+<h5>Powered By: <a href="<%= @download.comurl %>"><%= @download.powered_by %></a></h5>
+<% end %>
+
+<h5>Platform: <a href="/m<%= @type.url %>"><%= @type.platform %></a></h5>
+<h5>Category:<a href="/m<%= @category.url %>"> <%= @category.category.to_s.gsub(/_/," ") %></a></h5>
+<b><a href="<%= give_file_url(@download.title) %>">Download</a></b>
+ <% if(!@download.download_count.nil?) %>
+    <h5>Downloaded: <%= @download.download_count %> times</h5>
+    <% end %>
+<h5><a href="<%= wap_download_ss_url(@download.title.tr(" ","_")) %>">View Screenshots</a></h5>
+<% if(!@download.description.empty?) %>
+    <div class="download_title">
+    <h3>Description</h3>
+    </div>
+    <div class="show_download_comments_add">
+    <p><%= simple_format(@download.description) %></p>
+    </div>
+<% end %>

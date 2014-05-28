@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/svn/!svn/ver/2/app/views/user_mailer
+END
+WS_FTP.LOG
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/2/app/views/user_mailer/WS_FTP.LOG
+END
+after_idea_notification.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/2/app/views/user_mailer/after_idea_notification.html.erb
+END
+send_notification_to_all.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/2/app/views/user_mailer/send_notification_to_all.html.erb
+END
+feedback_mobile_mail.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/2/app/views/user_mailer/feedback_mobile_mail.html.erb
+END
+after_download_notification.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/2/app/views/user_mailer/after_download_notification.html.erb
+END
+mnl_missing_code_notification.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/2/app/views/user_mailer/mnl_missing_code_notification.html.erb
+END
+share_this_mobile_mail.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/2/app/views/user_mailer/share_this_mobile_mail.html.erb
+END
+contact_us_mail.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/2/app/views/user_mailer/contact_us_mail.html.erb
+END

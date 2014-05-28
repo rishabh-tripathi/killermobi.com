@@ -1,0 +1,24 @@
+<h1>Listing mnl_onlines</h1>
+
+<table>
+  <tr>
+    <th>Code</th>
+    <th>Detail</th>
+    <th>Mode</th>
+  </tr>
+
+<% for mnl_online in @mnl_onlines %>
+  <tr>
+    <td><%=h mnl_online.code %></td>
+    <td><%=h mnl_online.detail %></td>
+    <td><%=h mnl_online.mode %></td>
+    <td><%= link_to 'Show', mnl_online %></td>
+    <td><%= link_to 'Edit', edit_mnl_online_path(mnl_online) %></td>
+    <td><%= link_to 'Destroy', mnl_online, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New mnl_online', new_mnl_online_path %>

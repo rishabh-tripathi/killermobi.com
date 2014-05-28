@@ -1,0 +1,20 @@
+<div class="download_section">
+<div id="download_section_top">Killermobi - One Stop Mobile Solutions</div>
+<div class="pwrd_by"><%= link_to 'Back to Free Mobile Software Home', root_path %></div>
+<div class="show_articles">
+
+
+<div id="cse-search-results"></div>
+<script type="text/javascript">
+  var googleSearchIframeName = "cse-search-results";
+  var googleSearchFormName = "cse-search-box";
+  var googleSearchFrameWidth = 795;
+  var googleSearchDomain = "www.google.co.in";
+  var googleSearchPath = "/cse";
+</script>
+<script type="text/javascript" src="http://www.google.com/afsonline/show_afs_search.js"></script>
+
+
+
+</div>
+</div>

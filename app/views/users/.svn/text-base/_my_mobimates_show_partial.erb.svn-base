@@ -1,0 +1,57 @@
+<%
+   loading_view = UserDetail::MY_PROFILE_LOADING_IDS[UserDetail::MY_MOBIMATES_SECTION]
+   if(!@mobimates.nil? && !@mobimates.empty?)
+     friends_page_count = @mobimates.size/6
+       if(@mobimates.size%6>0)
+         friends_page_count += 1
+       end
+   end
+%>
+<script text="text/javascript">
+currMobimatesPage = 1;
+maxMobimatesPage = <%= friends_page_count %>
+</script>
+<%
+   if(!friends_page_count.nil?)
+   for f_count in 1..friends_page_count
+     j = f_count
+       curr_friends = []
+       for fnd in @mobimates
+         if(j > (6*(f_count-1)) && j <= (6*f_count))
+           curr_friends << fnd
+         end
+         j += 1
+       end
+     f_view_style = ""
+     f_view_style = "display:none" if(f_count > 1)
+%>
+<table style="width:100%;height:155px;padding:10px 0px 12px 15px;<%= f_view_style %>" id="mobimates_view_<%= f_count %>">
+  <% k = 3
+     if(!curr_friends.nil? && !curr_friends.empty?)
+       for f in curr_friends %>
+
+    <% if(k%3==0) %> <tr> <% end %>
+      <% friend_ud = UserDetail.find_by_user_id(f.id) %>
+      <td onmouseover="Element.show('mobimate_name_<%= f_count %>_<%= k %>');" onmouseout="Element.hide('mobimate_name_<%= f_count %>_<%= k %>');">
+        <div style="position:relative;top:0px;left:0px;">
+
+          <!-- friend's profile pic -->
+          <a href="<%= profile_url(f.username) %>"><img src="<%= ((!friend_ud.profile_pic.nil? && !friend_ud.profile_pic.empty?) ? friend_ud.profile_pic : '/images/noimage4.png') %>" style="width:50px;height:60px;border: 1px solid #e6e0ce;"></a>
+
+            <!-- Show friend name -->
+            <div id="mobimate_name_<%= f_count %>_<%= k %>" style="position:absolute;top:45px;left:0px;z-index:20;width:52px;background:#e6e0ce;opacity:0.8;filter:alpha(opacity=40);display:none">
+              <small><center>
+                  <a href="<%= profile_url(f.username) %>"><%= f.firstname %></a></center></small>
+            </div>
+
+        </div>
+      </td>
+      <% k += 1
+      if(k%3==0) %> </tr> <% end
+        end
+      end %>
+</table>
+<%
+  end
+end
+%>

@@ -1,0 +1,182 @@
+<div id="upload_form" style="width:600px; height:400px; border:1px solid #800F45;padding: 5px;-moz-border-radius: 10px;-moz-box-shadow: 1px 1px 2px #fff;">
+  <div style="text-align:center;">
+    Select file to upload<br>
+    <input type="file" id="files_load" name="files[]" multiple /><br>
+    --- OR ---
+    <div style="text-align:center; width:100%; height:340px;">
+      <div id="output" class="clearfix">
+      <table style="width:100%;" id="output-listing01" style="height:270px;overflow:auto;overflow-x:hidden;">
+        <tr style="background:#566D7E; color:white;">
+          <td style="width:20px;">SN</td>
+          <td style="width:200px;">File</td>
+          <td style="width:100px;">Size</td>
+          <td>Progress</td>
+        </tr>
+      </table>
+
+<!--         <ul id="output-listing01" style="height:270px;overflow:auto;overflow-x:hidden;"></ul> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<script type="text/javascript">
+var TCNDDU = TCNDDU || {};
+var files_loading = 0;
+var files_loaded_total = 0;
+var file_index = 0;
+var files = [];
+var count = 0;
+(function()
+  {
+    var dropContainer, dropListing, imgPreviewFragment = document.createDocumentFragment(), domElements;
+    var file_size_limit = 111048576;
+
+    var file_processed = true;
+    var chunk_processed = true;
+
+    TCNDDU.setup = function()
+    {
+      dropListing = document.getElementById("output-listing01");
+      dropContainer = document.getElementById("output");
+
+     /* dropContainer.addEventListener("dragenter", function(event){dropListing.innerHTML = '';event.stopPropagation();event.preventDefault();}, false); */
+      dropContainer.addEventListener("dragover", function(event){event.stopPropagation();event.preventDefault();}, false);
+      dropContainer.addEventListener("drop", TCNDDU.handleDrop, false);
+    };
+
+    TCNDDU.uploadError = function (error)
+    {
+      console.log("error: " + error.code);
+    };
+
+    TCNDDU.processXHR = function(file, index, bin)
+    {
+      console.log("------"+index);
+      var xhr = new XMLHttpRequest(),
+      container = document.getElementById("item"+index),
+      fileUpload = xhr.upload,
+      progressDomElements = [
+        document.createElement('div'),
+        document.createElement('p')
+      ];
+      progressDomElements[0].className = "progressBar";
+      progressDomElements[1].textContent = "0%";
+      progressDomElements[0].appendChild(progressDomElements[1]);
+      container.appendChild(progressDomElements[0]);
+      fileUpload.log = container;
+
+      fileUpload.addEventListener("progress", function(event)
+      {
+        if(event.lengthComputable)
+        {
+          var percentage = Math.round((event.loaded * 100) / event.total),
+          loaderIndicator = container.firstChild.nextSibling.firstChild;
+          if(percentage < 100)
+          {
+            loaderIndicator.style.width = (percentage*2) + "px";
+            loaderIndicator.textContent = percentage + "%";
+          }
+        }
+      }, false);
+
+      fileUpload.addEventListener("load", function(event)
+      {
+        container.className = "loaded";
+        console.log("xhr upload of "+container.id+" complete");
+      }, false);
+
+      fileUpload.addEventListener("error", TCNDDU.uploadError, false);
+      xhr.onloadstart = function () {  files_loading += 1;console.log("onloadstart: files_loading = " + files_loading);}
+      xhr.onloadend = function () { files_loading -= 1; files_loaded_total += 1; uploadItem(files_loaded_total); console.log("onloadend: files_loading = " + files_loading + ", files_loaded_total = " + files_loaded_total);}
+      xhr.open("POST", "/smart-file-upload");
+      xhr.overrideMimeType('text/plain; charset=x-user-defined-binary');
+      xhr.setRequestHeader("X-File-Name", file.name);
+      xhr.sendAsBinary(bin);
+      console.log(xhr);
+    };
+
+    TCNDDU.handleDrop = function(event)
+    {
+      var dt = event.dataTransfer;
+      if(dt != null) {
+        files = dt.files;
+      }
+      else {
+        files = event.target.files;
+      }
+      count = files.length;
+      event.stopPropagation();
+      event.preventDefault();
+      initUpload();
+    };
+
+    function initUpload() {
+      for (var i = 0; i < count; i++)
+      {
+        if(files[i].size < file_size_limit)
+        {
+          var file = files[i],
+          droppedFileName = file.name,
+          domElements = [
+            document.createElement('tr'),
+            document.createElement('td' ),
+            document.createElement('td'),
+            document.createElement('td'),
+            document.createElement('td')
+          ];
+          var index = i;
+          domElements[1].innerHTML = i+1;
+          domElements[1].style = "text-align:left;";
+          domElements[2].innerHTML = files[i].name;
+          domElements[3].innerHTML = files[i].size;
+          domElements[4].innerHTML = '';
+          domElements[4].id = "item"+index;
+          domElements[0].appendChild(domElements[1]);
+          domElements[0].appendChild(domElements[2]);
+          domElements[0].appendChild(domElements[3]);
+          domElements[0].appendChild(domElements[4]);
+          imgPreviewFragment.appendChild(domElements[0]);
+          dropListing.appendChild(imgPreviewFragment);
+        }
+        else
+        {
+          alert("file is too big, needs to be below 1mb");
+        }
+      }
+      count = files.length;
+      uploadItem(files_loaded_total);
+    }
+
+    function uploadItem(i) {
+      if(i<count) {
+        var reader = new FileReader();
+        var file = files[i];
+        reader.index = i;
+        reader.file = file;
+        reader.addEventListener("loadend", TCNDDU.buildImageListItem, false);
+        reader.readAsDataURL(file);
+      }
+      else {
+        files_loading = 0;
+        files_loaded_total = 0;
+      }
+    };
+
+    TCNDDU.buildImageListItem = function (event) {
+      var data = event.target.result,
+      index = event.target.index,
+      file = event.target.file,
+      getBinaryDataReader = new FileReader();
+      console.log("\n\n\nindex============="+index);
+      getBinaryDataReader.addEventListener("loadend", function(evt){TCNDDU.processXHR(file, index, data)}, false);
+      getBinaryDataReader.readAsBinaryString(file);
+     };
+    window.addEventListener("load", TCNDDU.setup, false);
+    document.getElementById('files_load').addEventListener('change', TCNDDU.handleDrop, false);
+  })();
+</script>
+
+

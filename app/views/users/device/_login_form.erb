@@ -1,0 +1,13 @@
+Login with KillerMobi
+<form action="<%= app_user_login_url -%>">
+  <input type="hidden" name="spam_id" value="<%=  get_random_spam_id -%>" />
+  <% if(!app_id.nil? && !app_key.nil?) -%>
+  <input type="hidden" name="app_id" value="<%=  app_id -%>" />
+  <input type="hidden" name="app_key" value="<%=  app_key -%>" />
+  <% end -%>
+  Username: <input type="text" name="username" /><br/>
+  Password: <input type="password" name="password" /></br/>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Or<br/>
+  Access Token: <input type="text" name="access_token" /></br>
+  <input type="submit" value="Login" />
+</form>

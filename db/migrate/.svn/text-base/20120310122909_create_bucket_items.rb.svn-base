@@ -1,0 +1,17 @@
+class CreateBucketItems < ActiveRecord::Migration
+  def self.up
+    create_table :bucket_items do |t|
+      t.column :bucket_id, :integer, :null => false, :default => 0
+      t.column :obj_type, :integer, :null => false, :default => 0
+      t.column :obj_id, :integer, :null => false, :default => 0
+      t.column :status, :integer, :null => false, :default => 0
+      t.column :access, :integer, :null => false, :default => 0
+      t.column :created_at, :datetime
+      t.column :updated_at, :datetime
+    end
+  end
+
+  def self.down
+    drop_table :bucket_items
+  end
+end

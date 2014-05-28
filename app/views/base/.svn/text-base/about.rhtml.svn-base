@@ -1,0 +1,84 @@
+<h1>&nbsp;&nbsp;About Killermobi</h1>
+<div class="sp5"></div>
+<div class="round-st-border">
+  <div class="round-border-content">
+      Keeping in mind the current market trends and user requirements, KillerMobi has launched a vivacious web portal for free mobile software and applications. Our portal is endowed with the latest and most dazzling applications of your own congenial ,which can turn your phone to a SMART DEVICE by just a mere single click. We provide services and free mobile applications for all platforms including Symbian, Blackberry, Windows Mobile and Java.
+Some of the Key Features,
+      <ul>
+        <li>No registration required.</li>
+        <li>Download absolutely Free Mobile Software.</li>
+        <li>Harness Free mobile solutions through extremely useful forums.</li>
+        <li>Download exclusive Killer Mobile Software and mobile tools for your phone regardless of platform.</li>
+        <li>Play Live Demo before download.</li>
+        <li>Be a part of KillerMobi and execute your 100$ ideas.</li>
+      </ul>
+
+      KillerMobi is web portal for you all mobile related needs. We Develope  mobile software which are most important for you. Some tools and utility you need
+      sometimes but never find it. With KillerMobi you can explore the endless world of Mobiles as Mobiles are not only a phone today!!!<br>
+      For further information feel free to <a href="<%= contact_url %>">contact us</a>.
+      <br/>
+      <br/>
+      <h3 style="margin:0px;">Developer</h3>
+      <b>Rishabh Tripathi</b><br>
+      <b>Email:</b> rishabh@killermobi.com<br>
+      <b>Earphone:</b> +91-7259877001<br>
+      <b><a href="http://rishabh23.blogspot.com/">Blog</a>, <a href="http://twitter.com/rishabh2319">twitter</a>, <a href="http://www.facebook.com/people/Rishabh-Tripathi/100000703719168">Facebook</a></b>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<% if(false) %>
+<div class="download_section">
+<div id="download_section_top">About Killermobi,</div>
+<div class="pwrd_by"><%= link_to 'Back to Free Mobile Software Home', root_path %></div>
+
+<br>
+<div id="link_ads_on_top">
+<script type="text/javascript"><!--
+google_ad_client = "pub-3833946424381349";
+/* 468x15, created 12/3/10 */
+google_ad_slot = "8885314131";
+google_ad_width = 468;
+google_ad_height = 15;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+<br>
+
+<div class="show_articles">
+
+<p>
+Keeping in mind the current market trends and user requirements, KillerMobi has launched a vivacious web portal for free mobile software and applications. Our portal is endowed with the latest and most dazzling applications of your own congenial ,which can turn your phone to a SMART DEVICE by just a mere single click. We provide services and free mobile applications for all platforms including Symbian, Blackberry, Windows Mobile and Java.
+Some of the Key Features,
+<ul>
+<li>No registration required.</li>
+<li>Download absolutely Free Mobile Software.</li>
+<li>Harness Free mobile solutions through extremely useful forums.</li>
+<li>Download exclusive Killer Mobile Software and mobile tools for your phone regardless of platform.</li>
+<li>Play Live Demo before download.</li>
+<li>Be a part of KillerMobi and execute your 100$ ideas.</li>
+</ul>
+
+KillerMobi is web portal for you all mobile related needs. We Develope  mobile software which are most important for you. Some tools and utility you need
+sometimes but never find it. With KillerMobi you can explore the endless world of Mobiles as Mobiles are not only a phone today!!!<br>
+For further information feel free to <a href="<%= contact_url %>">contact us</a>.
+<br>
+<h3>Developer</h3>
+<b>Rishabh Tripathi</b><br>
+<b>Email:</b> rishabh1923@gmail.com<br>
+<b>Earphone:</b> +91-9406127755<br>
+<b><a href="http://rishabh23.blogspot.com/">Blog</a>, <a href="http://twitter.com/rishabh2319">twitter</a>, <a href="http://www.facebook.com/people/Rishabh-Tripathi/100000703719168">Facebook</a></b>
+</p>
+</div>
+</div>
+<% end %>

@@ -1,0 +1,83 @@
+K 25
+svn:wc:ra_dav:version-url
+V 34
+/svn/!svn/ver/2/app/views/articles
+END
+edit.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/2/app/views/articles/edit.html.erb
+END
+remote_tag_edit.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/2/app/views/articles/remote_tag_edit.rhtml
+END
+index.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/55/app/views/articles/index.html.erb
+END
+WS_FTP.LOG
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/2/app/views/articles/WS_FTP.LOG
+END
+_show_tags.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/2/app/views/articles/_show_tags.rhtml
+END
+admin.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/2/app/views/articles/admin.html.erb
+END
+destroy.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/2/app/views/articles/destroy.html.erb
+END
+new.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/2/app/views/articles/new.html.erb
+END
+show.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/55/app/views/articles/show.html.erb
+END
+article_to_review.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/2/app/views/articles/article_to_review.rhtml
+END
+tag_page_show.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/2/app/views/articles/tag_page_show.rhtml
+END
+update.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/2/app/views/articles/update.html.erb
+END
+create.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/2/app/views/articles/create.html.erb
+END

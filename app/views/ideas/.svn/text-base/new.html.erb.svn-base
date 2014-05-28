@@ -1,0 +1,55 @@
+<div class="download_section">
+<div id="download_section_top"></div>
+<div class="pwrd_by"><%= link_to 'Back to Home', root_path %></div>
+<h1>Submit Your Idea </h1>
+<%#= error_messages_for :idea %>
+<div class="short_description">
+<p>Have a million $ ideas in your mind but don't know how to execute? Here you can submit your ideas to be executed.</p>
+<div class="button_01"><a href="<%= ideas_url %>">View All</a></div>
+</div>
+
+<div id="link_ads_on_top">
+<script type="text/javascript"><!--
+google_ad_client = "pub-3833946424381349";
+/* 468x15, created 12/3/10 */
+google_ad_slot = "8885314131";
+google_ad_width = 468;
+google_ad_height = 15;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+
+
+<div class="download_title">
+<h3>Submit Your Idea to Execute</h3>
+</div>
+
+<div class="show_download_comments_add">
+<% form_for(@idea) do |f| %>
+  <p>
+    <b>Title</b><br />
+    <%= f.text_field :title %>
+  <br>Title may be differ when executed it depends on Developer's choice.
+  </p>
+
+  <p>
+    <b>Short description</b><br />
+    <%= f.text_area :short_description, :rows => 5, :cols => 60 %>
+    <br>Write synopsis of your proposal.
+  </p>
+
+  <p>
+    <b>Description</b><br />
+    <%= f.text_area :description, :rows => 10, :cols => 60 %>
+    <br>Give descriptive detail about your proposal. Include links and supporting documentry.
+  </p>
+
+  <p>
+    <%= f.submit "Submit" %>
+  </p>
+<% end %>
+</div>
+</div>

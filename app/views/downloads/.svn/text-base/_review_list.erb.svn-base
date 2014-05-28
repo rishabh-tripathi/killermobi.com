@@ -1,0 +1,72 @@
+<%
+  # no_of_review, reviews
+  # new_review
+
+   if(reviews.size > no_of_reviews)
+     total_reviews = reviews.size
+     reviews = reviews[0..no_of_reviews]
+%>
+Showing 1 - <%= no_of_reviews %> of <%= total_reviews %> reviews
+<%
+   end
+if(!reviews.nil? && !reviews.empty?)
+count = 1
+
+highlight_first = false
+if((defined? new_review) && new_review)
+  highlight_first = true
+end
+
+reviews.each do |post|
+  style_str = ""
+  style_str = "id='nw_u_review'" if(highlight_first && (count == 1))
+  count += 1
+  review_user = User.find(post.user_id)
+  user_pic = "/images/v2/user.png"
+  user_pic = review_user.user_detail.profile_pic if(!review_user.user_detail.profile_pic.nil? && !review_user.user_detail.profile_pic.empty?)
+-%>
+<table style="width:100%">
+  <tr <%= style_str %>>
+    <td style="width:60px;padding:5px;text-align:center;vertical-align:top;">
+      <div class="sp10"></div>
+      <img src="<%= user_pic -%>" class="img-rounded" style="border:1px solid #e0e0e0;width:60px;height:70px;" />
+    </td>
+    <td style="padding:0px 10px;">
+        <h4><%= post.title %>
+        <% if(post.rating > 0) %>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <span>
+          <% for x in 1..post.rating %>
+          <img src="/images/v2/star_sm_y.png" class="rate-star-sm" />
+          <% end %>
+          <% for x in 1..(5 - post.rating) %>
+          <img src="/images/v2/star_sm_b.png" class="rate-star-sm" />
+          <% end %>
+        </span>
+        <% end %>
+        </h4>
+        <blockquote>
+        <p><%= simple_format(post.review) %></p>
+        <small>
+          <%= review_user.firstname -%>
+        </small>
+      </blockquote>
+    </td>
+
+  </tr>
+</table>
+<div class="sp1-gr"></div>
+<% if(highlight_first) %>
+<script type="text/javascript">
+  new Effect.Highlight('nw_u_review', { startcolor: '#ffff99',endcolor: '#ffffff', restorecolor: '#ffffff' });
+</script>
+
+<% end
+end
+
+else
+%>
+<div class="sp30"></div>
+<center><h4>No reviews so far, be the first to rate</h4></center>
+<%
+end %>

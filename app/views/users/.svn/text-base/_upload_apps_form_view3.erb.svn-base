@@ -1,0 +1,171 @@
+<div id="upload_apps_form_view3" style="display:none;margin-left:-20px;height:350px;width:540px;overflow:auto;overflow-x:hidden;">
+
+<table style="width:100%;height:300px;">
+  <tr>
+    <td>
+      <div style="border: solid 1px #800F45;height:100%;">
+        <div id="user_upload_app_file_1" style="background:#800F45;padding:2px;color:#FFFFFF;">Logo Image</div>
+        <div style="padding:5px;">
+          <% form_tag(user_upload_app_image_url(), {:id=> "user_upload_app_logo", :multipart => true, :target => "msg_app_logo"}) do %>
+            <input type="hidden" name="image_type" value="logo">
+            <input type="hidden" name="upload_app_id" id="app_id_logo" value="">
+            <%= file_field_tag("app_image", :id=>"user_upload_app_logo") %>
+            <br>
+            <input type="submit" style="float:right" value="Upload">
+          <% end %>
+          <center>
+          <iframe id"msg_app_logo" name="msg_app_logo" style="border:none;width:60px;height:60px;">
+          </iframe></center>
+        </div>
+      </div>
+    </td>
+    <td>
+      <div style="border: solid 1px #800F45;height:100%;">
+        <div id="user_upload_app_file_2" style="background:#800F45;padding:2px;color:#FFFFFF;">Screenshot 1</div>
+        <div style="padding:5px;">
+          <% form_tag(user_upload_app_image_url(), {:id=> "user_upload_app_ss1", :multipart => true, :target => "msg_app_ss1"}) do %>
+            <input type="hidden" name="image_type" value="ss1">
+            <input type="hidden" name="upload_app_id" id="app_id_ss1" value="">
+            <%= file_field_tag("app_image", :id=>"user_upload_app_ss1") %>
+            <br>
+            <input type="submit" style="float:right" value="Upload">
+          <% end %>
+          <center>
+          <iframe id"msg_app_ss1" name="msg_app_ss1" style="border:none;width:60px;height:60px;">
+          </iframe></center>
+        </div>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div style="border: solid 1px #800F45;height:100%;">
+        <div id="user_upload_app_file_3" style="background:#800F45;padding:2px;color:#FFFFFF;">Screenshot 2</div>
+        <div style="padding:5px;">
+          <% form_tag(user_upload_app_image_url(), {:id=> "user_upload_app_ss2", :multipart => true, :target => "msg_app_ss2"}) do %>
+            <input type="hidden" name="image_type" value="ss2">
+            <input type="hidden" name="upload_app_id" id="app_id_ss2" value="">
+            <%= file_field_tag("app_image", :id=>"user_upload_app_ss2") %>
+            <br>
+            <input type="submit" style="float:right" value="Upload">
+          <% end %>
+          <center>
+          <iframe id"msg_app_ss2" name="msg_app_ss2" style="border:none;width:60px;height:60px;">
+          </iframe></center>
+        </div>
+      </div>
+    </td>
+    <td>
+      <div style="border: solid 1px #800F45;height:100%;">
+        <div id="user_upload_app_file_4" style="background:#800F45;padding:2px;color:#FFFFFF;">Screenshot 3</div>
+        <div style="padding:5px;">
+          <% form_tag(user_upload_app_image_url(), {:id=> "user_upload_app_ss3", :multipart => true, :target => "msg_app_ss3"}) do %>
+            <input type="hidden" name="image_type" value="ss3">
+            <input type="hidden" name="upload_app_id" id="app_id_ss3" value="">
+            <%= file_field_tag("app_image", :id=>"user_upload_app_ss3") %>
+            <br>
+            <input type="submit" style="float:right" value="Upload">
+          <% end %>
+          <center>
+          <iframe id"msg_app_ss3" name="msg_app_ss3" style="border:none;width:60px;height:60px;">
+          </iframe></center>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+<!-- More screenshot section -->
+<table id="user_app_upload_more_screenshots" style="width:100%;height:300px;display:none">
+  <tr>
+    <td>
+      <div style="border: solid 1px #800F45;height:100%;">
+        <div id="user_upload_app_file_5" style="background:#800F45;padding:2px;color:#FFFFFF;">Screenshot 4</div>
+        <div style="padding:5px;">
+          <% form_tag(user_upload_app_image_url(), {:id=> "user_upload_app_ss4", :multipart => true, :target => "msg_app_ss4"}) do %>
+            <input type="hidden" name="image_type" value="ss4">
+            <input type="hidden" name="upload_app_id" id="app_id_ss4" value="">
+            <%= file_field_tag("app_image", :id=>"user_upload_app_ss4") %>
+            <br>
+            <input type="submit" style="float:right" value="Upload">
+          <% end %>
+          <center>
+          <iframe id"msg_app_ss4" name="msg_app_ss4" style="border:none;width:60px;height:60px;">
+          </iframe></center>
+        </div>
+      </div>
+    </td>
+    <td>
+      <div style="border: solid 1px #800F45;height:100%;">
+        <div id="user_upload_app_file_6" style="background:#800F45;padding:2px;color:#FFFFFF;">Screenshot 5</div>
+        <div style="padding:5px;">
+          <% form_tag(user_upload_app_image_url(), {:id=> "user_upload_app_ss5", :multipart => true, :target => "msg_app_ss5"}) do %>
+            <input type="hidden" name="image_type" value="ss5">
+            <input type="hidden" name="upload_app_id" id="app_id_ss5" value="">
+            <%= file_field_tag("app_image", :id=>"user_upload_app_ss5") %>
+            <br>
+            <input type="submit" style="float:right" value="Upload">
+          <% end %>
+          <center>
+          <iframe id"msg_app_ss5" name="msg_app_ss5" style="border:none;width:60px;height:60px;">
+          </iframe></center>
+        </div>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div style="border: solid 1px #800F45;height:100%;">
+        <div id="user_upload_app_file_7" style="background:#800F45;padding:2px;color:#FFFFFF;">Screenshot 6</div>
+        <div style="padding:5px;">
+          <% form_tag(user_upload_app_image_url(), {:id=> "user_upload_app_ss6", :multipart => true, :target => "msg_app_ss6"}) do %>
+            <input type="hidden" name="image_type" value="ss6">
+            <input type="hidden" name="upload_app_id" id="app_id_ss6" value="">
+            <%= file_field_tag("app_image", :id=>"user_upload_app_ss6") %>
+            <br>
+            <input type="submit" style="float:right" value="Upload">
+          <% end %>
+          <center>
+          <iframe id"msg_app_ss6" name="msg_app_ss6" style="border:none;width:60px;height:60px;">
+          </iframe></center>
+        </div>
+      </div>
+    </td>
+    <td>
+      <div style="border: solid 1px #800F45;height:100%;">
+        <div id="user_upload_app_file_8" style="background:#800F45;padding:2px;color:#FFFFFF;">Screenshot 7</div>
+        <div style="padding:5px;">
+          <% form_tag(user_upload_app_image_url(), {:id=> "user_upload_app_ss7", :multipart => true, :target => "msg_app_ss7"}) do %>
+            <input type="hidden" name="image_type" value="ss7">
+            <input type="hidden" name="upload_app_id" id="app_id_ss7" value="">
+            <%= file_field_tag("app_image", :id=>"user_upload_app_ss7") %>
+            <br>
+            <input type="submit" style="float:right" value="Upload">
+          <% end %>
+          <center>
+          <iframe id"msg_app_ss7" name="msg_app_ss7" style="border:none;width:60px;height:60px;">
+          </iframe></center>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+<span>
+  <a href="javascript:void(0)" onclick="Element.show('user_app_upload_more_screenshots');_more_screenshot_init();">Add more screenshots</a>
+  <span style="float:right">
+  <a href="javascript:void(0)" onclick="Element.hide('upload_apps_form_view3');Element.show('upload_apps_form_view2')">Back</a>&nbsp;&nbsp;&nbsp;
+  <button type="button" id="user_upload_app_file_3_next" onclick="Element.hide('upload_apps_form_view3');Element.show('upload_apps_form_view4');document.getElementById('upload_share_app_title').innerHTML='Share your app';">Next</button>
+  </span>
+</span>
+
+</div>
+
+<script type="text/javascript">
+  function _more_screenshot_init() {
+    var e = document.getElementById('app_id_ss1').value;
+    document.getElementById('app_id_ss4').value = e;
+    document.getElementById('app_id_ss5').value = e;
+    document.getElementById('app_id_ss6').value = e;
+    document.getElementById('app_id_ss7').value = e;
+  }
+</script>

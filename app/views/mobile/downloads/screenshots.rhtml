@@ -1,0 +1,10 @@
+ <% if(!@download.ss2url.nil?) %>
+                                <img style="width:170px;height:190px;" src="/<%= @download.ss2url.to_s %>" alt="<%= @download.title %>" />
+                                <% else %>
+                                <img style="width:170px;height:190px;" src="/images/noimage4.png" />
+      <% end %></a>
+  <% if(!@download.ss3url.nil?) %>
+                                <img style="width:170px;height:190px;" src="/<%= @download.ss3url.to_s %>" alt="<%= @download.title %>" />
+                                <% else %>
+                                <img style="width:170px;height:190px;" src="/images/noimage4.png" />
+      <% end %></a>

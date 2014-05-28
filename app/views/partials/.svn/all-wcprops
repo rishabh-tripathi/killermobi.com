@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/svn/!svn/ver/46/app/views/partials
+END
+_user_cred.erb
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/55/app/views/partials/_user_cred.erb
+END
+WS_FTP.LOG
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/2/app/views/partials/WS_FTP.LOG
+END
+_live.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/2/app/views/partials/_live.rhtml
+END
+_social_login_links.erb
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/55/app/views/partials/_social_login_links.erb
+END
+_rec_downloads.erb
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/55/app/views/partials/_rec_downloads.erb
+END
+_fb_km_migrate.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/2/app/views/partials/_fb_km_migrate.rhtml
+END
+_download.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/2/app/views/partials/_download.rhtml
+END
+_message_popup.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/2/app/views/partials/_message_popup.rhtml
+END
+_signup.erb
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/2/app/views/partials/_signup.erb
+END
+_login.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/55/app/views/partials/_login.rhtml
+END
+_rec.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/2/app/views/partials/_rec.rhtml
+END

@@ -1,0 +1,234 @@
+<table style="width:100%;">
+  <tr>
+    <td style="padding:0px 10px;vertical-align:top;">
+      <a class="pull-right" href="<%= download_url %>">Back to <b>Free Mobile Downloads</b></a>
+      <h1><%=h @download.title %>
+        <% if(!@download.powered_by.nil? && !@download.powered_by.empty?)%>
+        <small>&nbsp;by&nbsp;<%= @download.powered_by %></small>
+        <% end %>
+      </h1>
+
+      <div class="b-top-right" style="padding:5px;">
+      <table style="width:100%;">
+        <tr>
+          <%
+            ss_img = []
+            ss_img << @download.ss1url if(!@download.ss1url.nil? && !@download.ss1url.empty?)
+            ss_img << @download.ss2url if(!@download.ss2url.nil? && !@download.ss2url.empty?)
+            ss_img << @download.ss3url if(!@download.ss3url.nil? && !@download.ss3url.empty?)
+          %>
+          <td style="width:205px;vertical-align:top;padding:10px 10px 10px 0px;">
+            <div style="height:396px;background: url(/images/user_bk_sm.gif) no-repeat;background-position:center;padding-left:19px;">
+              <div class="sp30"></div>
+              <div class="sp3"></div>
+              <div style="width:170px;text-align:center;">
+                <div style="width:100%;height:200px;">
+                  <img id="ss_main" style="width:170px;" src="<%= ss_img.first %>"  alt="<%= @download.title %>" />
+                </div>
+                <div class="sp10"></div>
+                <% for i in ss_img %>
+                  <img src="<%= i %>" style="width:50px;height:60px;border:1px solid #800f45;cursor:pointer;" onclick="document.getElementById('ss_main').setAttribute('src','<%= i %>');" alt="<%= @download.title %>" />
+                <% end %>
+              </div>
+            </div>
+          </td>
+          <td style="padding:10px;vertical-align:top;">
+              <div class="sp5"></div>
+              <i><%= simple_format(@download.short_description) %></i>
+              <table style="width:100%;">
+                <tr>
+                <td style="width:150px;">
+              <% if(!@reviews.nil? && !@reviews.empty?)
+                   for x in 1..@avg_rating %>
+                  <img src="/images/v2/star_sm_y.png" style="width:25px;height:25px;"/>
+             <%    end
+                   for x in 1..(5 - @avg_rating)
+             %>
+                  <img src="/images/v2/star_sm_b.png" style="width:25px;height:25px;"/>
+             <%    end
+                 end
+             %>
+                </td>
+                <% if(!@reviews.nil? && @reviews.size > 0) %>
+                <td style="vertical-align:middle;padding:5px;color:#808080;width:100px;border-left:1px solid #e0e0e0;">
+                  <%= @reviews.size -%> <%= ((@reviews.size > 1)? 'Ratings' : 'Rating')%>
+                </td>
+                <% end %>
+                <td>&nbsp;</td>
+                <td style="width:130px;vertical-align:middle;">
+                  <button class="btn btn-large btn-danger pull-right" onclick="<% if(!logged_in_user.nil?) %>openTransPopup('write_review_popup');<% end %>window.open('<%= give_file_url(:title => @download.title.tr(' ','_')) -%>','_self');">Download&nbsp;Now</button>
+                </td>
+              </tr>
+            </table>
+
+          <% if(!@best_review.nil?)
+               x = @best_review
+               review_user = User.find(x.user_id)
+               user_pic = "/images/v2/user.png"
+               user_pic = review_user.user_detail.profile_pic if(!review_user.user_detail.profile_pic.nil? && !review_user.user_detail.profile_pic.empty?)
+          %>
+            <h4>Best review</h4>
+            <blockquote>
+              <p>
+                <b><%= simple_format(x.title) %></b>
+                <%= truncate(x.review, :length => 160, :omission => '...(Continued)') %>
+                <small><%= review_user.firstname -%></small>
+              </p>
+            </blockquote>
+            <% end %>
+            <div class="sp1-gr"></div>
+            <table style="width:100%">
+              <tr>
+                <td>&nbsp;</td>
+                <% if(!@download.liveclasspath.nil? && is_logged_in?) -%>
+                <td style="width:80px;padding:0px 5px;">
+                  <button class="btn btn-info pull-right" onclick="openTransPopup('live_play_popup');">
+                    Try&nbsp;Now
+                  </button>
+                  <%= render :partial => 'partials/live', :locals => {:download => @download}  %>
+                </td>
+                <% end %>
+                <td style="width:70px;padding:0px 5px;">
+                  <button class="btn btn-success pull-right" onclick="window.open('#review','_self');">Review</button>
+                </td>
+                <td style="width:70px;padding:0px 5px;">
+                  <%= render(:partial => "add_to_bucket", :locals => {:type => BucketItem::OBJ_TYPE_APP, :id => @download.id}) %>
+                </td>
+              </tr>
+            </table>
+
+            <% if(!@similar_apps.nil? && !@similar_apps.empty?) %>
+            <h4 style="margin-top:5px;margin-bottom:0px;">Similar apps</h4>
+            <div style="min-width:425px;height:135px;overflow:auto;">
+              <% for q in @similar_apps %>
+                <%= render(:partial => "app_thumb", :locals => {:q => q}) %>
+              <% end %>
+            </div>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+
+<% if(false) %>
+      <div style="text-align:right;">
+        <script type="text/javascript"><!--
+                  google_ad_client = "ca-pub-3833946424381349";
+                  /* 468x15, created 12/3/10 */
+                  google_ad_slot = "8885314131";
+                  google_ad_width = 468;
+                  google_ad_height = 15;
+                  //-->
+        </script>
+        <script type="text/javascript"
+              src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+        </script>
+      </div>
+<% end %>
+
+
+      <div class="sp1-gr"></div>
+      <p><%= simple_format(@download.description) %></p>
+      <div class="sp10"></div>
+      <center>
+        <%= render(:partial => "ads/ga_728x90") %>
+      </center>
+
+      <a name="review"></a>
+      <%= render(:partial => "user_reviews", :locals => {
+              :obj_type => Review::OBJ_TYPE_APP,
+              :obj_id => @download.id,
+              :reviews => @reviews,
+              :avg_rating => @avg_rating,
+              :title => @download.title
+             })
+       -%>
+
+      </div>
+    </td>
+
+
+
+
+   <td style="width:300px;text-align:center;vertical-align:top;">
+     <%= render(:partial => "ads/ga_300x250") %>
+      <div class="sp10"></div>
+          <h4>App Details</h4>
+          <table class="table table-stripe" style="width:100%">
+            <tr>
+              <td><b>Title</b></td>
+              <td><%= @download.title %></td>
+            </tr>
+            <tr>
+              <td><b>Publisher</b></td>
+              <td>
+                <% if(!@download.comurl.nil? && !@download.comurl.empty?) %>
+                <a href="<%= @download.comurl %>"><%= @download.powered_by %></a>
+                <% elsif(!@download.powered_by.nil? && !@download.powered_by.empty?)%>
+                <%= @download.powered_by %>
+                <% end %>
+              </td>
+            </tr>
+            <tr>
+              <td><b>Platform</b></td>
+              <td><a href="<%= platform_url(:type => Download::PLATFORM_NAMES[@type].gsub(' ','_')) %>"><%= Download::PLATFORM_NAMES[@type] %></a></td>
+            </tr>
+            <tr>
+              <td><b>Category</b></td>
+              <td><a href="<%= category_url(:category => Download::CAT_NAMES[@category].gsub(' ','_')) %>"> <%= Download::CAT_NAMES[@category] %></a></td>
+            </tr>
+            <tr>
+              <td><b>Download</b></td>
+              <td><h3 style="margin:0px;"><%= @download.download_count %></h3></td>
+            </tr>
+            <tr>
+              <td><b>Submitted at</b></td>
+              <td><%= @download.created_at.to_formatted_s(:short) %></td>
+            </tr>
+          </table>
+
+      <div class="sp1-gr"></div>
+
+      <% if(!@new_apps.nil? && !@new_apps.empty?) %>
+        <center>
+          <h4>Top New Releases</h4>
+        </center>
+        <% for q in @new_apps %>
+          <%= render(:partial => "app_thumb", :locals => {:q => q}) %>
+        <% end %>
+      <% end %>
+
+      <div style="clear:both;"></div>
+      <div class="sp5"></div>
+      <div class="sp1-gr"></div>
+
+      <% if(!@top_cat_apps.nil? && !@top_cat_apps.empty?) %>
+      <h4>Top <%= Download::CAT_NAMES[@category] %> Apps</h4>
+      <table style="width:100%;" class="table">
+        <% for q in @top_cat_apps %>
+        <tr style="border-bottom:1px solid #e0e0e0;">
+          <td style="widht:60px">
+            <a href="<%= download_show_url(q.title.tr(" ","_")) -%>" target="_blank">
+              <img style="border:1px solid #e0e0e0;width:70px;height:90px;" class="img-polaroid" src="<%= q.ss1_small %>" />
+            </a>
+          </td>
+          <td>
+            <b><%= q.title %></b>
+            <div class="sp5"></div>
+            <blockquote style="margin-bottom:10px;"><%= truncate(q.short_description, :length => 80, :omission => '... (continued)') %></blockquote>
+            <a class="btn btn-primary" href="<%= download_show_url(q.title.tr(" ","_")) -%>">Download</a>
+          </td>
+        </tr>
+        <% end %>
+      </table>
+      <% end %>
+    </td>
+  </tr>
+</table>
+<div class="sp20"></div>
+
+<center>
+  <%= render(:partial => "ads/ga_728x90") %>
+</center>
+
+<%= render(:partial => "bottom_device") %>
+<div class="sp50"></div>

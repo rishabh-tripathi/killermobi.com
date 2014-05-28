@@ -1,0 +1,16 @@
+2011.12.02 09:17 B C:\InstantRails\rails_apps\killermobi\config\initializers\backtrace_silencers.rb --> jubilee.dreamhost.com /killermobi.com/new app/config/initializers backtrace_silencers.rb
+2011.12.02 09:17 B C:\InstantRails\rails_apps\killermobi\config\initializers\devise.rb --> jubilee.dreamhost.com /killermobi.com/new app/config/initializers devise.rb
+2011.12.02 09:17 B C:\InstantRails\rails_apps\killermobi\config\initializers\exception_notification.rb --> jubilee.dreamhost.com /killermobi.com/new app/config/initializers exception_notification.rb
+2011.12.02 09:17 B C:\InstantRails\rails_apps\killermobi\config\initializers\inflections.rb --> jubilee.dreamhost.com /killermobi.com/new app/config/initializers inflections.rb
+2011.12.02 09:17 B C:\InstantRails\rails_apps\killermobi\config\initializers\mime_types.rb --> jubilee.dreamhost.com /killermobi.com/new app/config/initializers mime_types.rb
+2011.12.02 09:17 B C:\InstantRails\rails_apps\killermobi\config\initializers\omniauth.rb --> jubilee.dreamhost.com /killermobi.com/new app/config/initializers omniauth.rb
+2011.12.02 09:17 B C:\InstantRails\rails_apps\killermobi\config\initializers\secret_token.rb --> jubilee.dreamhost.com /killermobi.com/new app/config/initializers secret_token.rb
+2011.12.02 09:17 B C:\InstantRails\rails_apps\killermobi\config\initializers\session_store.rb --> jubilee.dreamhost.com /killermobi.com/new app/config/initializers session_store.rb
+2011.12.02 09:17 B C:\InstantRails\rails_apps\killermobi\config\initializers\setup_mail.rb --> jubilee.dreamhost.com /killermobi.com/new app/config/initializers setup_mail.rb
+2011.12.14 01:07 B C:\InstantRails\rails_apps\killermobi\config\initializers\exception_notification.rb --> jubilee.dreamhost.com / exception_notification.rb
+2011.12.14 01:07 B C:\InstantRails\rails_apps\killermobi\config\initializers\setup_mail.rb --> jubilee.dreamhost.com / setup_mail.rb
+2011.12.14 01:08 B C:\InstantRails\rails_apps\killermobi\config\initializers\exception_notification.rb --> jubilee.dreamhost.com /killermobi.com/config/initializers exception_notification.rb
+2011.12.14 01:08 B C:\InstantRails\rails_apps\killermobi\config\initializers\setup_mail.rb --> jubilee.dreamhost.com /killermobi.com/config/initializers setup_mail.rb
+2012.04.10 02:24 B C:\InstantRails\rails_apps\killermobi\config\initializers\exception_notification.rb --> jubilee.dreamhost.com /killermobi.com/config/initializers exception_notification.rb
+2012.04.10 02:24 B C:\InstantRails\rails_apps\killermobi\config\initializers\omniauth.rb --> jubilee.dreamhost.com /killermobi.com/config/initializers omniauth.rb
+2012.04.10 02:24 B C:\InstantRails\rails_apps\killermobi\config\initializers\setup_mail.rb --> jubilee.dreamhost.com /killermobi.com/config/initializers setup_mail.rb

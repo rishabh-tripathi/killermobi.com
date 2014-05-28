@@ -1,0 +1,21 @@
+<% if user_signed_in? %>
+<li class="dropdown" style="height:40px;padding:10px 10px 0px 10px;">
+  <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="padding:0px;">
+    <%= logged_in_user.firstname %> <%= logged_in_user.lastname %>&nbsp;
+    <img src="<%= logged_in_user.user_detail.profile_pic %>" style="width:30px;height:30px;"/>
+  </a>
+  <ul class="dropdown-menu">
+    <li><a href="<%=  %>">Account</a></li>
+    <li><a href="<%= edit_user_registration_url(current_user) %>">Edit</a></li>
+    <li class="divider"></li>
+    <li><a href="<%= logout_url %>">Logout</a></li>
+  </ul>
+<li>
+<% else %>
+<li class="dropdown">
+  <a class="dropdown-toggle" data-toggle="dropdown" href="#"><h4>Join</h4></a>
+  <div class="dropdown-menu">
+    <%= render :partial => 'partials/login' %>
+  </div>
+</li>
+<% end %>

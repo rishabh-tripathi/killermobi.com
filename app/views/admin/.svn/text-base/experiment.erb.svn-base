@@ -1,0 +1,42 @@
+<H1>Experiment going on...</H1>
+<h3><%= @aim %></h3>
+<!--============================================================ -->
+<table border="1">
+<tr>
+<th>
+name
+</th>
+<th>
+day
+</th>
+<th>
+week
+</th>
+<th>
+month
+</th>
+<th>
+user ids
+</th>
+</tr>
+<% for download in @download %>
+<tr>
+<td>
+<%= download.title %>
+(<%= download.download_count %>)
+</td>
+<td>
+<%= download.day_count %>
+</td>
+<td>
+<%= download.week_count %>
+</td>
+<td>
+<%= download.month_count %>
+</td>
+<td>
+<%= download.users_ids.to_s %>
+</td>
+</tr>
+<% end %>
+</table>

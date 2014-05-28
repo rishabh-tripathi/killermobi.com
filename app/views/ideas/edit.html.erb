@@ -1,0 +1,42 @@
+<div class="download_section">
+<div id="download_section_top"></div>
+
+<h1>Editing idea</h1>
+
+<%= error_messages_for :idea %>
+<div class="show_articles">
+<% form_for(@idea) do |f| %>
+  <p>
+    <b>Title</b><br />
+    <%= f.text_field :title %>
+  </p>
+
+  <p>
+    <b>Short description</b><br />
+    <%= f.text_area :short_description, :rows => 5, :cols => 60 %></p>
+  </p>
+
+  <p>
+    <b>Description</b><br />
+    <%= f.text_area :description, :rows => 20, :cols => 60 %></p>
+  </p>
+
+  <p>
+    <b>Category</b><br />
+    <%= f.text_field :category_id %>
+  </p>
+
+  <p>
+    <b>Documents</b><br />
+    <%= f.text_field :documents %>
+  </p>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @idea %> |
+<%= link_to 'Back', ideas_path %>
+</div>
+</div>

@@ -1,0 +1,18 @@
+class CreateReviews < ActiveRecord::Migration
+  def self.up
+    create_table :reviews do |t|
+      t.column :obj_type, :integer, :null => false, :default => 0
+      t.column :obj_id, :integer, :null => false, :default => 0
+      t.column :title, :string, :limit => 100, :null => false, :default => ""
+      t.column :review, :string, :limit => 1024, :null => false, :default => ""
+      t.column :user_id, :integer, :null => false, :default => 0
+      t.column :rating, :integer, :null => false, :default => 0
+      t.column :created_at, :datetime
+      t.column :updated_at, :datetime
+    end
+  end
+
+  def self.down
+    drop_table :reviews
+  end
+end

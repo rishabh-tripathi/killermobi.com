@@ -1,0 +1,13 @@
+<% if is_logged_in? and logged_in_user.has_role?('Administrator') -%>
+<% remote_form_for(:article, :url => remote_tag_update_article_url(@article.title.tr(" ","_")), :update => "tags") do |f| %>
+<%= f.text_field :tag_list, :size => "50" %>
+<%= f.submit "Update" %>
+<% end %>
+<% else %>
+<% form_remote_tag :url=>remote_tag_update_article_url(@article.title.tr(" ","_")), :update => "tags" do %>
+<p>Add new tag(s) for this article!</p>
+<%= text_field 'article_tag', 'new_tag' %>
+<%= submit_tag "Add" %><br/>
+<small>Multiple tags should be comma(,) separated</small>
+<% end %>
+<% end %>

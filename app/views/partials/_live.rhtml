@@ -1,0 +1,22 @@
+<div id="live_play_popup" style="display:none;position:fixed;top:25%;left:15%;margin:auto;z-index:100;">
+  <div class="round-st-border" style="margin: 0px 10px;">
+    <div class="round-border-content" style="width:800px;">
+      <img src="/images/closebutton4.png" style="float:right;width:30px;height:30px;cursor:pointer;" onclick="closeTransPopup('live_play_popup');"/>
+      <h2>Try <%= download.title %> Live!</h2>
+      <hr>
+      <div class="sp5"></div>
+      <applet code="org.microemu.applet.Main"
+              width="300" height="500"
+              archive="/mocroemulator/lib/microemu-javase-applet.jar,/<%= download.file1url %>,/mocroemulator/lib/microemu-device-large.jar">
+        <param name="midlet" value="<%= download.liveclasspath %>"/>
+        <param name="device" value="org/microemu/device/large/device.xml">
+      </applet>
+      Powered by: <a href="http://http://www.microemu.org/">microemulator</a>
+      <div class="sp20"></div>
+    </div>
+  </div>
+</div>
+
+
+
+

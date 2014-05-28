@@ -1,0 +1,253 @@
+<table style="width:100%">
+  <tr>
+    <td style="padding:0px 10px;border-right:1px solid #e0e0e0;">
+      <h1>Upload App Details</h1>
+
+
+      <center><div class="btn btn-large btn-block btn-danger" style="width:200px;" onclick="user_start_app_upload();">Start Upload</div></center>
+      <div class="sp10"></div>
+      <table style="width:100%;">
+        <tr>
+
+
+
+
+
+
+
+
+          <!-- Add details -->
+          <td style="padding:10px;width:50%;">
+
+            <div style="position:relative;">
+              <!-- info section -->
+              <div id="step-1-info" style="position:absolute;top:0px;left:0px;z-index:10;height:320px;background:#e0e0e0;padding:6px 0px;-webkit-border-radius: 20px;-moz-border-radius: 20px;border-radius: 20px;">
+                <div class="sp30"></div>
+                <center>
+                  <h1>Stap 1</h1><br>
+                    <h3>Add Details</h3>
+                    <div class="sp30"></div>
+                    Add some details about your app. Name, Category and some description about your app. This detail help others to understand your creativity.
+                 </center>
+              </div>
+
+              <div id="step-1-loading" style="display:none;width:100%;padding:5px 0px;position:absolute;top:0px;left:0px;z-index:10;height:320px;background:#e0e0e0;-webkit-border-radius: 20px;-moz-border-radius: 20px;border-radius: 20px;">
+                <center>
+                  <div class="sp50"></div>
+                  <img src="/images/v2/loading_big.gif" />
+                </center>
+              </div>
+
+
+              <div id="step-1" style="height:320px;-webkit-border-radius: 20px;-moz-border-radius: 20px;border-radius: 20px;border:1px solid #e0e0e0;padding:5px;">
+                <center><h4>1. Add Details</h4></center>
+                  <div style="padding-left:50px;">
+                    <% form_remote_tag  :url => upload_app1_url(),
+                       :loading => "Element.show('step-1-loading');",
+                       :complete => "Element.hide('step-1-loading');",
+                       :update => {:success => "js-res-container"},
+                       :html => {:id => "form_upload_app_1"} do %>
+
+                    <small>Category</small><br/>
+                    <select name="upload_category" id="u_category_id">
+                      <option value="0" selected>-- Select Category --</option>
+                      <% Download::CAT_NAMES.each do|key, value| %>
+                      <option value="<%= key %>">
+                        <%= value %>
+                      </option>
+                      <% end %>
+                    </select>
+                    <div class="sp5"></div>
+                    <small>Title</small><br/>
+                    <input type="text" name="upload_title" id="u_title" style="width:300px;" placeholder="Name of the app"/>
+                    <div class="sp5"></div>
+                    <small>Description</small><br/>
+                    <textarea name="upload_desc" id="u_desc" style="width:300px;height:70px;" placeholder="Some description to describe your app"></textarea>
+                    <div class="sp5"></div>
+                    <div class="btn btn-primary" onclick="document.getElementById('form_upload_app_1').onsubmit();">Next</div>
+                    <% end %>
+
+                  </div>
+              </div>
+          </td>
+
+
+
+
+
+
+
+
+
+
+          <!-- Upload files -->
+          <td style="padding:10px;width:50%;">
+            <div style="position:relative;">
+
+              <!-- info section -->
+              <div id="step-2-info" style="position:absolute;width:100%;top:0px;left:0px;z-index:10;height:320px;background:#e0e0e0;padding:6px 0px;-webkit-border-radius: 20px;-moz-border-radius: 20px;border-radius: 20px;">
+                <div class="sp30"></div>
+                <center>
+                  <h1>Stap 2</h1><br>
+                    <h3>Upload Executables</h3>
+                    <div class="sp30"></div>
+                    Upload executable of your app to download. Select platform and then upload.
+                </center>
+              </div>
+
+
+              <div id="step-2" style="height:320px;-webkit-border-radius: 20px;-moz-border-radius: 20px;border-radius: 20px;border:1px solid #e0e0e0;padding:5px;">
+
+                <center><h4>2. Upload Files</h4></center>
+                  <div class="sp10"></div>
+                  <table style="width:100%;height:235px;">
+                    <tr>
+                      <td style="vertical-align:top;" width="40%">
+                        <center>
+                          <small>Platform:</small>
+                          <select id="u_platform" onchange="show_user_upload_files(this.options[selectedIndex].value, '<%= upload_app2_url-%>');">
+                            <option value="0">--Please select platform--</option>
+                            <% Download::PLATFORM_NAMES.sort.each do|type, name| %>
+                            <option value="<%= type %>">
+                              <%= name %>
+                            </option>
+                            <% end %>
+                          </select>
+                        </center>
+                      </td>
+                    </tr>
+
+                    <tr id="user_upload_app_file" style="display:none;">
+                      <td style="vertical-align:top;">
+                        <%= render(:partial => "uploader", :locals => {:submit_url => upload_app2_url, :width => 370, :height => 130, :list_view => true, :div_id => "user_app_file", :oncomplete_action => "Element.show('step2-next');"}) -%>
+                      </td>
+                    </tr>
+                  </table>
+                  <div id="step2-next" onclick="Effect.SwitchOff('step-3-info');" style="display:none;margin-left:20px;" class="btn btn-primary">Next</div>
+              </div>
+            </div>
+          </td>
+        </tr>
+
+
+        <!-- Upload screenshots -->
+        <tr>
+          <td style="padding:10px;width:50%;">
+
+            <div style="position:relative;">
+              <!-- info section -->
+              <div id="step-3-info" style="position:absolute;top:0px;left:0px;z-index:10;height:320px;background:#e0e0e0;padding:6px 0px;-webkit-border-radius: 20px;-moz-border-radius: 20px;border-radius: 20px;">
+                <div class="sp30"></div>
+                <center>
+                  <h1>Stap 3</h1><br>
+                    <h3>Add Screenshots</h3>
+                    <div class="sp30"></div>
+                    Upload Screenshots of your app by dragging images from your computer to this block. Images help others to understand your application.
+                </center>
+              </div>
+
+              <div style="height:320px;-webkit-border-radius: 20px;-moz-border-radius: 20px;border-radius: 20px;border:1px solid #e0e0e0;padding:5px;">
+                <center><h4>3. Upload Screenshots</h4></center>
+                  <div class="sp10"></div>
+                  <%= render(:partial => "uploader", :locals => {:submit_url => upload_app3_url, :width => 370, :height => 225, :list_view => false, :div_id => "user_app_ss", :clear_area => false, :oncomplete_action => "Element.show('step3-next');"}) -%>
+                  <div id="step3-next" onclick="Effect.SwitchOff('step-4-info');" style="display:none;margin-left:20px;" class="btn btn-primary">Next</div>
+              </div>
+            </div>
+          </td>
+
+
+
+
+
+
+
+          <!-- Share with world -->
+          <td style="padding:10px;width:50%;">
+            <div style="position:relative;">
+              <!-- info section -->
+              <div id="step-4-info" style="position:absolute;top:0px;left:0px;z-index:10;height:320px;background:#e0e0e0;padding:6px 0px;-webkit-border-radius: 20px;-moz-border-radius: 20px;border-radius: 20px;">
+                <div class="sp30"></div>
+                <center>
+                  <h1>Stap 4</h1><br>
+                    <h3>Share with the world</h3>
+                    <div class="sp30"></div>
+                    You are done. Now share your application with outer world. Share it on Facebook, Twitter etc.
+                </center>
+              </div>
+
+
+              <div id="step-4-loading" style="display:none;width:100%;padding:5px 0px;position:absolute;top:0px;left:0px;z-index:10;height:320px;background:#e0e0e0;-webkit-border-radius: 20px;-moz-border-radius: 20px;border-radius: 20px;">
+                <center>
+                  <div class="sp50"></div>
+                  <img src="/images/v2/loading_big.gif" />
+                </center>
+              </div>
+
+
+              <div style="height:320px;-webkit-border-radius: 20px;-moz-border-radius: 20px;border-radius: 20px;border:1px solid #e0e0e0;padding:5px;">
+                <center><h4>4. Share with world</h4></center>
+                <div style="padding-left:50px;">
+                  <div class="sp30"></div>
+                  <% form_remote_tag  :url => upload_app4_url(),
+                       :loading => "Element.show('step-4-loading');",
+                       :complete => "Element.hide('step-4-loading');",
+                       :update => {:success => "upload_finish"},
+                       :html => {:id => "form_upload_app_4"} do %>
+                  <input type="hidden" name="upld_app_id" id="upld_app_id" value=""/>
+                  <table style="width:100%">
+                    <tr>
+                      <td style="width:120px"><img src="/images/v2/facebook1.png"/></td>
+                      <td style="vertical-align:middle"><input type="text" id="fb_url" name="fb_url" style="width:200px" placeholder="Facebook URL"/></td>
+                    </tr>
+                    <tr>
+                      <td style="width:120px"><img src="/images/v2/twitter1.png"/></td>
+                      <td style="vertical-align:middle"><input type="text" id="twitter_url" name="twitter_url" style="width:200px" placeholder="Twitter URL"/></td>
+                    </tr>
+                    <tr>
+                      <td style="width:120px"><img src="/images/v2/youtube1.png"/></td>
+                      <td style="vertical-align:middle"><input type="text" id="youtube_url" name="youtube_url" style="width:200px" placeholder="YouTube URL"/></td>
+                    </tr>
+                  </table>
+                  <% end %>
+                  <div class="sp20"></div>
+                  <center>
+                    <div id="step3-next" onclick="document.getElementById('form_upload_app_4').onsubmit();" class="btn btn-danger" style="width:100px;">Finish</div>
+                  </center>
+                  <div class="sp30"></div>
+                  <div id="upload_finish"></div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+
+      </table>
+
+      <div id="js-res-container"></div>
+      <div class="sp20"></div>
+      <script type="text/javascript">
+        var all_selected_files = [];
+      </script>
+      <%= render(:partial => "uploaded_files", :locals => {
+                 :title => "Apps",
+                 :files => @apps,
+                 :public_view => true,
+                 :title => "My Apps",
+                 :show_links => false,
+                 :per_page => 18
+      }) %>
+
+
+
+    </td>
+    <td style="width:300px;padding-left:20px;vertical-align:top;">
+      <%= render(:partial => "ads/ga_300x250") %>
+      <div class="sp10"></div>
+      <%= render(:partial => "device") %>
+      <div style="width:208px;position:relative;left:48px;padding:5px;">
+        <%= render(:partial => "user_bucket_list") %>
+      </div>
+    </td>
+  </tr>
+</table>
+

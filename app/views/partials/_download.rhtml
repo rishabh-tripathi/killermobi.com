@@ -1,0 +1,62 @@
+<div id="download_popup_<%= download.id %>" class="popup" style="position:absolute;left:35%;top:50px;z-index:100;display:none;">
+<div class="close_button"><a href="#" onclick="Element.hide('download_popup_<%= download.id %>');" ><img style="width:20px;height:20px;" src="/images/close_button1.png" alt="[X}"/></a></div>
+
+<h2>Thanks for Downloading!</h2>
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-3833946424381349";
+/* Ad for popup */
+google_ad_slot = "7321233609";
+google_ad_width = 468;
+google_ad_height = 60;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+<p>Click "Download" button to start downloading.</p><br>
+
+<% if(!download.file2url.nil?) %>
+<table style="float: right;">
+<tr>
+<td>
+<b>Download JAR </b>
+</td>
+<td>
+<div class="button_01_r">
+<% if(download.file1url.include?"killer_downloads")%>
+<a href="<%= give_file_url(download.title) %>">Download</a>
+<% else %>
+<a href="<%= download.file1url %>">Download</a></div>
+<% end %>
+</div>
+</td>
+</tr>
+<tr>
+<td>
+<b>Download JAD </b>
+</td>
+<td>
+<div class="button_01_r">
+<% if(download.file1url.include?"killer_downloads")%>
+<a href="<%= give_jad_url(download.title) %>">Download</a>
+<% else %>
+<a href="<%= download.file1url %>">Download</a></div>
+<% end %>
+</div>
+</td>
+</tr>
+</table>
+<% else %>
+<div class="button_01_r">
+<% if(download.file1url.include?"killer_downloads")%>
+<a href="<%= give_file_url(download.title) %>">Download</a>
+<% else %>
+<a href="<%= download.file1url %>">Download</a></div>
+<% end %>
+</div>
+<% end %>
+
+</div>
+

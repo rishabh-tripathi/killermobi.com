@@ -1,0 +1,17 @@
+<%
+  b = app
+%>
+<div id="drag_download_<%= b.id %>_<%= BucketItem::OBJ_TYPE_APP %>" name="<%= b.title %>" class="droppable-item pull-left" style="margin:0px 20px 30px 20px" onmouseover="Element.show('drag_button_<%= b.id %>');" onmouseout="Element.hide('drag_button_<%= b.id %>');" data-content="<%= b.short_description%>" rel="popover" data-original-title="<%= b.title %>">
+  <a style="cursor:pointer;text-decoration:none;" href= <%= download_show_url(b.title.tr(" ","_")) %>>
+    <img  src="<%= b.ss1_thumb %>" name="<%= b.title %>" class="img-rounded" style="border:1px solid #e0e0e0;width:70px;height:90px;" />
+    <span style="width:100%;opacity:0.0;z-index:1;position:absolute;top:0px;left:0px;height:50px;" onmouseover="" onmouseout="">
+    </span>
+  </a>
+  <span id="drag_button_<%= b.id %>" onmouseover="" style="display:none;cursor:move;width:100%;background:#E6E0CE;opacity:0.8;z-index:1;position:absolute;top:50px;left:0px;height:42px;-webkit-border-radius: 0px 0px 5px 5px;-moz-border-radius: 0px 0px 5px 5px;border-radius: 0px 0px 5px 5px;">
+    <div class="sp10"></div>
+    <center>:: Drag ::</center>
+  </span>
+</div>
+<script type="text/javascript">
+  new Draggable('drag_download_<%= b.id %>_<%= BucketItem::OBJ_TYPE_APP %>', { revert: true, scroll: window, handle: 'drag_button_<%= b.id %>'});
+</script>

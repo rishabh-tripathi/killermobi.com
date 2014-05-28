@@ -1,0 +1,23 @@
+<div class="download_section">
+<div id="download_section_top">Free Mobile Softwares @ KillerMobi</div>
+<div class="pwrd_by"><%= link_to 'Back to Free Mobile Software Home', root_path %></div>
+<div class="show_articles">
+<h2>Edit Article</h2>
+<% form_for :article,
+:url => article_url(@article),
+:html => { :method => :put } do |f| -%>
+<p>Title:<br /><%= f.text_field :title, :size => 60 %></p>
+<p>Synopsis:<br /><%= f.text_area :synopsis, :rows => 4, :cols => 60 %></p>
+<p>Body:<br /><%= f.text_area :body, :rows => 20, :cols => 60 %></p>
+<p>
+<b> Tags: </b> (separate tags with a comma) <br/>
+<%= f.text_field :tag_list, :class => 'input', :size => 55 %>
+</p>
+<p>Category:<br />
+<%= f.collection_select :category_id,
+Category.find(:all), :id, :name, :include_blank => true %></p>
+<p>Published? <%= f.check_box :published %></p>
+<%= submit_tag 'Save' %> or <%= link_to 'cancel', articles_url %>
+<% end -%>
+</div>
+</div>

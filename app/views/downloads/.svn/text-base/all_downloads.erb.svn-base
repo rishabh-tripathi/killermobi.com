@@ -1,0 +1,78 @@
+<script type="text/javascript">
+  var all_selected_files = [];
+</script>
+
+<table style="width:100%">
+  <tr>
+    <td style="padding:0px 10px;">
+      <a class="pull-right" href="<%= root_path %>">Back to <b>Free Mobile Downloads Home</b></a>
+      <h1>&nbsp;&nbsp;&nbsp;All Free Mobile Downloads</h1>
+      <div class="sp1-gr"></div>
+      <table style="width:100%">
+        <tr>
+          <td style="width:50%;padding:4px;border-right:1px solid #e0e0e0;border-bottom:1px solid #e0e0e0;">
+            <%= render(:partial => "uploaded_files", :locals => {
+                :title => "Apps",
+                :files => @apps,
+                :public_view => true
+            }) %>
+            <div class="sp10"></div>
+          </td>
+          <td style="width:50%;padding:5px;border-bottom:1px solid #e0e0e0;">
+            <%= render(:partial => "uploaded_files", :locals => {
+                :title => UploadedFile::FILE_CAT_NAMES[UploadedFile::FILE_CAT_IMAGE],
+                :files => @image,
+                :public_view => true
+            }) %>
+            <div class="sp10"></div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <div style="position:relative;width:100%;text-align:center;">
+              <div id="drag-all-section" style="display:none;width:100%">
+                <center>
+                  <div class="round-border-img-sm drag-all-button" id="drag_download_all_<%= BucketItem::OBJ_TYPE_FILE %>">
+                    <div class="sp15"></div>
+                    <h3>:: DRAG ALL ::</h3>
+                  </div>
+                  <script type="text/javascript">
+                    new Draggable('drag_download_all_<%= BucketItem::OBJ_TYPE_FILE %>', { revert: true, scroll: window});
+                  </script>
+                </center>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td style="width:50%;padding:4px;border-right:1px solid #e0e0e0;">
+            <%= render(:partial => "uploaded_files", :locals => {
+                :title => UploadedFile::FILE_CAT_NAMES[UploadedFile::FILE_CAT_MUSIC],
+                :files => @music,
+                :public_view => true
+            }) %>
+          </td>
+          <td style="width:50%;padding:5px;">
+            <%= render(:partial => "uploaded_files", :locals => {
+                :title => UploadedFile::FILE_CAT_NAMES[UploadedFile::FILE_CAT_VIDEO],
+                :files => @video,
+                :public_view => true
+            }) %>
+          </td>
+        </tr>
+      </table>
+
+    </td>
+    <td style="width:300px;vertical-align:top;">
+      <%= render(:partial => "ads/ga_300x250") %>
+      <div class="sp10"></div>
+      <%= render(:partial => "device") %>
+      <div style="width:208px;position:relative;left:48px;padding:5px;">
+        <%= render(:partial => "user_bucket_list") %>
+      </div>
+    </td>
+  </tr>
+</table>
+
+<div class="sp20"></div>
+

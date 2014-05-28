@@ -1,0 +1,19 @@
+<table style="width:100%;background:#800F45;color:white;margin:0px;padding:-5px;">
+  <tr>
+    <td width="50%" style="margin:0px;line-height:10px;font-size:10px;">
+      12%
+    </td>
+    <td width="10px">
+    </td>
+    <td width="10px">
+    </td>
+    <td width="10px">
+
+    </td>
+    <td width="20px">
+      <p style="margin:0px;padding:0px;float:right;line-height:10px;font-size:12px;">
+        <%= Time.now.to_formatted_s(:time) %>
+      </p>
+    </td>
+  </tr>
+</table>

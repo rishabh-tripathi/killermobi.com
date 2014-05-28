@@ -1,0 +1,18 @@
+<%
+  # input: reviews, avg_rating, obj_type, obj_id
+%>
+
+<div class="sp20"></div>
+<center><h3>User Reviews</h3></center>
+<%= render(:partial => "review_form", :locals => {
+  :obj_type => obj_type,
+  :obj_id => obj_id,
+  :update_div => "review_list",
+  :avg_rating => avg_rating,
+  :review_size => reviews.size,
+  :title => title
+})
+%>
+<div id="review_list">
+  <%= render(:partial => "review_list", :locals => {:no_of_reviews => 10, :reviews => reviews}) %>
+</div>

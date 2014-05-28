@@ -1,0 +1,44 @@
+<div class="download_section">
+<div id="download_section_top">Free Mobile Softwares @ KillerMobi</div>
+<div class="pwrd_by"><%= link_to 'Back to Free Mobile Software Home', index_url %></div>
+<div class="show_articles">
+
+<h1>Editing download_category</h1>
+
+<%= error_messages_for :download_category %>
+
+<% form_for(@download_category) do |f| %> 
+
+  <p>
+    <b>Category</b><br />
+    <%= f.text_field :category %>
+  </p>
+
+  <p>
+    <b>SEO Keywords</b><br />
+    <%= f.text_area :seo_keyword %>
+  </p>
+
+  <p>
+    <b>SEO Description</b><br />
+    <%= f.text_area :seo_description %>
+  </p>
+
+  <p>
+    <b>SEO page title</b><br />
+    <%= f.text_area :page_title %>
+  </p>
+
+  <p>
+    <b>URL</b><br />
+    <%= f.text_field :url %>
+  </p>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @download_category %> |
+<%= link_to 'Back', download_categories_path %>
+</div></div>

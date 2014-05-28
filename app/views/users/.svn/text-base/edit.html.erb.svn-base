@@ -1,0 +1,50 @@
+
+<div class="download_section">
+<div id="download_section_top">Free Mobile Softwares @ KillerMobi</div>
+<div class="pwrd_by"><%= link_to 'Back to Free Mobile Software Home', index_url %></div>
+<div class="show_articles">
+        <% if !@current_user.nil? %>
+        <% if(@current_user.fb_signup == 0) %>
+        <h2> Your KillerMobi account is not activated. <%= link_to 'Click Here', fb_signup_url %> to activate now. </h2>
+        <% end %>
+        <% end %>
+<h1>Edit your account</h1>
+
+<p><%= link_to 'Show my profile', user_path(@user) %></p>
+
+<%#= error_messages_for :user %>
+
+<% if @logged_in_user.fb_signup==0 && !@current_user.nil? %>
+<h3>KillerMobi User</h3>
+<p>Migrate your existing KillerMobi Account with this</p>
+<span id="ajax_fb_km_link" class="popup_link">Click here to migrate</span>
+                <%= render :partial => 'partials/fb_km_migrate' %>
+                <%= render :partial => 'partials/message_popup' %>
+<% end %>
+
+
+<% form_for :user, :url => user_url(@user), :html => { :method => :put } do |f| -%>
+        <p>Email:<br /><input id="email" name="user[email]" size="40" type="text" value="" /></p>
+        <div style="width:200px;margin-top:-45px;margin-left:260px;" id='message1'>.</div></p>
+
+<%= observe_field(:email,
+:update => "message1",
+:method => :get,
+:frequency => 0.25,
+:url => email_avail_url,
+:with=>"email",:on=>"blur" )
+%>
+
+<br>
+        <p>Password:<br /><%= f.password_field :password, :size => 60 %></p>
+        <p>Password Confirmation:<br />
+        <%= f.password_field :password_confirmation, :size => 60 %></p>
+        <p>First Name:<br /><%= f.text_field :firstname, :size => 60 %></p>
+        <p>Last Name:<br /><%= f.text_field :lastname, :size => 60 %></p>
+        <p>Country:<br /><%= f.text_field :country, :size => 60 %></p>
+        <p>Mobile Handset:<br /><%= f.text_field :handset, :size => 60 %></p>
+        <p>Mobile Number:<br /><%= f.text_field :mobile, :size => 60 %></p>
+<%= submit_tag 'Save' %>
+<% end -%>
+
+</div></div>

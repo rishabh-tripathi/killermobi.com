@@ -1,0 +1,61 @@
+<div id="upload_apps_form_view1" style="display:none">
+<% form_remote_tag  :url => user_upload_app1_url(),
+                    :loading => "Element.show('upload_apps_form_view2');document.getElementById('upload_apps_form_view2').innerHTML='';Element.show('upload_app_loading_step_1');",
+                    :complete => "Element.hide('upload_app_loading_step_1');Element.hide('upload_apps_form_view1');document.getElementById('upload_share_app_title').innerHTML='Upload executables';",
+                    :update => {:success => "upload_apps_form_view2"},
+                    :html => {:id => "form_upload_app_step_one"} do %>
+<input type="hidden" name="step" value="1"></input>
+<table>
+      <tr>
+        <td>Title:</td>
+        <td><input type="text" name="upload_title" id="u_title" size="40">
+        </td>
+      </tr>
+
+      <tr>
+        <td>Category:</td>
+        <td>
+        <select name="upload_category" id="u_category_id">
+          <% categories = DownloadCategory.find(:all)
+             for category in categories %>
+          <option value="<%= category.id %>">
+            <%= category.category%>
+          </option>
+          <% end %>
+        </select>
+        </td>
+      </tr>
+
+      <tr>
+        <td>Version:</td>
+        <td><input type="text" name="upload_version" id="u_version" size="40" value="1.0"></td>
+      </tr>
+
+      <tr>
+        <td>Caption:</td>
+        <td><input type="text" name="upload_caption" id="u_caption" size="40"></td>
+      </tr>
+
+      <tr>
+        <td>Description:</td>
+        <td> <textarea name="upload_desc" id="u_desc" rows="8" cols="31"></textarea></td>
+      </tr>
+      <tr>
+        <td>Powered by:</td>
+        <td><input type="text" name="upload_pwrd_by" id="u_pwrd_by" size="40"></td>
+      </tr>
+      <tr>
+        <td>Host Url:</td>
+        <td><input type="text" name="upload_host_url" id="u_host_url" size="40"></td>
+      </tr>
+</table>
+<span style="float:right;"><a href="javascript:void(0)" onclick="Element.hide('upload_apps_form_view1');Element.show('upload_or_share_app');">Back</a>
+&nbsp;&nbsp;<input type="submit" value="Next"></span>
+<% end %>
+<br>
+<div id="upload_app_loading_step_1" style="position:relative;top:0px;display:none">
+  <img src="/images/spinner.gif" style="width:30px;height:30px;border:none;margin:0px;"></img>
+  loading...
+</div>
+</div>
+<div id="upload_apps_form_view2"></div>

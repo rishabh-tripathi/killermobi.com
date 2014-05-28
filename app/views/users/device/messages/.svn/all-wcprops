@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/2/app/views/users/device/messages
+END
+WS_FTP.LOG
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/2/app/views/users/device/messages/WS_FTP.LOG
+END
+_user_msg_all.erb
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/2/app/views/users/device/messages/_user_msg_all.erb
+END
+_msg_write.erb
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/2/app/views/users/device/messages/_msg_write.erb
+END
+_user_msg_inbox.erb
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/2/app/views/users/device/messages/_user_msg_inbox.erb
+END
+_user_msg_draft.erb
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/2/app/views/users/device/messages/_user_msg_draft.erb
+END
+_user_msg_outbox.erb
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/2/app/views/users/device/messages/_user_msg_outbox.erb
+END

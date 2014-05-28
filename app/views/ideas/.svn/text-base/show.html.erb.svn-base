@@ -1,0 +1,31 @@
+<div class="download_section">
+<div id="download_section_top"></div>
+<div class="pwrd_by"><%= link_to 'Back to Ideas', ideas_path %></div>
+
+<h1><%= @idea.title %></h1>
+
+<br>
+<div id="link_ads_on_top">
+<script type="text/javascript"><!--
+google_ad_client = "pub-3833946424381349";
+/* 468x15, created 12/3/10 */
+google_ad_slot = "8885314131";
+google_ad_width = 468;
+google_ad_height = 15;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+
+<div class=short_description>"<%= @idea.short_description %>"</div>
+<div class="show_articles">
+<h4>Submitted By: <%= @user.firstname %>, <%= time_ago_in_words(@idea.created_at) %> ago</h4>
+    <h3>Description</h3>
+    <p><%= @idea.description %></p>
+
+    <div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#appId=163152080370507&amp;xfbml=1"></script><fb:comments xid="<%= request.url%>" numposts="100" width="695" publish_feed="true"></fb:comments>
+
+</div>
+</div>

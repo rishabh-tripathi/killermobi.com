@@ -1,0 +1,5 @@
+<script type="text/javascript">
+  document.getElementById('upld_app_id').value = <%= @dwld.id %>;
+  user_app_ss_base_url = "<%= upload_app3_url -%>"+"/<%= @dwld.id %>";
+  Effect.SwitchOff('step-2-info');
+</script>

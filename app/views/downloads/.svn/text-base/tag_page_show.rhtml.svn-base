@@ -1,0 +1,42 @@
+<div class="download_section">
+<div id="download_section_top">Free Mobile Softwares @ KillerMobi</div>
+<div class="pwrd_by"><%= link_to 'Back to Free Mobile Software Home', root_path %></div>
+
+<h1>All Free Mobile Applications</h1>
+<br>
+<div id="link_ads_on_top">
+<script type="text/javascript"><!--
+google_ad_client = "pub-3833946424381349";
+/* 468x15, created 12/3/10 */
+google_ad_slot = "8885314131";
+google_ad_width = 468;
+google_ad_height = 15;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+<br>
+<div style="margin-left:20px;">
+<%#= pluralize(@download.size,"is","are") -%>
+<%= @download.size %> App(s) found.
+<%#= pluralize(@download.size,"result","results") -%> .
+</div>
+
+<% for download in @download %>
+<!--      <span id="download_link_<%#= download.id %>" class="popup_link"> -->
+
+      <a href= <%= download_show_url(download.title.tr(" ","_")) %> >
+      <% if(!download.ss1url.nil?) %>
+                                <img src="/<%= download.ss1url.to_s %>" alt="<%= download.title %>" />
+                                <% else %>
+                                <img src="/images/noimage4.png" />
+      <% end %></a>
+
+  <% end %>
+
+
+  <div class="cleaner"></div>
+</div>
+

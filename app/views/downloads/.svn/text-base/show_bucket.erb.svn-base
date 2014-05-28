@@ -1,0 +1,183 @@
+<%
+   user = User.find(@bucket.user_id)
+%>
+<table style="width:100%">
+  <tr>
+    <td style="padding:0px 10px;vertical-align:top;">
+      <table style="width:100%">
+        <tr>
+          <td>
+            <h1><%= @bucket.name %><small>&nbsp;bucket&nbsp;by&nbsp;<%= user.firstname %></small></h1>
+          </td>
+          <td>
+            <a class="btn btn-danger pull-right" href="<%= download_bucket_url(:id => @bucket.download_id) %>">Download&nbsp;This&nbsp;Bucket</a>
+          </td>
+        </tr>
+      </table>
+
+      <table class="b-top-right" style="width:100%">
+        <td style="padding:5px 10px">
+          <% if(!@bucket.detail.nil? && !@bucket.detail.empty?) %>
+            <div class="sp5 "></div>
+            <%= @bucket.detail %>
+            <div class="sp10"></div>
+            <div class="sp1-gr"></div>
+          <% end %>
+
+          <% if(!@bucket_apps.empty?) %>
+          <center><h3 style="margin:0px;">Apps</h3></center>
+          <div class="sp1-gr"></div>
+          <% for b in @bucket_apps %>
+            <%= render(:partial => "app_thumb", :locals => {:q => b}) %>
+          <% end %>
+          <div style="clear:both;"></div>
+          <div class="sp20"></div>
+          <% else
+               if(@bucket_files.empty?)
+             %>
+            <center>
+              <table>
+                <tr>
+                  <td>
+                    <img src="/images/v2/empty_bucket.png" /><br>
+                  </td>
+                  <td>
+                    <div class="sp50"></div>
+                    <h1>Empty Bucket</h1>
+                  </td>
+                </tr>
+              </table>
+            </center>
+          <%   end
+             end %>
+
+          <% if(!@bucket_files.empty?)
+               h_files = {}
+               for f in @bucket_files
+                 if(!(h_files.has_key? f.file_cat))
+                   h_files[f.file_cat] = []
+                 end
+                 h_files[f.file_cat] << f
+               end
+               h_files.each do|file_cat, a_files|
+          %>
+             <center><h3 style="margin:0px;"><%= UploadedFile::FILE_CAT_NAMES[file_cat] %></h3></center>
+             <div class="sp1-gr"></div>
+             <% for b in a_files
+                img_path = ""
+                img_path = b.thumb_image
+                img_path = UploadedFile::FILE_CAT_DEFAULT_THUMB[b.file_cat] if(img_path.empty?)
+                h_file = {}
+                h_file[:title] = b.file_name
+                h_file[:img] = img_path
+                h_file[:url] = download_uploaded_file_url(:token => f.token)
+             %>
+               <%= render(:partial => "app_thumb", :locals => {:h => h_file}) %>
+             <% end %>
+             <div style="clear:both;"></div>
+             <div class="sp20"></div>
+          <%   end
+             end  %>
+
+
+            <%= render(:partial => "user_reviews", :locals => {
+              :obj_type => Review::OBJ_TYPE_BUCKET,
+              :obj_id => @bucket.id,
+              :reviews => @reviews,
+              :avg_rating => @avg_rating,
+              :title => @bucket.name
+             })
+            -%>
+          </td>
+        </tr>
+      </table>
+    </td>
+
+    <td style="width:300px;vertical-align:top;">
+      <%= render(:partial => "ads/ga_300x250") %>
+      <div class="sp10"></div>
+
+      <center><h4>Other Details</h4></center>
+      <table style="width:100%" class="table">
+        <tr>
+          <td><b>Name</b></td>
+          <td><%= @bucket.name %></td>
+        </tr>
+        <tr>
+          <td><b>Creater</b></td>
+          <td>
+            <% if(Util.none(user.firstname) || Util.none(user.lastname)) %>
+            <%= user.firstname %>&nbsp;<%= user.lastname %>
+            <% else %>
+            <%= user.email.split('@').first %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td><b>Download</b></td>
+          <td><h3 style="margin:0px;"><%= @bucket.download_count %></h3></td>
+        </tr>
+        <tr>
+          <td><b>Submitted at</b></td>
+          <td><%= @bucket.created_at.to_formatted_s(:short) %></td>
+        </tr>
+      </table>
+      <div class="sp1-gr"></div>
+      <div class="sp5"></div>
+      <% if(!@user_buckets.nil? && !@user_buckets.empty?) %>
+      <div style="width:208px;position:relative;left:20px;padding:5px;">
+        <h4>Buckets by <%= user.firstname %></h4>
+        <ul>
+          <%   for bucket in @user_buckets  %>
+          <li><a href="<%= show_bucket_url(:name => bucket.name.gsub(' ','-')) %>"><%= bucket.name %></a></li>
+          <%   end  %>
+        </ul>
+      </div>
+      <% end %>
+    </td>
+  </tr>
+</table>
+
+<div class="sp20"></div>
+
+<% if(false) %>
+<div class="round-st-border" style="margin: 0px 10px;">
+  <div class="round-border-content">
+    <table style="width:100%">
+      <tr>
+        <td style="width:200px;text-align:center;">
+
+        </td>
+        <td style="padding:0px 5px;">
+          <p style="padding:0px 20px;">
+          Keeping in mind the current market trends and user requirements,
+          KillerMobi has launched a vivacious web portal for free
+          mobile software and applications. Our portal is endowed with the
+          latest and most dazzling applications of your own
+          congenial  ,which can turn your phone to a SMART DEVICE by just a
+          mere single click.
+          We provide services and  free mobile applications for all platforms
+          including Symbian, Blackberry, Windows Mobile and Java.
+          </p>
+          <div class="sp20"></div>
+          <div style="text-align:center;">
+            <%= render(:partial => "ads/ga_728x90") %>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+<% end %>
+
+
+
+
+
+
+
+
+<div class="sp100"></div>
+
+
+

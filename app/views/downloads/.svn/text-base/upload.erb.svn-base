@@ -1,0 +1,92 @@
+<% if(logged_in_user.user_detail.dropbox_session.nil? || logged_in_user.user_detail.dropbox_session.empty?) %>
+  <%= render(:partial => "add_cloud_space") %>
+  <script type="text/javascript">
+    openTransPopup("add_cloud_space");
+  </script>
+<% end %>
+
+<script type="text/javascript">
+  var all_selected_files = [];
+</script>
+
+<table style="width:100%">
+  <tr>
+    <td style="padding:0px 10px;vertical-align:top;">
+      <h1>Upload your collection</h1>
+      <div class="sp10"></div>
+      <div class="round-st-border">
+        <div class="round-border-content">
+          <%= render(:partial => "uploader", :locals => {:submit_url => upload_file_url}) -%>
+        </div>
+      </div>
+      <div class="sp20"></div>
+      <!-- section refresh form -->
+      <% UploadedFile::FILE_CAT_NAMES.each do |key, value| %>
+        <% form_remote_tag  :url => refresh_section_url(:id => key),
+                      :loading => "Element.show('loading_sec_#{ value.downcase.tr(' ','_') }');",
+                      :complete => "Element.hide('loading_sec_#{ value.downcase.tr(' ','_') }');",
+                      :update => {:success => "content_sec_#{ value.downcase.tr(' ','_') }"},
+                      :html => {:id => "form_refresh_#{ value.downcase.tr(' ','_') }_section"} do %>
+        <% end %>
+      <% end %>
+      <table style="width:100%">
+        <tr>
+          <td style="width:50%;padding:4px;border-right:1px solid #e0e0e0;border-bottom:1px solid #e0e0e0;">
+            <%= render(:partial => "uploaded_files", :locals => {
+                :title => UploadedFile::FILE_CAT_NAMES[UploadedFile::FILE_CAT_IMAGE],
+                :files => @image
+            }) %>
+            <div class="sp10"></div>
+          </td>
+          <td style="width:50%;padding:5px;border-bottom:1px solid #e0e0e0;">
+            <%= render(:partial => "uploaded_files", :locals => {
+                :title => UploadedFile::FILE_CAT_NAMES[UploadedFile::FILE_CAT_MUSIC],
+                :files => @music
+            }) %>
+            <div class="sp10"></div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" id="drag-all-section" style="display:none;">
+            <center>
+              <div class="round-border-img-sm drag-all-button" id="drag_download_all_<%= BucketItem::OBJ_TYPE_FILE %>">
+                <div class="sp15"></div>
+                <h3>:: DRAG ALL ::</h3>
+              </div>
+              <script type="text/javascript">
+                new Draggable('drag_download_all_<%= BucketItem::OBJ_TYPE_FILE %>', { revert: true, scroll: window});
+              </script>
+            </center>
+          </td>
+        </tr>
+        <tr>
+          <td style="width:50%;padding:4px;border-right:1px solid #e0e0e0;">
+            <%= render(:partial => "uploaded_files", :locals => {
+                :title => UploadedFile::FILE_CAT_NAMES[UploadedFile::FILE_CAT_VIDEO],
+                :files => @video
+            }) %>
+          </td>
+          <td style="width:50%;padding:5px;">
+            <%= render(:partial => "uploaded_files", :locals => {
+                :title => UploadedFile::FILE_CAT_NAMES[UploadedFile::FILE_CAT_FILES],
+                :files => @other_file
+            }) %>
+          </td>
+        </tr>
+      </table>
+    </td>
+    <td style="width:300px;">
+       <h4>
+         <div class="sp10"></div>
+         <%= render(:partial => "user_default_storage") %>
+       </h4>
+       <hr/>
+       <%= render(:partial => "ads/ga_300x250") %>
+       <div class="sp30"></div>
+       <%= render(:partial => "device", :locals => {:type => BucketItem::OBJ_TYPE_FILE}) %>
+       <div style="width:208px;position:relative;left:48px;padding:5px;">
+         <%= render(:partial => "user_bucket_list") %>
+       </div>
+    </td>
+  </tr>
+</table>

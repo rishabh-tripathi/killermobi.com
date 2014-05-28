@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/5/app/controllers/mobile
+END
+base_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/2/app/controllers/mobile/base_controller.rb
+END
+downloads_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/2/app/controllers/mobile/downloads_controller.rb
+END

@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/2/app/views/mobile/downloads
+END
+options.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/2/app/views/mobile/downloads/options.rhtml
+END
+WS_FTP.LOG
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/2/app/views/mobile/downloads/WS_FTP.LOG
+END
+screenshots.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/2/app/views/mobile/downloads/screenshots.rhtml
+END
+show.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/2/app/views/mobile/downloads/show.rhtml
+END
+index.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/2/app/views/mobile/downloads/index.rhtml
+END

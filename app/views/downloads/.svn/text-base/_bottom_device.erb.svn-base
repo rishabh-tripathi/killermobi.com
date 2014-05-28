@@ -1,0 +1,14 @@
+<div id="bottom-device-link" class="device-bottom-sm" onclick="Element.show('bottom-device');Element.hide('bottom-device-link');">
+  <center><h4 style="margin:0px;">
+    <% if(!@bucket.nil?) %>
+      Bucket:&nbsp;<%= @bucket.name %>
+    <% else %>
+      Create new bucket
+    <% end %>
+  </h4></center>
+</div>
+
+<div id="bottom-device" class="device-bottom" style="display:none;">
+  <img src="/images/closebutton4.png" style="float:right;margin-right:-15px;margin-top:-15px;cursor:pointer;width:30px;height:30px;" onclick="Element.hide('bottom-device');Element.show('bottom-device-link');" />
+  <%= render(:partial => "device") %>
+</div>

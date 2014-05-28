@@ -1,0 +1,15 @@
+<% form_remote_tag  :url => change_default_storage_url,
+:loading => "Element.show('loading_change_default_storage');",
+:complete => "Element.hide('loading_change_default_storage');",
+:update => {:success => "change_default_storage"},
+:html => {:id => "form_change_default_storage"} do %>
+<span id="change_default_storage">
+  <img id="loading_change_default_storage" src="/images/v2/loading.gif" style="display:none;width:20px;height:20px;" />
+  Default Storage:<div class="sp5"></div>
+  <select name="default_storage" onchange="document.getElementById('form_change_default_storage').onsubmit();">
+    <% UploadedFile::STORAGE_NAMES.each do|key,value| %>
+    <option value="<%= key %>" <%= "selected" if(logged_in_user.default_storage == key) -%>><%= value %></option>
+    <% end %>
+    </select>
+</span>
+<% end %>

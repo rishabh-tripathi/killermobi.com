@@ -1,0 +1,63 @@
+<% if(!logged_in_user.nil?) %>
+<center><h4>Have you tried <%= title %>? Please write a review,</h4></center>
+<div class="sp1-gr"></div>
+<% form_remote_tag  :url => submit_review_url,
+                    :loading => "Element.show('write_review_loading');",
+                    :complete => "closeTransPopup('write_review_loading');#{after_save_action}",
+                    :update => {:success => update_div},
+                    :html => {:id => "form_submit_review"} do %>
+
+  <input type="hidden" id="review_rating" name="review[rating]" value="0"/>
+  <input type="hidden" name="review[obj_type]" value="<%= obj_type %>"/>
+  <input type="hidden" name="review[obj_id]" value="<%= obj_id %>"/>
+  <input type="hidden" name="review[user_id]" value="<%= logged_in_user.id %>"/>
+  <center>
+    <table>
+      <tr>
+        <td style="padding:5px;vertical-align:top;">Title:</td>
+        <td style="padding:5px;"><input style="width:420px;" type="text" name="review[title]"/></td>
+      </tr>
+      <tr>
+        <td style="padding:5px;vertical-align:top;">Review:</td>
+        <td style="padding:5px;"><textarea style="width:420px;" name="review[review]" rows="5" cols="50"></textarea></td>
+      </tr>
+      <tr>
+        <td style="padding:5px;vertical-align:top;">Rating:</td>
+        <td style="padding:5px;">
+          <% for x in 0..5 %>
+          <img id="w_rate_<%= x %>" class="rate-star" src="/images/v2/star_sm_b.png" style="<%= 'opacity:0;' if(x==0) %>" onmouseover="change_rating(<%= x %>, 'w_rate_');" onclick="document.getElementById('review_rating').value=<%= x %>;" />
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td style="padding:10px 5px;">
+          <input type="button" class="btn btn-danger" value="Submit" onclick="document.getElementById('form_submit_review').onsubmit();"/>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td style="padding:5px;text-align:center;"><span id="write_review_loading" style="display:none;">Saving...</span></td>
+      </tr>
+    </table>
+  </center>
+  <% end %>
+
+  <% else %>
+  <h2>Login to write review</h2>
+  <table style="width:100%">
+    <tr>
+      <td></td>
+      <td style="border-right:1px dotted #800f45;float:right;padding-right:20px;">
+        <center><h2>KillerMobi account</h2></center>
+        <%= render :partial => "sessions/login_form" %>
+      </td>
+      <td style="padding-left:20px;">
+        <center><h2>Social accounts</h2></center>
+        <%= render(:partial => "partials/social_login_links") %>
+      </td>
+      <td></td>
+    </tr>
+  </table>
+  <% end %>
+

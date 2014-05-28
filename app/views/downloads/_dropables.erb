@@ -1,0 +1,119 @@
+<div id="device_droppable" style="height:375px;overflow:auto;overflow-x:hidden;padding:5px;">
+  <center><h4>Bucket: <%= bucket.name %></h4></center>
+  <ul id="drop-list">
+    <% if((defined? bucket_item) && !bucket_item.nil? && !bucket_item.empty?)
+         for item in bucket_item
+    %>
+       <li id="dropItem<%= item.obj_id %>"><%= truncate(item.item_name, :length => 20, :omission => '...') %>&nbsp;&nbsp;<a onclick="removeBucketItem(<%= item.obj_id %>);" href="javascript:void(0)" class="close">&times;</a></li>
+    <%   end
+       end
+    %>
+  </ul>
+</div>
+<div style="width:100%;">
+  <img id="bucket_sm_loading" src="/images/v2/loading.gif" style="display:none;margin-left:5px;width:20px;height:20px;"/><span id="bucket_item_status_msg"></span>
+  <div class="btn btn-danger" style="float:right;padding:2px 15px;margin:0px 5px 5px 0px;" onclick="submitBucketDone();">Done</div>
+  <a href="javascript:void(0);" style="float:right;margin-right:10px;margin-top:3px;" onclick="document.getElementById('form_reset_bucket').onsubmit();">Reset</a>
+</div>
+
+<% form_remote_tag  :url => add_bucket_item_url,
+                    :loading => "Element.show('bucket_sm_loading');",
+                    :complete => "Element.hide('bucket_sm_loading');",
+                    :update => {:success => "bucket_item_status_msg"},
+                    :html => {:id => "form_add_bucket_item"} do %>
+<input type="hidden" value="<%= bucket.id %>" name="bucket" />
+<input type="hidden" id="itemID" name="item_id" value="" />
+<input type="hidden" id="itemOBJ" name="item_type" value="<%= type %>" />
+<% end %>
+
+<% form_remote_tag  :url => remove_bucket_item_url,
+                    :loading => "Element.show('bucket_sm_loading');",
+                    :complete => "Element.hide('bucket_sm_loading');",
+                    :update => {:success => "bucket_item_status_msg"},
+                    :html => {:id => "form_remove_bucket_item"} do %>
+<input type="hidden" value="<%= bucket.id %>" name="bucket" />
+<input type="hidden" id="remItemID" name="item_id" value="" />
+<% end %>
+
+<% form_remote_tag  :url => prepare_bucket_url,
+                    :loading => "Element.show('create_bucket_loading_section');",
+                    :complete => "Element.hide('create_bucket_loading_section');",
+                    :update => {:success => "dropable_container"},
+                    :html => {:id => "form_prepare_bucket"} do %>
+<input type="hidden" value="<%= bucket.id %>" name="bucket" />
+<% end %>
+
+<% form_remote_tag  :url => reset_bucket_url,
+                    :loading => "Element.show('create_bucket_loading_section');",
+                    :complete => "Element.hide('create_bucket_loading_section');",
+                    :update => {:success => "dropable_container"},
+                    :html => {:id => "form_reset_bucket"} do %>
+<input type="hidden" value="<%= bucket.id %>" name="bucket" />
+<% end %>
+
+<script type="text/javascript">
+  Droppables.add('device_droppable', {
+    accept: 'droppable-item',
+    hoverclass: 'drop-hover',
+    onDrop: function(element) {
+    var tempId = element.id.gsub('drag_download_','').split('_');
+    var temp_elementId = tempId[0];
+    var obj_type = tempId[1];
+
+    if(temp_elementId == "all") {
+      element_ids = all_selected_files;
+      Element.hide('drag-all-section');
+      all_selected_files = [];
+    }
+    else {
+      element_ids = [temp_elementId];
+    }
+
+    for(i=0;i<element_ids.length;i++) {
+      eleId = element_ids[i];
+      if(temp_elementId == "all") {
+        tId = element_ids[i].split('-');
+        eleId = tId[0];
+        obj_type = tId[1];
+      }
+      elementId = 'drag_download_'+eleId+'_'+obj_type;
+      Element.hide(elementId);
+      obj = obj_type
+      dropList = document.getElementById('drop-list');
+      newDrop = document.createElement('li');
+      newDrop.id = "dropItem"+element_ids[i];
+      file_name = document.getElementById(elementId).getAttribute('name').substring(0,20);
+      if(document.getElementById(elementId).getAttribute('name').length > 20) {
+        file_name += '...'
+      }
+      newDrop.innerHTML = file_name;
+      newDrop.innerHTML += "&nbsp;&nbsp;<a href='javascript:void(0)' onclick='removeBucketItem("+element_ids[i]+","+obj+");' class='close'>&times;</a>"
+      dropList.appendChild(newDrop);
+      document.getElementById('itemID').value = element_ids[i];
+      document.getElementById('itemOBJ').value = obj_type;
+      document.getElementById('form_add_bucket_item').onsubmit();
+    }
+  }
+  });
+
+    <% if((defined? bucket_item) && !bucket_item.nil? && !bucket_item.empty?)
+         for item in bucket_item
+    %>
+          if(document.getElementById('drag_download_<%= item.obj_id %>_<%= item.obj_type %>') != null)
+            Element.hide('drag_download_<%= item.obj_id %>_<%= item.obj_type %>');
+    <%   end
+       end
+    %>
+
+    <% if((defined? removed_bucket_item) && !removed_bucket_item.nil? && !removed_bucket_item.empty?)
+         for item in removed_bucket_item
+           item_id = item.split("-").first
+           item_type = item.split("-").last
+    %>
+          if(document.getElementById('drag_download_<%= item_id %>_<%= item_type %>') != null)
+            Element.show('drag_download_<%= item_id %>_<%= item_type %>');
+    <%   end
+       end
+    %>
+
+</script>

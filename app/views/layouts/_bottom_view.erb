@@ -1,0 +1,47 @@
+<div id="wrap">
+  <div class="sp50"></div>
+  Catch us on<br/>
+  <!-- Facebook Badge START -->
+  <a href="http://www.facebook.com/pages/KillerMobi/145620182125991" target="_TOP" style="font-family: &quot;lucida grande&quot;,tahoma,verdana,arial,sans-serif; font-size: 11px; font-variant: normal; font-style: normal; font-weight: normal; color: #3B5998; text-decoration: none;" title="KillerMobi"><img src="/images/fblogo.png" /></a>&nbsp;&nbsp;
+  <a href="http://twitter.com/killermobi"><img src="/images/twitterlogo.png" /></a>&nbsp;&nbsp;
+  <a href="http://www.orkut.co.in/Main#Community?cmm=105617389"><img src="/images/orkutlogo.png" /></a>
+</div>
+<div class="sp10"></div>
+<div id="footer-tp"></div>
+<div id="footer">
+  <div id="km_footer">
+    <ul class="footer_menu" style="margin:0px;">
+      <li><a href="http://www.killermobi.com">Home</a></li>
+      <li><a href="<%= download_url %>">Downloads</a></li>
+      <!-- <li><a href="<%#= advertise_url %>">Advertisers</a></li> -->
+      <li><a href="http://killermobi.blogspot.com/">Blog</a></li>
+      <li><a href="<%= about_url %>">About</a></li>
+      <li><a href="<%= link_url %>">Partner</a></li>
+      <li><a href="<%= contact_url %>">Contact</a></li>
+      <li><a href="<%= policy_url %>">Private Policy</a></li>
+      <li class="last_menu"><a href="http://killermobi.com/sitemap.xml">Sitemap</a></li>
+      <li class="last_menu pull-right">Copyright © 2012 <a href="http://www.killermobi.com">KillerMobi.com</a></li>
+    </ul>
+  </div>
+
+  <% if @wapsite %>
+  <p> View version: <b>Regular</b>|<a href="<%= wap_home_url %>">Mobile</a> </p>
+  <% end %>
+  
+</div>
+
+<% if RAILS_ENV == 'production' && false %>
+<!-- twitter follow badge by go2web20 -->
+<script src='http://www.go2web20.net/twitterfollowbadge/1.0/badge.js' type='text/javascript'></script><script type='text/javascript' charset='utf-8'><!--
+tfb.account = 'killermobi';
+tfb.label = 'follow';
+tfb.color = '#800F45';
+tfb.side = 'r';
+tfb.top = 250;
+tfb.showbadge();
+--></script>
+<!-- end of twitter follow badge -->
+<% end %>
+
+<!-- Place this tag in your head or just before your close body tag -->
+<script type="text/javascript" src="http://apis.google.com/js/plusone.js"></script>

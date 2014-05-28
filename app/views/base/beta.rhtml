@@ -1,0 +1,68 @@
+<div class="download_section">
+<div id="download_section_top">Beta apps @ KillerMobi</div>
+<div class="pwrd_by"><%= link_to 'Back to Free Mobile Software Home', root_path %></div>
+<div class="show_articles">
+
+<h1>Must See India</h1>
+<br>
+<div id="link_ads_on_top">
+<script type="text/javascript"><!--
+google_ad_client = "pub-3833946424381349";
+/* 468x15, created 12/3/10 */
+google_ad_slot = "8885314131";
+google_ad_width = 468;
+google_ad_height = 15;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+<br>
+
+<table>
+<tr>
+<td>
+<p>
+Must See India is Online Travel Guide for your mobile. Must See India provide information about cities and attraction in India. It is a mobile client of Must See India.
+Check out <a href="http://www.mustseeindia.com">Must See India</a> for more detail.
+<br>
+<b>KillerMobi Team</b>
+</p>
+<h3>Add Comment</h3>
+<% form_for(@beta_comment) do |f| %>
+<%= hidden_field_tag 'app','Must See India' %>
+  <p>
+    <b>Name</b><br />
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <b>Email</b><br />
+    <%= f.text_field :email %>
+  </p>
+
+  <p>
+    <b>Comments</b><br />
+    <%= f.text_area :review, :rows => 3,
+                :cols => 24%>
+  </p>
+
+  <p>
+    <%= f.submit "Submit" %>
+  </p>
+<% end %>
+</td>
+<td>
+<h3>Live Demo</h3>
+<applet code="org.microemu.applet.Main"
+                        width="300" height="500"
+                        archive="/mocroemulator/lib/microemu-javase-applet.jar,/beta_apps/MustSeeIndia.jar,/mocroemulator/lib/microemu-device-large.jar">
+            <param name="midlet" value="com.killermobi.msi.Home"/>
+                        <param name="device" value="org/microemu/device/large/device.xml">
+</applet>
+</td>
+</tr>
+</table>
+
+</div>

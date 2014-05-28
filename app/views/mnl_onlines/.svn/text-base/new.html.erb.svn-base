@@ -1,0 +1,26 @@
+<h1>New mnl_online</h1>
+
+<%= error_messages_for :mnl_online %>
+
+<% form_for(@mnl_online) do |f| %>
+  <p>
+    <b>Code</b><br />
+    <%= f.text_field :code %>
+  </p>
+
+  <p>
+    <b>Detail</b><br />
+    <%= f.text_field :detail %>
+  </p>
+
+  <p>
+    <b>Mode</b><br />
+    <%= f.text_field :mode %>
+  </p>
+
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', mnl_onlines_path %>

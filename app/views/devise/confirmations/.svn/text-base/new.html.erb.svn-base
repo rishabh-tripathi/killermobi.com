@@ -1,0 +1,35 @@
+<div class="download_section">
+  <div id="download_section_top">Resend confirmation instructions</div>
+  <div class="pwrd_by"><%= link_to 'Back to Free Mobile Software Home', root_path %></div>
+
+  <br>
+    <div id="link_ads_on_top">
+      <script type="text/javascript"><!--
+      google_ad_client = "pub-3833946424381349";
+      /* 468x15, created 12/3/10 */
+      google_ad_slot = "8885314131";
+      google_ad_width = 468;
+      google_ad_height = 15;
+      //-->
+      </script>
+      <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+      </script>
+    </div>
+    <br>
+      <div class="show_articles">
+        <br/>
+        <div style="position:relative;left:180px;width:220px;background:#e6e0ce;padding:10px 80px;">
+
+          <%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f| %>
+          <%= devise_error_messages! %>
+
+          <div><%= f.label :email %><br />
+            <%= f.email_field :email %></div>
+
+          <div><%= f.submit "Resend confirmation instructions" %></div>
+          <% end %>
+
+          <%= render :partial => "devise/shared/links" %>
+        </div>
+      </div>
+</div>

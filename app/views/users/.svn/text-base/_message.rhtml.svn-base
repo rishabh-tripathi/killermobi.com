@@ -1,0 +1,14 @@
+<table style="margin-bottom:-20px;">
+<tr>
+<td>
+<% if @avail %>
+<img style="width:20px;height:20px;border:none;" src="/images/right.jpg"/>
+<% else %>
+<img style="width:20px;height:20px;border:none;" src="/images/wrong.jpg"/>
+<% end %>
+</td>
+<td style="padding-top:0px;">
+<%= @message %>
+</td>
+</tr>
+</table>

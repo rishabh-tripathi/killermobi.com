@@ -1,0 +1,26 @@
+<div class="sp50"></div>
+
+<% form_remote_tag  :url => create_bucket_url,
+                    :loading => "Element.show('create_bucket_loading_section');",
+                    :complete => "Element.hide('create_bucket_loading_section');",
+                    :update => {:success => "dropable_container"},
+                    :html => {:id => "form_create_empty_bucket"} do %>
+<center>
+  <h3>Name for your bucket</h3>
+  <input type="text" id="usr_bkt_name" name="bucket_name" placeholder="Enter name for bucket" style="width:150px;" />
+  <span id="no_bkt_name" style="display:none;color:red;"><br>Please specified a name for your bucket!</span>
+  <div class="sp10"></div>
+  <input type="button" class="btn btn-danger" onclick="if(document.getElementById('usr_bkt_name').value != ''){document.getElementById('form_create_empty_bucket').onsubmit();}else{Element.show(no_bkt_name);}" value="Create" />
+</center>
+<% end %>
+
+<script type="text/javascript">
+  <% if((defined? removed_bucket_item) && !removed_bucket_item.nil? && !removed_bucket_item.empty?)
+       for item in removed_bucket_item
+  %>
+        if(document.getElementById('drag_download_<%= item %>') != null)
+          Element.show('drag_download_<%= item %>');
+  <%   end
+     end
+  %>
+</script>

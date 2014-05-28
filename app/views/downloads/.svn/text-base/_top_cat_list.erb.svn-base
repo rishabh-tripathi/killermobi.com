@@ -1,0 +1,40 @@
+<%
+  style_str = "border: 1px solid #e0e0e0;"
+%>
+<table style="width:100%">
+  <tr>
+    <td style="width:10px">&nbsp;</td>
+    <td style="text-align:center;">
+      <div style="width:60px;">
+        <%
+           url = download_url
+        %>
+        <img src="/images/v2/cat-icon/new.png" class="img-rounded apps-cat-top" style="<%= style_str if(sel == 'all') %>" onmouseover="tooltip.show('New apps');" onmouseout="tooltip.hide();" onclick="window.open('<%= url %>','_self');" />        
+        <div class="sp2"></div>
+        <% if(sel == "all") %>
+          <div style="color:#e0e0e0;font-size:20px;line-height:20px;margin:-5px 0px -4px 0px;">&nbsp;</div>
+	<% else %>
+  	  <div style="color:#e0e0e0;font-size:20px;line-height:20px;margin:-5px 0px -4px 0px;">&nbsp;</div>
+        <% end %>
+      </div>
+    </td>
+    <% Download::CAT_NAMES.sort.each do|cat, name| %>
+    <td style="text-align:center;">
+      <div style="width:60px;">
+        <%
+           url = category_url(:category => name.gsub(' ','_'))
+           url = platform_url(:type => Download::PLATFORM_NAMES[@platform].gsub(' ','_'), :p_category => name.gsub(' ','_')) if(!@platform.nil?)
+        %>
+          <img src="/images/v2/cat-icon/<%= name.downcase.gsub(' ','_') -%>.png" class="img-rounded apps-cat-top" style="<%= style_str if(sel == name) %>" onmouseover="tooltip.show('<%= name %>');" onmouseout="tooltip.hide();" onclick="window.open('<%= url %>','_self');" />        
+        <div class="sp2"></div>
+        <% if(sel == name) %>
+          <div style="color:#e0e0e0;font-size:20px;line-height:20px;margin:-5px 0px -4px 0px;">▲</div>
+	<% else %>  
+	  <div style="color:#e0e0e0;font-size:20px;line-height:20px;margin:-5px 0px -4px 0px;">&nbsp;</div>
+        <% end %>
+      </div>
+    </td>
+    <% end %>
+  </tr>
+</table>
+

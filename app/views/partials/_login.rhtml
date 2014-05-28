@@ -1,0 +1,36 @@
+<div style="padding:10px;">
+  <center><h3 style="margin:5px;">Connect with KillerMobi</h3></center>
+  <div class="sp1-gr"></div>
+  <%= render(:partial => "partials/social_login_links") %>
+  <div class="sp5"></div>
+  <table id="user_login_form" style="width:240px;background: #e0e0e0;-webkit-border-radius: 12px;-moz-border-radius: 10px;border-radius: 10px;">
+    <tr>
+      <td style="padding:10px;float:center;">
+        <div style="width:250px;float:center;">
+          <%= render(:partial => "sessions/login_form") %>
+          <a style="padding:0px;" href="<%= new_password_path(resource_name) %>">Forgot your password?</a>
+        </div>
+      </td>
+    </tr>
+  </table>
+
+  <table id="user_signup_form" style="display:none;width:240px;background: #e0e0e0;-webkit-border-radius: 12px;-moz-border-radius: 10px;border-radius: 10px;">
+    <tr>
+      <td style="padding:10px;float:center;">
+        <div style="width:250px;float:center;">
+          <%= render(:partial => "registrations/signup_form") %>
+        </div>
+      </td>
+    </tr>
+  </table>
+
+  <div id="signup_link" style="width:270px;background:#e0e0e0;-webkit-border-radius: 10px;-moz-border-radius: 10px;border-radius: 10px;text-align:center;margin-top:5px;">
+    <a href="javascript:void(0);" onclick="Element.hide('user_login_form');Element.hide('signup_link');Element.show('user_signup_form');Element.show('login_link');">Create new account</a>
+  </div>
+
+  <div id="login_link" style="display:none;width:270px;background:#e0e0e0;-webkit-border-radius: 10px;-moz-border-radius: 10px;border-radius: 10px;text-align:center;margin-top:5px;">
+    <a href="javascript:void(0);" onclick="Element.hide('user_signup_form');Element.hide('login_link');Element.show('user_login_form');Element.show('signup_link');">Login to your account</a>
+  </div>
+</div>
+
+

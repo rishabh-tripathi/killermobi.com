@@ -1,0 +1,6 @@
+2011.12.02 09:17 B C:\InstantRails\rails_apps\killermobi\db\migrate\20111118142157_add_devise_to_users.rb --> jubilee.dreamhost.com /killermobi.com/new app/db/migrate 20111118142157_add_devise_to_users.rb
+2011.12.02 09:17 B C:\InstantRails\rails_apps\killermobi\db\migrate\20111121091407_create_authentications.rb --> jubilee.dreamhost.com /killermobi.com/new app/db/migrate 20111121091407_create_authentications.rb
+2012.04.10 02:29 B C:\InstantRails\rails_apps\killermobi\db\migrate\20120225141038_create_images.rb --> jubilee.dreamhost.com /killermobi.com/db/migrate 20120225141038_create_images.rb
+2012.04.10 02:29 B C:\InstantRails\rails_apps\killermobi\db\migrate\20120306202949_create_buckets.rb --> jubilee.dreamhost.com /killermobi.com/db/migrate 20120306202949_create_buckets.rb
+2012.04.10 02:29 B C:\InstantRails\rails_apps\killermobi\db\migrate\20120310122909_create_bucket_items.rb --> jubilee.dreamhost.com /killermobi.com/db/migrate 20120310122909_create_bucket_items.rb
+2012.04.10 02:29 B C:\InstantRails\rails_apps\killermobi\db\migrate\20120405201829_create_reviews.rb --> jubilee.dreamhost.com /killermobi.com/db/migrate 20120405201829_create_reviews.rb

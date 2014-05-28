@@ -1,0 +1,110 @@
+<%
+   section_id = "sec_#{title.downcase.tr(' ','_')}"
+   view_user = true
+   view_user = !public_view if(defined? public_view)
+   per_page = nil if(!(defined? per_page))
+   show_contribute_link = true if(!(defined? show_links))
+%>
+<script text="text/javascript">
+  var itemID<%= section_id %> = new Array();
+</script>
+
+<div style="position:relative;line-height:25px;color:#800f45;background:#ffffff;">
+  <h3 style="color:#666666;margin:0px;">&nbsp;&nbsp;&nbsp;<%= title %>
+    <small>
+  <%
+   if(Util.none(files))
+     if(files.first.class == Download)
+       item_obj_type = BucketItem::OBJ_TYPE_APP
+     else
+       item_obj_type = BucketItem::OBJ_TYPE_FILE
+     end
+  %>
+  <% if(logged_in_user) %>
+  <span class="tiny3">
+    &nbsp;
+    Select:&nbsp;
+    <a href="javascript:void(0);" style="color:#666666;" onclick="checkAllFiles(itemID<%= section_id %>, <%= item_obj_type %>);">All</a>&nbsp;|
+    <a href="javascript:void(0);" style="color:#666666;" onclick="checkNoneFiles(itemID<%= section_id %>, <%= item_obj_type %>);">None</a>
+  </span>
+  <% end %>
+<% end %>
+
+<% if(view_user)
+#####################################################################################################
+%>
+  <span style="padding:0px 0px 0px 15px;">
+    <a href="javascript:void(0);" onclick="access_loading_div_<%= section_id -%>='loading_<%= section_id %>';access_container_<%= section_id -%>='content_<%= section_id -%>';changeFileAccessAll(itemID<%= section_id %>,<%= UploadedFile::ACCESS_PRIVATE -%>,'<%= section_id %>');">
+      <img src="/images/v2/sm_protected.png" />
+    </a>&nbsp;
+
+    <a href="javascript:void(0);" onclick="access_loading_div_<%= section_id -%>='loading_<%= section_id %>';access_container_<%= section_id -%>='content_<%= section_id -%>';changeFileAccessAll(itemID<%= section_id %>,<%= UploadedFile::ACCESS_PUBLIC -%>,'<%= section_id %>');">
+      <img src="/images/v2/sm_public.png" />
+    </a>&nbsp;&nbsp;
+
+    <a href="javascript:void(0);" onclick="remove_loading_div_<%= section_id -%>='loading_<%= section_id %>';remove_container_<%= section_id -%>='content_<%= section_id -%>';removeFileAll(itemID<%= section_id %>,'<%= section_id %>');">
+      <img src="/images/v2/delete_all.gif" style="cursor:pointer;width:16px;height:16px;"/>
+    </a>
+  </span>
+    </small>
+  </h3>
+
+  <!-- will remove this div if unused -->
+  <div id="loading_<%= section_id %>" class="round-border-content-2" style="height:86%;width:95%;position:absolute;z-index:20;background:#e0e0e0;opacity:0.8;display:none;">
+    <div class="sp50"></div>
+    <center><img src="/images/v2/loading_big.gif" alt="loading" title="loading" /></center>
+  </div>
+
+
+    <% if(!files.nil? && !files.empty?) %>
+
+    <% form_remote_tag  :url => change_access_url(:type => UploadedFile::FILE_CAT_NAMES[files.first.file_cat].downcase.gsub(' ','_')),
+                    :loading => "Element.show(access_loading_div_#{section_id});",
+                    :complete => "Element.hide(access_loading_div_#{section_id});document.getElementById(access_container_#{ section_id }).innerHTML=document.getElementById('access_temp_#{ section_id }').innerHTML;document.getElementById('access_temp_#{ section_id }').innerHTML='';",
+                    :update => {:success => "access_temp_#{ section_id }"},
+                    :html => {:id => "form_change_access_#{ section_id }"} do %>
+      <input type="hidden" name="file_id" id="change_access_file_id_<%= section_id -%>" value=""/>
+      <input type="hidden" name="access_action" id="change_access_action_<%= section_id -%>" value="0"/>
+    <% end %>
+    <div id="access_temp_<%= section_id %>" style="display:none;"></div>
+
+    <% form_remote_tag  :url => remove_uploaded_file_url(:type => UploadedFile::FILE_CAT_NAMES[files.first.file_cat].downcase.gsub(' ','_')),
+                    :loading => "Element.show(remove_loading_div_#{section_id});",
+                    :complete => "Element.hide(remove_loading_div_#{section_id});document.getElementById(remove_container_#{ section_id }).innerHTML=document.getElementById('remove_temp_#{ section_id }').innerHTML;document.getElementById('remove_temp_#{ section_id }').innerHTML='';if(remove_drag_#{ section_id } > 0){document.getElementById(remove_drag_#{ section_id }).remove();}",
+                    :update => {:success => "remove_temp_#{ section_id }"},
+                    :html => {:id => "form_remove_file_#{ section_id }"} do %>
+      <input type="hidden" name="file_id" id="remove_file_id_<%= section_id -%>" value=""/>
+    <% end %>
+    <div id="remove_temp_<%= section_id %>" style="display:none;"></div>
+
+    <script text="text/javascript">
+      remove_loading_div_<%= section_id -%> = "";
+      remove_container_<%= section_id -%> = "";
+      remove_drag_<%= section_id -%> = "";
+
+      access_loading_div_<%= section_id -%> = "";
+      access_container_<%= section_id -%> = "";
+    </script>
+    <% end %>
+
+<% end
+##############################################################################################
+%>
+
+    <% if(!files.nil? && !files.empty?) %>
+    <div id="content_<%= section_id -%>" style="<% if(!view_user)%>min-height:500px;<% else %>min-height:340px;<% end %>padding:0px 10px;">
+      <%= render(:partial => "uploaded_files_container", :locals => {:files => files, :section_id => section_id, :title => title, :show_user => view_user, :per_page => per_page, :show_contribute_link => show_contribute_link}) %>
+    </div>
+    <% else %>
+    <div id="content_<%= section_id -%>" style="min-height:430px;">
+       <div class="sp50"></div>
+       <center><h2>No files uploaded</h2>
+         <div class="sp30"></div>
+         <a href="<%= upload_url %>" style="text-decoration:none;">
+           <div class="btn-large btn-success" style="width:200px;">Contribute</div>
+         </a>
+       </center>
+    </div>
+    <% end %>
+  </div>
+</div>

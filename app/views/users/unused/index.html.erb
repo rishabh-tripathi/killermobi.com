@@ -1,0 +1,17 @@
+
+<div class="download_section">
+<div id="download_section_top">Free Mobile Softwares @ KillerMobi</div>
+<div class="pwrd_by"><%= link_to 'Back to Free Mobile Software Home', index_url %></div>
+<div class="show_articles">
+
+<h2>All users</h2>
+<table id="users">
+<tr>
+<th>Username</th>
+<th>Email</th>
+<th>Enabled?</th>
+<th>Roles</th>
+</tr>
+<%= render :partial => 'user', :collection => @users %>
+</table>
+</div></div>

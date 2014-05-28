@@ -1,0 +1,24 @@
+<div id="loading_sending_message" style="position:absolute;z-index:50;top:100px;left:60px;border:1px solid #e0e0e0;padding:5px;display:none;">
+  &nbsp;&nbsp;&nbsp;&nbsp;<img src="/images/spinner.gif"/><br/>
+  <b>Processing</b>
+</div>
+<% form_remote_tag  :url => send_user_message_url,
+                   :loading => "Element.show('loading_sending_message');",
+                   :complete => "Element.hide('loading_sending_message');Element.show('msg_area');Element.hide('user_msg_write');",
+                   # :update => {:success => ""},
+                   :html => {:id => "form_send_user_message"} do %>
+
+To <input type="text" id="msg_write_to" name="to" value="" />&nbsp;&nbsp;<img style="vertical-align:middle;" src="/images/device/group.png" title="Send to group"/><br/>
+<textarea id="msg_write_text" name="msg_body" cols="22" rows="10"></textarea>
+<br/>
+<input type="hidden" id="from_device" name="from_device" value="<%= @current_device.id if(!@current_device.nil?)%>" />
+<input type="hidden" id="action" name="action" value="" />
+<input type="button" value="Send" onclick="send_msg_action('send');"/>
+<input type="button" value="Save" onclick="send_msg_action('save');"/>
+<input type="button" value="Discard" onclick="Element.show('msg_area');Element.hide('user_msg_write');" />
+<br/><br/>
+  <% if(!@current_device.nil?) %>
+    <small style="float:right;line-height:5px;">via <%= @current_device.name %>&nbsp;<a href="javascript:void(0);">(change)</a></small>
+  <% end %>
+
+<% end %>

@@ -1,0 +1,24 @@
+<h1>Listing beta_comments</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Review</th>
+  </tr>
+
+<% for beta_comment in @beta_comments %>
+  <tr>
+    <td><%=h beta_comment.name %></td>
+    <td><%=h beta_comment.email %></td>
+    <td><%=h beta_comment.review %></td>
+    <td><%= link_to 'Show', beta_comment %></td>
+    <td><%= link_to 'Edit', edit_beta_comment_path(beta_comment) %></td>
+    <td><%= link_to 'Destroy', beta_comment, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New beta_comment', new_beta_comment_path %>

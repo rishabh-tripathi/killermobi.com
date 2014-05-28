@@ -1,0 +1,18 @@
+<p>
+  <b>Name:</b>
+  <%=h @beta_comment.name %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%=h @beta_comment.email %>
+</p>
+
+<p>
+  <b>Review:</b>
+  <%=h @beta_comment.review %>
+</p>
+
+
+<%= link_to 'Edit', edit_beta_comment_path(@beta_comment) %> |
+<%= link_to 'Back', beta_comments_path %>

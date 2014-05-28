@@ -1,0 +1,148 @@
+<% if(!files.nil? && !files.empty?) %>
+    <%
+         if(!(defined? show_user))
+           show_user = true
+         end
+         if(!(defined? small_thumb))
+           small_thumb = false
+         end
+
+         disp_item_count = 6
+         disp_item_count = 9 if(!show_user)
+         disp_item_count = per_page if((defined? per_page) && !per_page.nil?)
+         no_of_pages = 1
+         no_of_pages = (files.size/disp_item_count).to_i
+         no_of_pages += 1 if((files.size%disp_item_count).to_i > 0)
+         disp_str = ""
+    %>
+
+    <script text="text/javascript">
+      curr<%= section_id -%>Page = 1;
+      max<%= section_id -%>Page = <%= no_of_pages %>
+    </script>
+
+    <%   for page in 1..no_of_pages
+           curr_item = []
+           for count in ((page - 1)*disp_item_count)..((page*disp_item_count)-1)
+             curr_item << files[count] if(!files[count].nil?)
+           end
+           disp_str = "display:none;" if(page > 1)
+    %>
+         <div id="<%= section_id %>_<%= page %>" style="<%= disp_str %>min-height:<% if(show_user) %>300<% else %>430<% end %>px;">
+    <%     for f in curr_item    -%>
+           <script text="text/javascript">
+             itemID<%= section_id %>.push(<%= f.id %>);
+           </script>
+
+    <%
+           if(f.class == Download)
+             item_obj_type = BucketItem::OBJ_TYPE_APP
+             thumb_image = f.ss1_small
+             title_str = f.title
+           else
+             item_obj_type = BucketItem::OBJ_TYPE_FILE
+             thumb_image = f.get_thumb_image
+             title_str = f.file_name
+           end
+
+           tooltip_text_str = title_str
+
+           style_str = "width:100px;margin: 10px 15px;min-height:120px;"
+           style_str = "width:80px;margin: 8px 8px;min-height:100px;" if(small_thumb)
+    %>
+
+         <div id="drag_download_<%= f.id %>_<%= item_obj_type %>" class="droppable-item pull-left img-rounded" name="<%= title_str %>" style="<%= style_str %>background:#f1f1f1;padding:5px;" onmouseover="show_file_controls(<%= f.id %>);" onmouseout="hide_file_controls(<%= f.id %>);">
+
+             <% if(show_user) %>
+             <div id="file_loading_<%= f.id %>" style="display:none;width:100px;height:120px;position:absolute;z-index:60;background:#e0e0e0;opacity:0.8;">
+               <center><img src="/images/v2/loading_big.gif" style="width:80px;height:80px;"></center>
+             </div>
+             <% end %>
+
+             <div id="file_div_<%= f.id %>">
+               <%= render(:partial => "file_view", :locals=> {:thumb_image => thumb_image, :f => f, :section_id => section_id, :show_user => show_user, :small_thumb => small_thumb}) %>
+             </div>
+
+           <% if(logged_in_user) %>
+             <span id="drag_button_<%= f.id %>" onmouseover="" style="display:none;cursor:move;width:100%;background:#f1f1f1;opacity:0.8;z-index:10;position:absolute;left:0px;<% if(!small_thumb) %>top:80px;height:50px;<% else %>top:60px;height:50px;<% end %>-webkit-border-radius: 0px 0px 5px 5px;-moz-border-radius: 0px 0px 5px 5px;border-radius: 0px 0px 5px 5px;">
+               <center>
+                 <% if(!small_thumb) %>
+                   <h4>:: Drag ::</h4>
+                 <% else %>
+                   <h4>:: Drag ::</h4>
+                 <% end %>
+               </center>
+             </span>
+           <% end %>
+           </div>
+           <%# if(logged_in_user) %>
+           <script type="text/javascript">
+             new Draggable('drag_download_<%= f.id %>_<%= item_obj_type %>', { revert: true, scroll: window, handle: 'drag_button_<%= f.id %>'});
+           </script>
+           <%# end %>
+    <%     end %>
+        </div>
+    <%     end %>
+
+    <div style="clear:both"></div>
+    <% if(!show_user)%>
+      <div class="sp20"></div>
+    <% else %>
+      <div class="sp10"></div>
+    <% end %>
+
+
+      <table style="width:100%;">
+        <tr>
+          <td style="width:25px">
+            <% if(files.size > disp_item_count) %>
+            <img src="/images/back.png" id="nav_back_<%= section_id -%>" onclick="curr<%= section_id -%>Page = showPrev(curr<%= section_id -%>Page , '<%= section_id %>', max<%= section_id -%>Page);" style="cursor:pointer;display:none;" />
+            <% end %>
+          </td>
+
+          <td>
+            <% if(!show_user && show_contribute_link)%>
+              <center>
+                <table><tr>
+
+                <%
+                  contri_u = upload_url
+                  if(files.first.class == Download)
+                    view_all_u = apps_url
+                    contri_u = share_app_url
+                  elsif((files.first.class == UploadedFile) && (files.first.file_cat == UploadedFile::FILE_CAT_MUSIC))
+                    view_all_u = all_music_url
+                  else
+                    view_all_u = ""
+                  end
+                %>
+
+                  <td style="padding:0px 5px;">
+                    <a href="<%= contri_u %>" class="btn btn-danger">
+                      Contribute
+                    </a>
+                  </td>
+
+                  <td style="padding:0px 5px;">
+                    <a href="<%= view_all_u %>" class="btn btn-primary">
+                      View all
+                    </a>
+                  </td>
+
+                </tr></table>
+              </center>
+            <% end %>
+          </td>
+
+          <td style="width:25px;">
+            <% if(files.size > disp_item_count) %>
+            <img src="/images/next.png" id="nav_next_<%= section_id -%>" style="float:right;" onclick="curr<%= section_id -%>Page = showNext(curr<%= section_id -%>Page, '<%= section_id %>', max<%= section_id -%>Page);" style="cursor:pointer;" />
+            <% end %>
+          </td>
+        </tr>
+      </table>
+
+<% else %>
+  <div class="sp50"></div>
+  <center><h2>No files uploaded</h2></center>
+<% end %>

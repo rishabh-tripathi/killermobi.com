@@ -1,0 +1,56 @@
+<table style="width:100%;">
+<%
+i = 0
+for bucket in buckets
+  images = bucket_images[bucket.id]
+  user = User.find(bucket.user_id)
+  i += 1
+
+   if((i%2) != 0)
+%> <tr>
+<% end %>
+<td class="<%= ((i%2) != 0)? 'b-right-bottom' : 'b-bottom' %>" style="vertical-align:top;height:260px;padding:5px;">
+
+<table class="pull-left" style="width:420px;heigh:500px;">
+  <tr>
+    <td style="width:150px;padding:10px;vertical-align:top;">
+      <%= render(:partial => "bucket_thumb_img", :locals => {:images => images}) %>
+    </td>
+    <td style="padding:0px 10px;vertical-align:top;">
+      <h3 style="margin:0px;"><%= bucket.name %></h3>
+      <blockquote>
+      <% if(@user.nil?) %>
+        <b>Collected&nbsp;by&nbsp;</b>
+        <% if(Util.none(user.firstname) || Util.none(user.lastname)) %>
+          <a href="<%= list_bucket_url(:username => user.username) %>"><%= user.firstname %></a>
+        <% else %>
+           <%= user.email.split('@').first %>
+         <% end %>
+      <% end %>
+      <% if(!bucket.detail.nil? && !bucket.detail.empty?) %>
+        <div class="sp5"></div>
+        <%= bucket.detail %>
+      <% end %>
+      <div class="sp5"></div>
+      <b>Downloads:</b> <%= bucket.download_count %><br>
+      <b>Apps:</b> <%= bucket.bucket_item.find_all{|m| m.obj_type == BucketItem::OBJ_TYPE_APP}.size %><br>
+      <b>Files:</b> <%= bucket.bucket_item.find_all{|m| m.obj_type == BucketItem::OBJ_TYPE_FILE}.size %>
+      </blockquote>
+      <div style="clear:both;"></div>
+      <a href="<%= show_bucket_url(:name => bucket.name.gsub(' ','-')) %>" class="btn btn-large btn-danger">Download</a>
+      <div class="sp10"></div>
+
+        <% if(false) %>
+        <div class="sp30"></div>
+        <div class="div-button-blue-sm" style="float:right;">Use This</div>
+        <% end %>
+    </td>
+  </tr>
+</table>
+</td>
+<% if((i%2) == 0) %>
+</tr>
+<% end %>
+
+<%  end %>
+</table>

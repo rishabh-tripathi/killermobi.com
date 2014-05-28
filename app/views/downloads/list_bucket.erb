@@ -1,0 +1,19 @@
+<table style="width:100%">
+  <tr>
+    <td style="padding:0px 10px;vertical-align:top;">
+      <a class="pull-right" href="<%= root_path %>">Back to <b>Free Mobile Downloads Home</b></a>
+      <h1>All User Buckets</h1>
+      <div class="b-top-right" style="padding:5px;">
+        <%= render(:partial => "list_bucket", :locals => {:buckets => @buckets, :bucket_images => @bucket_images}) %>
+        <div style="clear:both;"></div>
+        <center><%= will_paginate @buckets %></center>
+      </div>
+    </td>
+    <td style="width:300px;vertical-align:top;">
+      <%= render(:partial => "ads/ga_300x250") %>
+      <div class="sp10"></div>
+    </td>
+  </tr>
+</table>
+
+<div class="sp20"></div>

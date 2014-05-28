@@ -1,0 +1,17 @@
+<div id="user_signup" class="popup" style="display:none;z-index:100;position:absolute;left:-200px;">
+
+<div class="close_button"><a style="color:#000000;" href="#" onclick="Element.hide('user_signup');"><img style="width:20px;height:20px;" src="/images/close_button1.png" alt="[X}"/></a></div>
+<div style="float:center;left:45%;"><h2 style="color:#800F45;">Join KillerMobi</h2></div>
+<hr>
+ <%= render(:partial => "partials/social_login_links") %>
+  <table style="width:240px;background: #e6e0ce;">
+    <tr>
+      <td style="padding:10px 30px;float:center;">
+        <div style="width:220px;float:center;">
+          <%= render(:partial => "registrations/signup_form") %>
+        </div>
+      </td>
+    </tr>
+  </table>
+
+</div>

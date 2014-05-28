@@ -1,0 +1,33 @@
+<div style="height:305px;padding:5px;">
+  <div class="sp30"></div>
+  <center>
+    <% if(bucket.download_id != '0') %>
+      <h2>Your bucket is ready!</h2>
+      <div class="sp10"></div>
+      <div class="btn btn-danger" onclick="window.open('<%= download_bucket_url(:id => bucket.download_id) %>','_self');">Download Zip</div>
+    <% else %>
+      <% form_remote_tag  :url => reset_bucket_url,
+                          :loading => "Element.show('create_bucket_loading_section');",
+                          :complete => "Element.hide('create_bucket_loading_section');",
+                          :update => {:success => "dropable_container"},
+                          :html => {:id => "form_reset_bucket"} do %>
+           <input type="hidden" value="<%= bucket.id %>" name="bucket" />
+    <%   end %>
+      <h2>Empty Bucket</h2>
+      <br/>No download was selected for your bucket
+      <div class="sp10"></div>
+      <div class="btn btn-success"><a href="javascript:void(0);" onclick="document.getElementById('form_reset_bucket').onsubmit();">Try again</a></div>
+    <% end %>
+  </center>
+</div>
+
+<script type="text/javascript">
+ <% if((defined? bucket_item) && !bucket_item.nil? && !bucket_item.empty?)
+         for item in bucket_item
+    %>
+          if(document.getElementById('drag_download_<%= item.obj_id %>') != null)
+            Element.hide('drag_download_<%= item.obj_id %>');
+    <%   end
+       end
+    %>
+</script>

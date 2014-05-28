@@ -1,0 +1,14 @@
+<!--  Implementation of form_remote_tag start ----------------------------------------------------------------   -->
+  <%= render(:partial => "base/form_remote_tag",
+             :locals => {
+                :url => user_upload_app1_url(),
+                :loading => "Element.show('upload_apps_form_view2');",
+                :complete => "Element.hide('upload_app_loading_step_1');",
+                :update_success => "upload_apps_form_view2",
+                :html_id => "form_upload_app_step_one"
+             })
+  %>
+    <input type="hidden" name="hii" value="111" />
+    <input type="submit" />
+  <%= render(:partial => "base/end_form_remote_tag") %>
+<!--  Implementation of form_remote_tag end ----------------------------------------------------------------   -->

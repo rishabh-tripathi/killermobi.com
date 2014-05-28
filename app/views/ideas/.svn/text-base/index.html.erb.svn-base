@@ -1,0 +1,45 @@
+<div class="download_section">
+<div id="download_section_top"></div>
+<h1><%= link_to 'Submit New Idea to Execute', new_idea_path %></h1>
+
+<table id="forums">
+<tr>
+<th class="name">Submitted Ideas</th>
+</tr>
+<br>
+<div id="link_ads_on_top">
+<script type="text/javascript"><!--
+google_ad_client = "pub-3833946424381349";
+/* 468x15, created 12/3/10 */
+google_ad_slot = "8885314131";
+google_ad_width = 468;
+google_ad_height = 15;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+<br>
+<% for idea in @ideas -%>
+<tr class="<%= cycle('odd', 'even') %>">
+<td class="name">
+<div class="forumname">
+<%= link_to idea.title, idea %>
+</div>
+<div class="forumdescription">
+<%= idea.short_description -%>
+</div>
+<br />
+<small>
+<%= link_to 'View', idea %>
+<% if is_logged_in? and logged_in_user.has_role?('Administrator') -%>
+<%= link_to 'Edit', edit_idea_path(idea) %>
+<%= link_to 'Destroy', idea, :confirm => 'Are you sure?', :method => :delete %>
+<% end -%>
+</small>
+</td>
+</tr>
+<% end -%>
+</table>
+</div>

@@ -1,0 +1,38 @@
+<div id="msg_area">
+  <div style="width:100%; height:250px;">
+    <div style="width:100%;height:20px;">
+      <span>
+        <a id="all_msg_link" href="javascript:void(0);" onclick="show_user_message_type('user_msg_all','all_msg_link');" style="font-weight:bold;">All</a>&nbsp;&nbsp;
+        <!--       <a href="">Conversation</a>&nbsp;&nbsp; -->
+        <a id="inbox_msg_link" href="javascript:void(0);" onclick="show_user_message_type('user_msg_inbox','inbox_msg_link');">Inbox</a>&nbsp;&nbsp;
+        <a id="outbox_msg_link" href="javascript:void(0);" onclick="show_user_message_type('user_msg_outbox','outbox_msg_link');">Outbox</a>&nbsp;&nbsp;
+        <a id="draft_msg_link" href="javascript:void(0);" onclick="show_user_message_type('user_msg_draft','draft_msg_link');">Draft</a>&nbsp;&nbsp;
+        <a id="category_msg_link" href="javascript:void(0);">Category</a>&nbsp;&nbsp;
+      </span>
+    </div>
+    <div style="width:198px;height:225px;border:1px solid #424242;padding:0px;overflow:auto;overflow-x:hidden;">
+      <div id="user_msg_all">
+        <%= render(:partial => "users/device/messages/user_msg_all") %>
+      </div>
+      <div id="user_msg_inbox" style="display:none">
+        <%= render(:partial => "users/device/messages/user_msg_inbox") %>
+      </div>
+      <div id="user_msg_outbox" style="display:none">
+        <%= render(:partial => "users/device/messages/user_msg_outbox") %>
+      </div>
+      <div id="user_msg_draft" style="display:none">
+        <%= render(:partial => "users/device/messages/user_msg_draft") %>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin:3px 0 0 0;text-align:center;">
+    <input type="button" value="Write" onclick="Element.hide('msg_area');Element.show('user_msg_write');document.getElementById('msg_write_to').value='';document.getElementById('msg_write_text').value='';" />&nbsp;
+    <input type="button" value="Trash" />&nbsp;
+    <input type="button" value="Option" />
+  </div>
+</div>
+
+<div id="user_msg_write" style="width:198px;height:270px;padding:0px;overflow:auto;overflow-x:hidden;display:none;">
+  <%= render(:partial => "users/device/messages/msg_write") %>
+</div>

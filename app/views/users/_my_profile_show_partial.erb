@@ -1,0 +1,67 @@
+      <table style="width:100%;padding:10px;">
+        <tr>
+          <td colspan="2">
+            <div>
+             <center><h1 style="margin:0px;color:#800F45;">
+                <%= @user.firstname %>&nbsp;<%= @user.lastname %>
+              </h1></center>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td onmouseover="Element.show('change_pic_link')" onmouseout="Element.hide('change_pic_link');">
+            <img src="<%= ((!@user_detail.profile_pic.empty?) ? @user_detail.profile_pic : '/images/noimage3.jpg') -%>" style="border:none;margin:2px;height:140px;width:120px;"></img>
+            <div id="change_pic_link" style="position:relative;display:none;top:-27px;left:2px;width:120px;height:20px;background:#e6e0ce;opacity: 0.8;filter: alpha(opacity=40);margin-bottom:-20px;">
+              <center><a href="javascript:void(0)" style="float:right" onclick="Effect.Appear('upload_profile_pic')">
+                <small><%= ((!@user_detail.profile_pic.empty?) ? "Change photo" : "Add photo"  )%></small>
+              </a></center>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </div>
+          </td>
+          <td>
+            <div>
+              <table style="width:100%">
+                <tr>
+                  <td colspan="2">
+                    <a href="<%= profile_url(@user.username) %>">View profile</a><small>&nbsp;&nbsp;<a href="">(Edit)</a></small>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+                    <% if(!@user_detail.fb_profile.empty?) %>
+                      <a href="<%= @user_detail.fb_profile %>">
+                        <img src="/images/fblogo.png" style="width:20px;height:20px;border:none;margin:0px;"></img>
+                      </a>
+                    <% end %>
+                    <% if(!@user_detail.twitter_profile.empty?) %>
+                      <a href="<%= @user_detail.twitter_profile %>">
+                        <img src="/images/twitterlogo.png" style="width:20px;height:20px;border:none;margin:0px;"></img>
+                      </a>
+                    <% end %>
+                    <% if(!@user_detail.google_profile.empty?) %>
+                      <a href="<%= @user_detail.google_profile %>">
+                        <img src="/images/google.jpg" style="width:20px;height:20px;border:none;margin:0px;"></img>
+                      </a>
+                    <% end %>
+                    <% if(!@user_detail.blog_url.empty?) %>
+                      <a href="<%= @user_detail.blog_url %>">
+                        <img src="/images/blog.jpg" style="width:20px;height:20px;border:none;margin:0px;"></img>
+                      </a>
+                    <% end %>
+                    <small style="float:right;"><a href="javascript:void(0)" onclick="Effect.Appear('edit_user_social_profile');">(edit)</a></small>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <img style="border:0px;margin:0px;width:11px;height:16px;"src="/images/mob2.png"></img>
+                  </td>
+                  <td>
+                    <p style="line-height: 0.92em;"><small><%= (!@user.handset.nil? ? @user.handset : "None") %>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </td>
+        </tr>
+      </table>
+
+

@@ -1,0 +1,11 @@
+<% loading_element_id = UserDetail::MY_PROFILE_LOADING_IDS[update_section_id] %>
+<% form_remote_tag  :url => user_update_section_url(update_section_id),
+                   :loading => "Element.show('#{loading_element_id}');",
+                   :complete => "Element.hide('#{loading_element_id}');Element.show('#{UserDetail::MY_PROFILE_IDS[update_section_id]}');",
+                   :update => {:success => "#{UserDetail::MY_PROFILE_IDS[update_section_id]}"},
+                   :html => {:id => "form_update_#{this_section_id}"} do %>
+  <input type="hidden" name="update_section_uid" value="<%= @user.username %>">
+  <% if(!(defined?(device_id)).nil? && !device_id.nil?) %>
+    <input id="new_device_id" type="hidden" name="device_id" value="<%= device_id %>">
+  <% end %>
+<% end %>

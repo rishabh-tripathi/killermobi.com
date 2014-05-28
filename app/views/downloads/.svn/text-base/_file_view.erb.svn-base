@@ -1,0 +1,78 @@
+<%  if(!(defined? show_user))
+      show_user = true
+    end
+
+    if(!(defined? small_thumb))
+      small_thumb = false
+    end
+
+    if(f.class == Download)
+      item_obj_type = BucketItem::OBJ_TYPE_APP
+      title_str = f.title
+    else
+      item_obj_type = BucketItem::OBJ_TYPE_FILE
+      title_str = f.file_name
+    end
+
+   if(f.class == Download)
+     dwld_url = download_show_url(:title => f.title.tr(' ','_'))
+     file_name = f.title
+   else
+     dwld_url = download_uploaded_file_url(:token => f.token)
+     file_name = f.file_name
+   end
+%>
+<% if(!logged_in_user) %>
+<a href="<%=  dwld_url %>">
+<% end %>
+  <img src="<%= thumb_image -%>" alt="<%= title_str %>" class="img-rounded" style="<% if(!small_thumb) %>width:100px;height:100px;<% else %>width:80px;height:80px;<% end %>"/>
+<% if(!logged_in_user) %>
+</a>
+<% end %>
+
+<% if(logged_in_user) %>
+  <div title="<%= title_str %>" style="position:absolute;top:5px;left:5px;<% if(!small_thumb) %>width:100px;height:100px;<% else %>width:80px;height:80px;<% end %>opacity:0;" onclick="click_manage_file(<%= f.id %>,<%= item_obj_type %>);">
+  </div>
+<% end %>
+
+  <!-- File controls -->
+  <% if(logged_in_user) %>
+    <input id="file_cb_<%= f.id %>" type="checkbox" style="display:none;cursor:pointer;z-index:10;position:absolute;top:-8px;left:-8px;" />
+  <% end %>
+<% if(show_user) %>
+  <!-- File remove -->
+  <img id="file_del_<%= f.id %>" src="/images/close_button1.png" style="display:none;cursor:pointer;z-index:10;position:absolute;top:-5px;right:-5px;width:20px;height:20px;" onclick="document.getElementById('remove_file_id_<%= section_id -%>').value=<%= f.id %>;remove_loading_div_<%= section_id -%>='file_loading_<%= f.id %>';remove_container_<%= section_id -%>='file_div_<%= f.id %>';remove_drag_<%= section_id -%>='drag_button_<%= f.id %>';document.getElementById('form_remove_file_<%= section_id %>').onsubmit();"/>
+
+  <!-- File access -->
+  <a href="javascript:void(0);" onclick="document.getElementById('change_access_file_id_<%= section_id -%>').value=<%= f.id %>;access_loading_div_<%= section_id -%>='file_loading_<%= f.id %>';access_container_<%= section_id -%>='file_div_<%= f.id %>';document.getElementById('form_change_access_<%= section_id %>').onsubmit();">
+  <% if(f.access == UploadedFile::ACCESS_PRIVATE) %>
+    <img id="file_access_<%= f.id %>" src="/images/v2/sm_public.png" style="display:none;cursor:pointer;z-index:10;position:absolute;top:65px;right:5px;width:16px;height:16px;" />
+  <% else %>
+    <img id="file_access_<%= f.id %>" src="/images/v2/sm_protected.png" style="display:none;cursor:pointer;z-index:10;position:absolute;top:65px;right:5px;width:16px;height:16px;" />
+  <% end %>
+  </a>
+
+<!-- File access logo -->
+  <% if(f.access == UploadedFile::ACCESS_PRIVATE) %>
+    <img src="/images/v2/m_lock.png" style="z-index:1;position:absolute;top:65px;left:0px;width:40px;height:40px;" />
+  <% else %>
+    <img src="/images/v2/m_share.png" style="z-index:1;position:absolute;top:68px;left:3px;width:40px;height:40px;" />
+  <% end %>
+
+<% end %>
+  <!-- File download -->
+
+  <% if(logged_in_user) %>
+  <a href="<%=  dwld_url %>" class="btn" id="file_download_<%= f.id %>" alt="download <%= file_name %>" title="download <%= file_name %>" style="cursor: pointer; z-index: 10; position: absolute; top: 35px; left: 35px; display: none;" >
+    <i class="icon-download-alt"></i>
+  </a>
+  <% end %>
+  <img id="file_loading_img_<%= f.id %>" src="/images/v2/loading_big.gif" style="display:none;z-index:5;position:absolute;top:5px;left:5px;width:100px;height:100px;background:#e0e0e0;opacity:0.8;" />
+
+
+
+<%
+  name_trim_limit = 12
+  name_trim_limit = 8 if(small_thumb)
+%>
+<div style="padding:0px;line-height:5px;"><center><h6 style="margin:0px;"><%= title_str[0..name_trim_limit] %><%= "..." if(title_str.size > name_trim_limit) %></h6></center></div>

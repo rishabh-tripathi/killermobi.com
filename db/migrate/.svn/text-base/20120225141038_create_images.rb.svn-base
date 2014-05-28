@@ -1,0 +1,20 @@
+class CreateImages < ActiveRecord::Migration
+  def self.up
+    create_table :images do |t|
+      t.column :name, :string, :limit => 100, :null => false, :default => ""
+      t.column :image_base, :string, :limit => 100, :null => false, :default => ""
+      t.column :image_medium, :string, :limit => 100, :null => false, :default => ""
+      t.column :image_small, :string, :limit => 100, :null => false, :default => ""
+      t.column :image_thumb, :string, :limit => 100, :null => false, :default => ""
+      t.column :obj_type, :integer, :null => false, :default => 0
+      t.column :obj_id, :integer, :null => false, :default => 0
+      t.column :status, :integer, :null => false, :default => 0
+      t.column :created_at, :datetime
+      t.column :updated_at, :datetime
+    end
+  end
+
+  def self.down
+    drop_table :images
+  end
+end

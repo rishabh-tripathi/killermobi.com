@@ -1,0 +1,90 @@
+<%
+  homepage_id = "home_page_area"
+
+  my_mobile = 10
+  trash = 20
+  my_apps = 30
+  my_messages = 40
+  my_images = 50
+  my_music = 60
+  my_activity = 70
+  my_contact = 80
+  my_calender = 90
+  my_notes = 100
+  my_videos = 110
+  my_call_list = 120
+
+  device_icons_txt = {
+    my_mobile => "Mobile",
+    trash => "Trash",
+    my_apps => "Apps",
+    my_messages => "Messages",
+    my_images => "Images",
+    my_music => "Music",
+    my_activity => "Activity",
+    my_contact => "Contacts",
+    my_calender => "Calender",
+    my_notes => "Notes",
+    my_videos => "Videos",
+    my_call_list => "Call Log",
+  }
+
+  device_icon_partials = {
+    my_mobile => "my_mobile",
+    trash => "my_trash",
+    my_apps => "my_apps",
+    my_messages => "my_messages",
+    my_images => "my_images",
+    my_music => "my_music",
+    my_activity => "my_activity",
+    my_contact => "my_contacts",
+    my_calender => "my_calender",
+    my_notes => "my_notes",
+    my_videos => "my_videos",
+    my_call_list => "my_call_logs",
+  }
+
+  device_icon_img = {
+    my_mobile => "/images/device/icon1.jpg",
+    trash => "/images/device/trash.png",
+    my_apps => "/images/device/apps.png",
+    my_messages => "/images/device/messages.jpg",
+    my_images => "/images/device/images.png",
+    my_music => "/images/device/music.png",
+    my_activity => "/images/device/icon1.jpg",
+    my_contact => "/images/device/contact.jpg",
+    my_calender => "/images/device/calender.gif",
+    my_notes => "/images/device/notes.png",
+    my_videos => "/images/device/video.png",
+    my_call_list => "/images/device/call_log.png",
+  }
+
+
+  i = 3
+%>
+<table style="width:100%" id="<%= homepage_id %>">
+  <% device_icons_txt = device_icons_txt.sort
+     device_icons_txt.each do|key, value|
+       if(i%3 == 0) %>
+    <tr>
+  <%   end
+      i += 1
+   %>
+      <td style="height:40px;">
+        <%= render(:partial => "users/device/icon", :locals => {:icon_id => "#{ key }", :icon_txt => "#{ value }", :homepage_id => "#{ homepage_id }", :action_str => "#{ value }_base_div", :img_url => "#{ device_icon_img[key] }"})%>
+      </td>
+  <%   if(i%3 == 0) %>
+    </tr>
+  <%   end
+     end
+  %>
+</table>
+
+<% device_icons_txt = device_icons_txt.sort
+   device_icons_txt.each do|key, value|
+%>
+  <div id="<%= value %>_base_div" style="display:none">
+    <%= render(:partial => "users/device/section_display_control", :locals => {:homepage_id => "#{ homepage_id }", :this_section => "#{ value }"}) %>
+    <%= render(:partial => "users/device/#{ device_icon_partials[key] }", :locals => {:homepage_id => "#{ homepage_id }", :this_section_id => "#{ value }_base_div"}) %>
+  </div>
+<% end %>

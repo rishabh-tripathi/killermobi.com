@@ -1,0 +1,48 @@
+<div id="edit_user_social_profile" class="popup" style="position:absolute;left:35%;top:50px;z-index:100;display:none;">
+
+<%= render(:partial => "update_section", :locals => {:update_section_id => UserDetail::MY_PROFILE_SECTION, :this_section_id => "edit_social_profile"})%>
+
+<div class="close_button"><a href="javascript:void(0);" onclick="document.getElementById('msg_edit_social_profile').innerHTML='';closeAction('edit_user_social_profile','<%= UserDetail::MY_PROFILE_IDS[UserDetail::MY_PROFILE_SECTION]%>','form_update_edit_social_profile');" ><img style="width:20px;height:20px;border:none;" src="/images/close_button1.png" alt="[X}"/></a></div>
+
+<h3>Edit Social Profile</h3>
+<div style="position:relative;margin:10px;width:400px;height:200px;">
+  <div style="margin:10px;padding-left:30px;">
+    <% form_remote_tag  :url => user_edit_social_profile_url(),
+                        :loading => "Element.show('edit_social_profile_loading');",
+                        :complete => "Element.hide('edit_social_profile_loading');",
+                        :update => {:success => "msg_edit_social_profile"},
+                        :html => {:id => "form_edit_social_profile"} do %>
+    Please add url of your following social profiles
+    <input type="hidden" name="username" value="<%= @user.username %>">
+    <table>
+      <tr>
+        <td><img src="/images/fblogo.png" style="width:30px;height:30px;border:none;margin:0px;"></img></td>
+        <td><input type="text" name="fb_url" size="40" value="<%= @user_detail.fb_profile %>"></td>
+      </tr>
+      <tr>
+        <td><img src="/images/twitterlogo.png" style="width:30px;height:30px;border:none;margin:0px;"></img></td>
+        <td><input type="text" name="twitter_url" size="40" value="<%= @user_detail.twitter_profile %>"></td>
+      </tr>
+      <tr>
+        <td><img src="/images/google.jpg" style="width:30px;height:30px;border:none;margin:0px;"></img></td>
+        <td><input type="text" name="google_url" size="40" value="<%= @user_detail.google_profile %>"></td>
+      </tr>
+      <tr>
+        <td><img src="/images/blog.jpg" style="width:30px;height:30px;border:none;margin:0px;"></img></td>
+        <td><input type="text" name="blog_url" size="40" value="<%= @user_detail.blog_url %>"></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><input type="submit" value="Update" style="float:right"></td>
+      </tr>
+    </table>
+    <% end %>
+    <div id="edit_social_profile_loading" style="position:relative;top:-30px;display:none">
+      <img src="/images/spinner.gif" style="width:30px;height:30px;border:none;margin:0px;"></img>
+      loading...
+    </div>
+    <div id="msg_edit_social_profile" style="position:relative;top:-25px">
+    </div>
+  </div>
+</div>
+</div>

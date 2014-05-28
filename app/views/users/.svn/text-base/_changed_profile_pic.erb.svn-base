@@ -1,0 +1,14 @@
+<% if(!@user_detail.nil?) %>
+<table>
+  <tr>
+    <td>
+      <img src="<%= ((!@user_detail.profile_pic.empty?) ? @user_detail.profile_pic : '/images/noimage3.jpg') %>" >
+    </td>
+    <td>
+     <p>&nbsp;&nbsp;&nbsp;&nbsp;<%= @pic_upload_status if(!@pic_upload_status.nil?) %></p>
+    </td>
+  </tr>
+</table>
+<% end
+ @pic_upload_status = nil if(!@pic_upload_status.nil?)
+%>

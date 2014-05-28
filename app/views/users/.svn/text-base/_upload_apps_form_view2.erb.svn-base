@@ -1,0 +1,61 @@
+<table style="width:100%" align=center>
+  <tr>
+    <td width="40%"><center><span>Platform:</span>
+    <select name="user_upload_app_type_id" id="user_app_upload_type_id" onchange="show_user_upload_files(this.options[selectedIndex].text);document.getElementById('upload_dwld_type').value = this.options[selectedIndex].value">
+        <option value="0">--Please select platform--</option>
+        <% types = DownloadType.find(:all)
+           for type in types %>
+        <option value="<%= type.id %>">
+          <%= type.platform %>
+        </option>
+        <% end %>
+    </select>
+    &nbsp;&nbsp;<a href="javascript:void(0)" onclick="Element.hide('upload_apps_form_view2');Element.show('upload_apps_form_view1');">Back</a>
+    </center>
+    </td>
+  </tr>
+  <tr><td><hr></td></tr>
+  <tr id="user_upload_app_file_1_section" style="display:none;">
+    <td>
+      <div style="border: solid 1px #800F45;">
+        <div id="user_upload_app_file_1" style="background:#800F45;width:99.5%;padding:2px;color:#FFFFFF;"></div>
+        <div style="padding:5px;">
+          <% form_tag(user_upload_app_file_url(), {:id=> "user_upload_app_file1", :multipart => true, :target => "msg_app_file"}) do %>
+            <input type="hidden" id="file_id1" name="file_id" value="1">
+            <input type="hidden" value="" name="upload_app_id" id="upload_app_id">
+            <input type="hidden" value="" name="upload_dwld_type" id="upload_dwld_type">
+            <%= file_field_tag("app_file1", :id=>"user_upload_app_file1") %><input type="submit" style="float:right" value="Upload">
+          <% end %>
+        </div>
+      </div>
+    </td>
+  </tr>
+  <tr><td><br></td></tr>
+  <tr id="user_upload_app_file_2_section" style="display:none;border: solid 1px #800F45;">
+    <td>
+      <div style="border: solid 1px #800F45;">
+        <div id="user_upload_app_file_2" style="background:#800F45;width:99.5%;padding:2px;color:#FFFFFF;"></div>
+        <div style="padding:5px;">
+          <% form_tag(user_upload_app_file_url(), {:id=> "user_upload_app_file2", :multipart => true, :target => "msg_app_file"}) do %>
+            <input type="hidden" id="file_id2" name="file_id" value="2">
+            <input type="hidden" value="" name="upload_app_id" id="upload_app_id1">
+            <%= file_field_tag("app_file2", :id=>"user_upload_app_file2") %><input type="submit" style="float:right" value="Upload">
+          <% end %>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+<iframe id="msg_app_file" name="msg_app_file" style="border:none;width:100%;height:40px;">
+</iframe>
+<br>
+<span style="float:right;display:none;" id="user_upload_app_file_2_next">
+  <a href="javascript:void(0)" onclick="Element.hide('upload_apps_form_view2');Element.show('upload_apps_form_view1');">Back</a>&nbsp;&nbsp;&nbsp;<button onclick="Element.hide('upload_apps_form_view2');Element.show('upload_apps_form_view3');document.getElementById('upload_share_app_title').innerHTML='Upload Logo and Screenshots';before_save_images(<%= upload_app_id %>);">Next</button>
+</span>
+</div>
+<script type="text/javascript">
+  <% if(defined?(upload_app_id) && !upload_app_id.nil?) %>
+    document.getElementById('upload_app_id').value = '<%= upload_app_id %>'
+    document.getElementById('upload_app_id1').value = '<%= upload_app_id %>';
+  <% end %>
+</script>

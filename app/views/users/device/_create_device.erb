@@ -1,0 +1,17 @@
+<%= render(:partial => "users/device/set_up_virtual_device") %>
+<div id="create_virtual_device" style="width:100%;height:100%;background:#424242;color:white;">
+  <div style="position:relative;top:10px;padding:0 10px;">
+    <p>You have not set up your device yet!<br>
+      This virtual device will give you access on your real device. After setting a device you can.
+      <ul>
+        <li>Add your real device to sync. </li>
+        <li>Personalise your device which reflect on your real device</li>
+        <li>Easily managable interface to manage contact, music, images and message</li>
+      </ul>
+      So why are you waiting? setup your device its free and easy
+    </p>
+    <div style="text-align:center;">
+      <input type="button" value="Set up now" onclick="Element.hide('create_virtual_device');Element.show('set_up_virtual_device');"/>
+    </div>
+  </div>
+</div>

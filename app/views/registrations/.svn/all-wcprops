@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/2/app/views/registrations
+END
+edit.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/2/app/views/registrations/edit.html.erb
+END
+WS_FTP.LOG
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/2/app/views/registrations/WS_FTP.LOG
+END
+new.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/55/app/views/registrations/new.html.erb
+END
+_signup_form.erb
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/55/app/views/registrations/_signup_form.erb
+END

@@ -1,0 +1,2 @@
+module Worldcup2011sHelper
+end

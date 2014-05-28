@@ -1,0 +1,24 @@
+<ul>
+<li><a href="<%= wap_download_all_url %>"><b>All Downloads</b></a></li>
+<li>Downloads Categories</li>
+   <ul>
+                        <li><a href="<%= wap_category_url('browsers') %>">Free Mobile Browsers</a></li>
+                        <li><a href="<%= wap_category_url('entertainment') %>">Free Entertainment Tools</a></li>
+                        <li><a href="<%= wap_category_url('games') %>">Free Mobile Games</a></li>
+                        <li><a href="<%= wap_category_url('maps') %>">Free Map Applications</a></li>
+                        <li><a href="<%= wap_category_url('messaging_tools') %>">Free Messaging Tools</a></li>
+                        <li><a href="<%= wap_category_url('news_and_readers') %>">News and Readers Apps</a></li>
+                        <li><a href="<%= wap_category_url('office') %>">Free Office Tools</a></li>
+                        <li><a href="<%= wap_category_url('social_networking') %>">Social Networking Tools</a></li>
+                        <li><a href="<%= wap_category_url('utility') %>">Free Utilities</a></li>
+                        <li><a href="<%= wap_category_url('Miscellaneous') %>">Miscellaneous Apps</a></li>
+    </ul>
+<li>Mobile Platforms</li>
+ <ul>
+                        <li><a href="<%= wap_javame_url %>">Free J2ME Apps</a></li>
+                        <li><a href="<%= wap_symbian_url %>">Free Symbian Apps</a></li>
+                        <li><a href="<%= wap_blackberry_url %>">Free Blackberry Apps</a></li>
+                        <!-- <li><a href="<%#= wap_android_url %>">Android</a></li> -->
+                        <li><a href="<%= wap_windows_url %>">Free Windows Mobile Apps</a></li>
+ </ul>
+</ul>

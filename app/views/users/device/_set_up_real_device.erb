@@ -1,0 +1,15 @@
+<div id="set_up_real_device" style="width:100%;height:100%;position:absolute;z-index:10;background:#E6E0CE;display:none;">
+  <div class="close_button"><a href="javascript:void(0);" onclick="Element.hide('set_up_real_device');" ><img style="width:20px;height:20px;border:none;" src="/images/close_button1.png" alt="[X}"/></a></div>
+  <div style="padding:5px;text-align:center;">
+    <% loading_element_id = UserDetail::MY_PROFILE_LOADING_IDS[UserDetail::MY_DEVICE_SECTION] %>
+    <h2>Add your real device</h2>
+    <% form_remote_tag  :url => user_create_real_device_url(),
+                        :loading => "Element.show('#{loading_element_id}');",
+                        :complete => "Element.hide('#{loading_element_id}');",
+                        :update => {:success => "device_area"},
+                        :html => {:id => "create_real_device_form"} do %>
+       <input type="text" name="real_device_name" value="<%= @user.handset %>" /><br/><br/>
+       <input type="submit" value="Create" />
+    <% end %>
+  </div>
+</div>

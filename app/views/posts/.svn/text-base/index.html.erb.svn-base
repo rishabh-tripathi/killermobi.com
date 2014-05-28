@@ -1,0 +1,68 @@
+<table style="width:100%">
+  <tr>
+    <td style="padding:0px 10px;vertical-align:top;">
+      <a href="<%= forums_url %>" class="pull-right">Back to Forums</a>
+      <h1>&nbsp;&nbsp;<%= @topic.name -%></h1>
+      <ul class="breadcrumb" style="margin:0px;">
+        <li><a href="<%= forums_path %>">Forums</a> <span class="divider">/</span></li>
+        <li><a href="<%= forum_path(@topic.forum) %>"><%= @topic.forum.name %></a> <span class="divider">/</span></li>
+        <li class="active"><%= @topic.name -%></li>
+      </ul>
+      <div class="sp5"></div>
+      <div class="b-top-right" style="padding: 10px 10px 0px 0px;">
+      <table style="width:100%">
+        <% @posts.each do |post| -%>
+        <tr>
+          <td style="width:60px;padding:5px;text-align:center;vertical-align:top;">
+          <%
+           user_pic = "/images/v2/user.png"
+           user_pic = post.user.user_detail.profile_pic if(!post.user.user_detail.profile_pic.nil? && !post.user.user_detail.profile_pic.empty?)
+          %>
+            <img src="<%= user_pic -%>" class="img-rounded" style="border:1px solid #e0e0e0;width:60px;height:70px;" />
+            <% if is_logged_in? and logged_in_user.has_role?('Administrator') -%>
+            <br />
+            <small>
+              <%= link_to 'Edit', edit_post_path(:id => post,
+              :topic_id => @topic, :forum_id => @topic.forum) -%>
+              <br />
+              <%= link_to 'Delete', post_path(:id => post, :topic_id => @topic,
+              :forum_id => @topic.forum), :method => :delete,
+              :confirm => 'Are you sure you wish to delete this post?' -%>
+            </small>
+            <% end -%>
+          </td>
+          <td style="padding:5px 10px;vertical-align:top;">
+            <blockquote>
+              <p><%= simple_format(post.body) -%></p>
+              <small>
+                <%= post.user.firstname -%> (<%= pluralize(post.user.posts_count, 'post') -%>)
+              </small>
+            </blockquote>
+          </td>
+        </tr>
+        <% end %>
+      </table>
+
+      </div>
+    </td>
+    <td style="width:300px;vertical-align:top;">
+      <% if is_logged_in? -%>
+        <a href="<%= new_post_path(:forum_id => @topic.forum, :topic_id => @topic) %>" class="btn btn-danger">Post Reply</a>
+      <% end -%>
+      <div style="clear:both;"></div>
+      <div class="sp10"></div>
+      <div class="sp1-gr"></div>
+      <script type="text/javascript"><!--
+            google_ad_client = "ca-pub-3833946424381349";
+            /* rect_medium_300x250 */
+            google_ad_slot = "1294151423";
+            google_ad_width = 300;
+            google_ad_height = 250;
+            //-->
+      </script>
+      <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+      </script>
+      <div class="sp10"></div>
+    </td>
+  </tr>
+</table>

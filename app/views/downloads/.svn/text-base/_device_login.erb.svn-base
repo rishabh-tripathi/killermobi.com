@@ -1,0 +1,7 @@
+  <div style="width:200px;height:340px;position:relative;top:50px;left:48px;overflow:auto;overflow-x:hidden;">
+    <div class="sp50"></div>
+    <center>Login required to make bucket
+      <div class="sp10"></div>
+      <a href="<%= login_url %>" class="btn btn-danger">Join</a>
+    </center>
+  </div>

@@ -1,0 +1,46 @@
+<div class="download_section">
+<div id="download_section_top">KillerMobi Articles</div>
+<% content_for :head do %>
+<%= auto_discovery_link_tag %>
+<% end %>
+
+<br>
+<div id="link_ads_on_top">
+<script type="text/javascript"><!--
+google_ad_client = "pub-3833946424381349";
+/* 468x15, created 12/3/10 */
+google_ad_slot = "8885314131";
+google_ad_width = 468;
+google_ad_height = 15;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+
+<div style="margin-left:20px;">
+<%#= pluralize(@article.size,"is","are") -%>
+<%= @article.size %> article(s) found.
+<%#= pluralize(@article.size,"result","results") -%> .
+</div>
+
+<% @article.each do |article| %>
+<div class="download_title">
+<h3><%= article.title %></h3>
+</div>
+<div class="show_download_comments_add">
+<% if article.category %>
+<p class="category">
+<div class="pwrd_by">Category: <%= link_to article.category.name, article_cat_url(article.category.name.tr(" ","_")) %></div>
+</p>
+<% end %>
+<p>
+<b>Submitted by <%= link_to article.user.firstname, show_user_url(article.user.username) %> <%#= article.created_at.to_s(:short) %></b><br />
+<%= article.synopsis %><br />
+<div class="button_01_r"><%= link_to 'Read More', show_article_url(article.title.tr(" ","_")) %></div>
+</p>
+</div>
+<% end %>
+
+</div>

@@ -1,0 +1,37 @@
+<%
+   w_width = ((defined? width)? width : 150)
+   if(!images.nil? && !images.empty?)
+     no_of_imgs = 0
+     counter = 1
+     style_str = ""
+     if(images.size >= 9)
+       no_of_imgs = 9
+       counter = 3
+     elsif(images.size >= 4 && images.size < 9)
+       no_of_imgs = 4
+       counter = 2
+     elsif(images.size < 4)
+       no_of_imgs = 1
+     end
+     style_str = "width:#{w_width/counter}px;height:#{(w_width/counter)+ 20}px;"
+%>
+
+<div class="thumbnail" style="width:<%= w_width + 40 %>px;min-height:<%= w_width + 40 %>px;vertical-align:middle;background:#eaeaea;">
+  <center>
+    <table>
+<%   c = 0
+     images = images.sort_by { rand }
+     for i in counter..(counter+no_of_imgs-1)
+%>
+     <% if(i%counter == 0) %><tr><% end
+       i += 1
+     %>
+       <td><img src="<%= images[c] -%>" class="img-polaroid" style="<%= style_str %>" /></td>
+     <% c += 1
+        if((i%counter == 0) || (no_of_imgs == 1)) %></tr><% end %>
+<%   end %>
+    </table>
+  </center>
+</div>
+
+<% end %>

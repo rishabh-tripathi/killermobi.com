@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML Basic 1.0//EN"
+"http://www.w3.org/TR/xhtml-basic/xhtml-basic10.dtd">
+<html>
+<head>
+<title>KillerMobi - Free Mobile Software and Solutions</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="HandheldFriendly" content="true">
+<meta name="MobileOptimized" content="width">
+
+<%= stylesheet_link_tag 'mobile' %>
+<%= yield :head %>
+
+<style type="text/css">
+      body {margin:5px;padding:0;font-family:sans-serif;}
+      h1 {font-size:20px;line-height:24px;}
+      h2 {font-size:16px;line-height:18px;}
+      h3, h4 {font-size:14px;line-height:16px;}
+      td {vertical-align:top}
+      form {display:inline}
+      img {border:0}
+      .sep {height:1px;width:100%;background-color:#800F45;margin:5px 0 5px 0}
+      .sep5 {height:5px;}
+      .sep10 {height:10px;}
+      .sep15 {height:15px;}
+      .tab {width:100%}
+      .td-cen {text-align:center}
+    </style>
+
+</head>
+<body>
+<div id="container">
+<div id="header">
+
+<div style="height:45px;text-align:center;padding:0 0 5px 0">
+  <a href="/m"><img src="/wap_contents/xx1.jpg" alt="KillerMobi - Free Mobile Software and Solutions"></a>
+</div>
+<%#= link_to "MOBILE SITE", :controller => "home", :action => "set_layout", :mobile => "1" %>
+<p>View version:  <b>Mobile</b> | <a href="http://killermobi.com">Regular</a></p>
+
+</div>
+<small><%= link_to 'Home', wap_home_url, :accesskey => '0' %> || <%= link_to 'Downloads', wap_download_path, :accesskey => '1' %></small>
+<div class="sep"></div>
+
+<% if(false) %>
+<%= AdMob::request(request,
+                             session.session_id,
+                             :publisher_id => 'a14d6aaeef24f7e',
+                             :analytics_id => 'ya14d6b9f86975a8',
+                             :ad_request => true,
+                             :analytics_request => false,
+                             :test_mode => false
+                             #,:title => 'Insert Page Title', # Analytics allows you to track site usage based on custom page titles. Enter custom title in this parameter.
+                             #:event => 'Reg'
+                             ) # To learn more about events, log in to your Analytics account and visit this page: http://analytics.admob.com/reports/events/add
+          %>
+<% end %>
+
+<div id="content">
+<% if flash[:notice] -%>
+<div id="notice"><%= flash[:notice] %></div>
+<% end -%>
+<% if flash[:error] -%>
+<div id="error"><%= flash[:error] %></div>
+<% end -%>
+<%= yield %>
+</div>
+
+<% if(false) %>
+<%= AdMob::request(request,
+                             session.session_id,
+                             :publisher_id => 'a14d6aaeef24f7e',
+                             :analytics_id => 'ya14d6b9f86975a8',
+                             :ad_request => true,
+                             :analytics_request => false,
+                             :test_mode => false
+                             #,:title => 'Insert Page Title', # Analytics allows you to track site usage based on custom page titles. Enter custom title in this parameter.
+                             #:event => 'Reg'
+                             ) # To learn more about events, log in to your Analytics account and visit this page: http://analytics.admob.com/reports/events/add
+          %>
+<% end %>
+
+<div class="sep"></div>
+<small><%= link_to 'Home', wap_home_url, :accesskey => '0' %> || <%= link_to 'Downloads', wap_download_path, :accesskey => '1' %></small>
+<p>View version:  <b>Mobile</b> | <a href="http://killermobi.com">Regular</a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<table style="width:100%;" >
+  <tr>
+    <td style="padding:0px 10px;vertical-align:top;">
+      <a class="pull-right" href="<%= download_url %>">Back to <b>Free Mobile Downloads</b></a>
+      <%
+                   title_txt = "All New Application"
+                   title_txt = "All #{Download::PLATFORM_NAMES[@platform]} Application" if(!@platform.nil?)
+                   if(!@category.nil?)
+                     title_txt = "All #{Download::CAT_NAMES[@category]} Application"
+                     title_txt += " (#{Download::PLATFORM_NAMES[@platform]})" if(!@platform.nil?)
+                   end
+      %>
+       <h1>&nbsp;&nbsp;<%= title_txt -%></h1>
+       <div class="sep5"></div>
+      <%
+        sel_cat = "all"
+        sel_cat = Download::CAT_NAMES[@category] if(!@category.nil?)
+      %>
+      <%= render(:partial => "top_cat_list", :locals => {:sel => sel_cat}) %>
+      <div style="border-right:1px solid #e0e0e0;border-top:1px solid #e0e0e0;">
+        <div class="round-border-content">
+          <% if(!@downloads.nil? && !@downloads.empty?)
+             x = @downloads.last %>
+          <table style="width:100%">
+            <tr>
+              <td style="width:110px;">
+                <img src="<%= x.ss1_small %>" class="img-polaroid" style="width:100px;height:120px;"/>
+              </td>
+              <td style="padding:0px 10px">
+                <a href="<%= download_show_url(x.title.tr(" ","_")) -%>"><h3 style="color:#333333;margin:0px;"><%= x.title %></h3></a>
+                <blockquote>
+                  <%= strip_tags(truncate(x.description, :length => 500, :omission => '... (continued)')) %>
+                  <div class="sp10"></div>
+                  <table style="width:100%">
+                    <tr>
+                      <td>
+                        <b>Download: <%= x.download_count %></b>
+                        <div class="sp5"></div>
+                      </td>
+                      <td style="width:100px">
+                        <a href="<%= download_show_url(x.title.tr(" ","_")) -%>" class="btn btn-primary pull-right">Download</a>
+                      </td>
+                    </tr>
+                  </table>
+                </blockquote>
+              </td>
+            </tr>
+          </table>
+          <% end %>
+          <hr style="margin: 5px 0;" />
+          <div id="download_area" style="width:100%;padding:0px 5px;">
+            <div class="sp20"></div>
+            <% if(!@downloads.nil? && !@downloads.empty?)
+                 for b in @downloads
+               %>
+              <%= render(:partial => "download_drag_icon", :locals => {:app => b}) %>
+            <%   end
+               else %>
+            <div class="sp30"></div>
+            <center><h2>No application yet!</h2></center>
+            <% end %>
+            <div class="sp30"></div>
+          </div>
+          <div style="clear:both"></div>
+          <div class="sp10"></div>
+          <hr>
+          <div id="show_more">
+            <%   form_remote_tag  :url => apps_url,
+                    :loading => "Element.show('show_more_loading');",
+                    :complete => "Element.hide('show_more_loading');",
+                    :update => {:success => "temp_container"},
+                    :html => {:id => "form_show_more"} do %>
+              <input type="hidden" id="page_no" name="page" value="2" />
+
+              <% if(!@category.nil?) %>
+                <input type="hidden" name="category" value="<%= Download::CAT_NAMES[@category] %>" />
+              <% end %>
+
+              <% if(!@platform.nil?) %>
+                <input type="hidden" name="type" value="<%= Download::PLATFORM_NAMES[@platform] %>" />
+                <% if(!@category.nil?) %>
+                  <input type="hidden" name="p_category" value="<%= Download::CAT_NAMES[@category] %>" />
+                <% end %>
+              <% end %>
+            <%   end %>
+            <div id="temp_container" style="display:none"></div>
+            <center>
+              <img id="show_more_loading" style="display:none;" src="/images/v2/loading_big.gif" /><br><br>
+              <input type="button" class="btn btn-info" value="Show More" onclick="submit_form('form_show_more');" />
+            </center>
+          </div>
+        </div>
+      </div>
+    </td>
+    <td style="width:300px;vertical-align:top;">
+      <%= render(:partial => "ads/ga_300x250") %>
+      <div class="sp10"></div>
+      <%= render(:partial => "device") %>
+      <div style="width:208px;position:relative;left:48px;padding:5px;">
+        <%= render(:partial => "user_bucket_list") %>
+      </div>
+    </td>
+  </tr>
+</table>
+
+<div class="sp20"></div>
+
+<% if(false) %>
+<div class="round-st-border" style="margin: 0px 10px;">
+  <div class="round-border-content">
+    <table style="width:100%">
+      <tr>
+        <td style="width:200px;text-align:center;">
+
+        </td>
+        <td style="padding:0px 5px;">
+          <p style="padding:0px 20px;">
+          Keeping in mind the current market trends and user requirements,
+          KillerMobi has launched a vivacious web portal for free
+          mobile software and applications. Our portal is endowed with the
+          latest and most dazzling applications of your own
+          congenial  ,which can turn your phone to a SMART DEVICE by just a
+          mere single click.
+          We provide services and  free mobile applications for all platforms
+          including Symbian, Blackberry, Windows Mobile and Java.
+          </p>
+          <div class="sp20"></div>
+          <div style="text-align:center;">
+            <%= remder(:partial => "ga_728x90") -%>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+<% end %>

@@ -1,0 +1,40 @@
+<% content_for :header do %>
+  <h1>User.populate(*fields)</h1>
+  Retrieve profile data for logged in user.
+  Optional: list of fields to retrieve as symbols.
+  (<%= link_out_to 'FB Wiki', 'http://wiki.developers.facebook.com/index.php/Users.getInfo' %>)
+
+<% end %>
+
+<b>Note:</b> The result table most likely will require scrolling left/right to
+see full details.  The :proxied_email in particular is very long.
+
+<% @invocation = "<table class='data'>
+  <thead>
+    <tr>
+      <th>Key</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <.% fields = [:name, :birthday, :about_me, :activities, :affiliations, 
+        :books, :current_location, :education_history, 
+        :email_hashes, :first_name, :has_added_app, :hometown_location, 
+        :hs_info, :interests, :is_app_user, :last_name, :locale, 
+        :meeting_for, :meeting_sex, :movies, :music, :notes_count, 
+        :pic, :pic_with_logo, :pic_big, :pic_big_with_logo, :pic_small, 
+        :pic_small_with_logo, :pic_square, :pic_square_with_logo, 
+        :political, :profile_update_time, :profile_url, :proxied_email, 
+        :quotes, :relationship_status, :religion, :sex, :significant_other_id, 
+        :status, :timezone, :tv, :wall_count, :work_history] %.>
+    <.% @current_user.facebook_session.user.populate(*fields) %.>
+    <.% fields.each do |f| %.>
+    <tr>
+      <td><.%= f %.></td>
+      <td><.%= h @current_user.facebook_session.user.send(f).inspect %.></td>
+    </tr>
+    <.% end %.>
+  </tbody>
+</table>".gsub(/<.%/, '<' + '%').gsub(/%.>/, '%' + '>') %>
+
+<%= render :partial => 'shared/invocation_and_result', :locals => {:pre => true, :boxed => false} %>

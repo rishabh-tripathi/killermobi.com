@@ -1,0 +1,32 @@
+<% if(!@inbox_msg.nil? && !@inbox_msg.empty?) %>
+<% for msg in @inbox_msg %>
+  <div id="i_msg_detail_<%= msg.id %>" style="background:white;width:100%;height:225px;display:none;" onmouseover="Element.show('i_msg_detail_button_<%= msg.id %>');" onmouseout="Element.hide('i_msg_detail_button_<%= msg.id %>');">
+    <img style="position:absolute;float:right;margin-top:2px;right:8px;" src="/images/closebutton3.png" onclick="Element.hide('i_msg_detail_<%= msg.id %>');Element.show('i_msg_display_inline');"/>
+
+    <div style="padding:5px;"><%= msg.body %></div>
+
+    <span id="i_msg_detail_button_<%= msg.id %>" style="z-index:10;position:absolute;top:250px;float:right;display:none;">
+      &nbsp;&nbsp;&nbsp;
+      <input type="button" value="Forward" onclick="forward_msg_action('i_msg_detail_<%= msg.id %>', 'i_msg_display_inline', '<%= msg.body %>');"/>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <input type="button" value="Reply" onclick="reply_msg_action('i_msg_detail_<%= msg.id %>', 'i_msg_display_inline', '<%= msg.from %>');"/>
+      &nbsp;&nbsp;&nbsp;
+    </span>
+
+  </div>
+<% end %>
+
+<table style="width:100%;text-align:left;vertical-align:top;border-collapse:collapse;" id="i_msg_display_inline">
+  <% for msg in @inbox_msg %>
+  <tr id="i_msg_row_<%= msg.id %>">
+    <td style="width:5px;padding:2px 0 0 0;"><input type="checkbox" name="" id="" style="margin:0px;">
+        <td style="width:80px;padding:0px 2px;border-bottom:1px dotted #800F45;" onmouseover="document.getElementById('i_msg_row_<%= msg.id %>').style.background='#FFFFFF';" onmouseout="document.getElementById('i_msg_row_<%= msg.id %>').style.background='';"onclick="Element.hide('i_msg_display_inline');Element.show('i_msg_detail_<%= msg.id %>');">
+          <%= msg.from %></td>
+        <td style="border-bottom:1px dotted #800F45;" onclick="Element.hide('i_msg_display_inline');Element.show('i_msg_detail_<%= msg.id %>');"><%= msg.received_at.to_formatted_s(:short)%></td>
+  </tr>
+  <% end %>
+</table>
+<% else %>
+  No message
+<% end %>
+

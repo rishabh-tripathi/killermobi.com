@@ -1,0 +1,27 @@
+<center><h1>Login to KillerMobi</h1></center>
+<table style="width:100%">
+  <tr>
+    <td></td>
+    <td style="border-right:1px solid #e0e0e0;float:right;padding-right:20px;">
+      <div style="width:300px;">
+        <center><h4>KillerMobi account</h4></center>
+        <div class="sp1-gr"></div>
+        <div style="padding:10px;height:200px;">
+          <%= render :partial => "sessions/login_form" %>
+          <%= render :partial => "devise/shared/links" %>
+        </div>
+      </div>
+    </td>
+    <td style="padding-left:20px;">
+      <div style="width:300px;">
+        <center><h4>Social accounts</h4></center>
+        <div class="sp1-gr"></div>
+        <div style="padding:10px;height:200px;">
+          <%= render(:partial => "partials/social_login_links") %>
+        </div>
+      </div>
+    </td>
+    <td></td>
+  </tr>
+</table>
+<div class="sp30"></div>

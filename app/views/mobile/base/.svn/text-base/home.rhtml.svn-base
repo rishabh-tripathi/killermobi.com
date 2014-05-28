@@ -1,0 +1,14 @@
+<table>
+<% for download in @recommanded_download %>
+<tr>
+<td>
+<img src="/<%= download.ss1_thumb.to_s %>" alt="<%= download.title %>" style="width:60px;height:80px;"/>
+</td>
+<td>
+<h3><%= download.title %></h3>
+<p><%= simple_format(download.short_description) %></p>
+<a href="<%= wap_download_show_url(download.title.tr(" ","_")) %>">Download</a>
+</td>
+</tr>
+<% end %>
+</table>

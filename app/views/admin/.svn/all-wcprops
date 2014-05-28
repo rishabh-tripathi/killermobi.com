@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 31
+/svn/!svn/ver/2/app/views/admin
+END
+generate_licence.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/2/app/views/admin/generate_licence.rhtml
+END
+WS_FTP.LOG
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/2/app/views/admin/WS_FTP.LOG
+END
+send_notification.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/2/app/views/admin/send_notification.rhtml
+END
+experiment.erb
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/2/app/views/admin/experiment.erb
+END
+licence.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/2/app/views/admin/licence.rhtml
+END
+edit.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/2/app/views/admin/edit.rhtml
+END
+add_bulk.erb
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/2/app/views/admin/add_bulk.erb
+END
+index.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/2/app/views/admin/index.rhtml
+END
